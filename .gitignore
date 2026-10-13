@@ -1,0 +1,35 @@
+# --- Python / engine ---
+engine/.venv/
+.venv/
+__pycache__/
+*.py[cod]
+*.nbi
+*.nbc
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+
+# --- generated data (rebuild with `pratibimb build`) ---
+data/
+
+# --- web (Next.js) ---
+web/node_modules/
+web/.next/
+web/out/
+web/tsconfig.tsbuildinfo
+
+# --- misc ---
+.DS_Store
+Thumbs.db
+.env
+.env.*
+!.env.example
+
+# --- video (Remotion) ---
+video/.venv/
+video/node_modules/
+video/.cache/
+video/out/
+video/_tts_test/

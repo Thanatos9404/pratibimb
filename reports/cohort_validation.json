@@ -1,0 +1,3004 @@
+{
+ "generated_at": "2026-10-13T08:56:47",
+ "profile": "full",
+ "patients": 240,
+ "days": 28,
+ "targets": {
+  "cohort_median_tir_pct": [
+   55,
+   75
+  ],
+  "cv_pct_mostly_within": [
+   20,
+   36
+  ],
+  "hypos_concentrated_in_su_or_insulin_users": true
+ },
+ "checks": {
+  "cohort_median_tir_pct": 68.7,
+  "tir_in_target_band": true,
+  "share_cv_20_36_pct": 78.3,
+  "cv_median_pct": 29.0,
+  "share_of_hypo_episodes_in_su_or_insulin_users_pct": 97.0,
+  "patients_su_or_insulin": 118,
+  "patients_neither": 122,
+  "mean_glucose_vs_adag_r": 0.914,
+  "mean_glucose_minus_adag_median": -1.9,
+  "patients_dose_titrated_for_hypos": 33
+ },
+ "per_archetype": {
+  "SIDD": {
+   "n": 65,
+   "cgm_mean_glucose_iqr": [
+    155.81,
+    178.42,
+    206.29
+   ],
+   "adag_eag_from_hba1c_iqr": [
+    158.2,
+    177.1,
+    208.6
+   ],
+   "mean_minus_eag_median": -1.3,
+   "hba1c_iqr": [
+    7.1,
+    7.8,
+    8.9
+   ],
+   "bmi_iqr": [
+    20.9,
+    23.2,
+    24.9
+   ],
+   "tyg_iqr": [
+    9.0,
+    9.25,
+    9.55
+   ],
+   "tir_iqr": [
+    30.54,
+    58.91,
+    69.36
+   ],
+   "tar250_iqr": [
+    5.09,
+    10.19,
+    16.53
+   ],
+   "tbr70_iqr": [
+    0.0,
+    0.03,
+    1.4
+   ],
+   "cv_iqr": [
+    24.67,
+    28.65,
+    34.25
+   ]
+  },
+  "SIRD": {
+   "n": 33,
+   "cgm_mean_glucose_iqr": [
+    148.19,
+    168.89,
+    199.91
+   ],
+   "adag_eag_from_hba1c_iqr": [
+    150.7,
+    174.8,
+    199.5
+   ],
+   "mean_minus_eag_median": 0.3,
+   "hba1c_iqr": [
+    6.9,
+    7.7,
+    8.6
+   ],
+   "bmi_iqr": [
+    24.1,
+    25.8,
+    28.9
+   ],
+   "tyg_iqr": [
+    9.74,
+    10.03,
+    10.22
+   ],
+   "tir_iqr": [
+    43.4,
+    64.31,
+    77.34
+   ],
+   "tar250_iqr": [
+    2.7,
+    7.34,
+    14.98
+   ],
+   "tbr70_iqr": [
+    0.0,
+    0.03,
+    0.17
+   ],
+   "cv_iqr": [
+    21.85,
+    27.24,
+    32.07
+   ]
+  },
+  "MARD": {
+   "n": 46,
+   "cgm_mean_glucose_iqr": [
+    136.27,
+    151.97,
+    166.9
+   ],
+   "adag_eag_from_hba1c_iqr": [
+    139.43,
+    155.4,
+    167.75
+   ],
+   "mean_minus_eag_median": -1.9,
+   "hba1c_iqr": [
+    6.45,
+    7.05,
+    7.5
+   ],
+   "bmi_iqr": [
+    21.82,
+    23.3,
+    25.25
+   ],
+   "tyg_iqr": [
+    8.71,
+    8.91,
+    9.13
+   ],
+   "tir_iqr": [
+    69.82,
+    78.66,
+    83.02
+   ],
+   "tar250_iqr": [
+    1.93,
+    4.06,
+    7.27
+   ],
+   "tbr70_iqr": [
+    0.03,
+    0.11,
+    0.73
+   ],
+   "cv_iqr": [
+    27.17,
+    30.05,
+    32.44
+   ]
+  },
+  "IROD": {
+   "n": 96,
+   "cgm_mean_glucose_iqr": [
+    141.77,
+    161.23,
+    181.58
+   ],
+   "adag_eag_from_hba1c_iqr": [
+    140.1,
+    162.65,
+    186.53
+   ],
+   "mean_minus_eag_median": -2.3,
+   "hba1c_iqr": [
+    6.5,
+    7.3,
+    8.1
+   ],
+   "bmi_iqr": [
+    27.18,
+    29.25,
+    31.57
+   ],
+   "tyg_iqr": [
+    9.34,
+    9.59,
+    9.84
+   ],
+   "tir_iqr": [
+    55.52,
+    71.57,
+    80.67
+   ],
+   "tar250_iqr": [
+    1.7,
+    4.61,
+    8.42
+   ],
+   "tbr70_iqr": [
+    0.0,
+    0.08,
+    2.33
+   ],
+   "cv_iqr": [
+    24.02,
+    28.94,
+    33.16
+   ]
+  }
+ },
+ "hypo_by_medication_class": {
+  "neither": {
+   "n": 122,
+   "tbr70_median": 0.0,
+   "tbr70_mean": 0.21,
+   "truth_tbr70_mean": 0.06,
+   "hypo_episodes_per_week_mean": 0.06,
+   "pct_patients_with_any_hypo": 4.1,
+   "nocturnal_hypo_night_rate": 0.0025
+  },
+  "insulin": {
+   "n": 38,
+   "tbr70_median": 0.14,
+   "tbr70_mean": 1.82,
+   "truth_tbr70_mean": 1.51,
+   "hypo_episodes_per_week_mean": 1.23,
+   "pct_patients_with_any_hypo": 39.5,
+   "nocturnal_hypo_night_rate": 0.0425
+  },
+  "sulfonylurea": {
+   "n": 80,
+   "tbr70_median": 1.87,
+   "tbr70_mean": 2.98,
+   "truth_tbr70_mean": 2.66,
+   "hypo_episodes_per_week_mean": 2.16,
+   "pct_patients_with_any_hypo": 71.2,
+   "nocturnal_hypo_night_rate": 0.0245
+  }
+ },
+ "postprandial_rise_by_meal": {
+  "breakfast": {
+   "n": 5877,
+   "median_rise_mg_dl": 95.5,
+   "iqr": [
+    67.29,
+    95.49,
+    125.79
+   ]
+  },
+  "lunch": {
+   "n": 6540,
+   "median_rise_mg_dl": 122.1,
+   "iqr": [
+    88.05,
+    122.08,
+    167.17
+   ]
+  },
+  "evening_snack": {
+   "n": 3107,
+   "median_rise_mg_dl": 45.0,
+   "iqr": [
+    32.35,
+    44.97,
+    61.77
+   ]
+  },
+  "dinner": {
+   "n": 6603,
+   "median_rise_mg_dl": 111.8,
+   "iqr": [
+    83.37,
+    111.8,
+    148.81
+   ]
+  }
+ },
+ "cohort_distributions": {
+  "tir_pct": [
+   30.57,
+   50.09,
+   68.73,
+   79.42,
+   85.17
+  ],
+  "cv_pct": [
+   20.7,
+   24.2,
+   29.0,
+   32.85,
+   37.73
+  ],
+  "mean_glucose": [
+   126.75,
+   146.23,
+   164.15,
+   187.51,
+   207.95
+  ],
+  "tbr70_pct": [
+   0.07,
+   1.6,
+   6.12
+  ],
+  "tar250_pct": [
+   2.43,
+   5.71,
+   11.47
+  ],
+  "hyper_l2_episodes_per_day": [
+   0.67,
+   1.41,
+   2.26
+  ]
+ },
+ "subtype_inference": {
+  "accuracy": 0.508,
+  "confusion": {
+   "SIDD": {
+    "SIDD": 32,
+    "SIRD": 24,
+    "MARD": 5,
+    "IROD": 4
+   },
+   "SIRD": {
+    "SIDD": 12,
+    "SIRD": 6,
+    "MARD": 6,
+    "IROD": 9
+   },
+   "MARD": {
+    "SIDD": 4,
+    "SIRD": 9,
+    "MARD": 30,
+    "IROD": 3
+   },
+   "IROD": {
+    "SIDD": 20,
+    "SIRD": 17,
+    "MARD": 5,
+    "IROD": 54
+   }
+  },
+  "note": "Inferred from twin posteriors + EHR; the truth archetype is never shown to the twin."
+ },
+ "patients_table": [
+  {
+   "id": "P0001",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 75.2,
+   "cv": 26.9,
+   "mean": 157.9,
+   "tbr70": 0.0,
+   "hba1c": 7.6,
+   "eag": 170.9
+  },
+  {
+   "id": "P0002",
+   "archetype": "SIDD",
+   "med_class": "insulin",
+   "tir": 21.0,
+   "cv": 22.6,
+   "mean": 221.5,
+   "tbr70": 0.0,
+   "hba1c": 8.5,
+   "eag": 196.9
+  },
+  {
+   "id": "P0003",
+   "archetype": "SIDD",
+   "med_class": "insulin",
+   "tir": 86.9,
+   "cv": 24.4,
+   "mean": 143.2,
+   "tbr70": 0.0,
+   "hba1c": 6.9,
+   "eag": 150.4
+  },
+  {
+   "id": "P0004",
+   "archetype": "SIDD",
+   "med_class": "neither",
+   "tir": 20.0,
+   "cv": 18.7,
+   "mean": 210.1,
+   "tbr70": 0.0,
+   "hba1c": 9.1,
+   "eag": 214.3
+  },
+  {
+   "id": "P0005",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 45.1,
+   "cv": 24.0,
+   "mean": 192.0,
+   "tbr70": 0.08,
+   "hba1c": 7.9,
+   "eag": 179.8
+  },
+  {
+   "id": "P0006",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 85.6,
+   "cv": 32.5,
+   "mean": 125.2,
+   "tbr70": 5.4,
+   "hba1c": 5.6,
+   "eag": 114.0
+  },
+  {
+   "id": "P0007",
+   "archetype": "SIDD",
+   "med_class": "neither",
+   "tir": 23.7,
+   "cv": 23.8,
+   "mean": 218.6,
+   "tbr70": 0.0,
+   "hba1c": 9.7,
+   "eag": 230.7
+  },
+  {
+   "id": "P0008",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 82.6,
+   "cv": 22.1,
+   "mean": 149.9,
+   "tbr70": 0.0,
+   "hba1c": 6.4,
+   "eag": 136.5
+  },
+  {
+   "id": "P0009",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 65.0,
+   "cv": 29.2,
+   "mean": 172.1,
+   "tbr70": 0.09,
+   "hba1c": 7.6,
+   "eag": 170.4
+  },
+  {
+   "id": "P0010",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 78.8,
+   "cv": 35.1,
+   "mean": 142.3,
+   "tbr70": 1.84,
+   "hba1c": 7.2,
+   "eag": 159.0
+  },
+  {
+   "id": "P0011",
+   "archetype": "SIDD",
+   "med_class": "sulfonylurea",
+   "tir": 28.7,
+   "cv": 25.1,
+   "mean": 203.4,
+   "tbr70": 0.0,
+   "hba1c": 9.2,
+   "eag": 216.9
+  },
+  {
+   "id": "P0012",
+   "archetype": "MARD",
+   "med_class": "sulfonylurea",
+   "tir": 81.9,
+   "cv": 36.0,
+   "mean": 122.3,
+   "tbr70": 9.31,
+   "hba1c": 5.7,
+   "eag": 116.3
+  },
+  {
+   "id": "P0013",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 69.5,
+   "cv": 24.2,
+   "mean": 171.1,
+   "tbr70": 0.0,
+   "hba1c": 7.9,
+   "eag": 180.4
+  },
+  {
+   "id": "P0014",
+   "archetype": "SIRD",
+   "med_class": "sulfonylurea",
+   "tir": 86.4,
+   "cv": 28.1,
+   "mean": 138.1,
+   "tbr70": 0.86,
+   "hba1c": 6.2,
+   "eag": 132.0
+  },
+  {
+   "id": "P0015",
+   "archetype": "IROD",
+   "med_class": "insulin",
+   "tir": 56.0,
+   "cv": 28.4,
+   "mean": 178.6,
+   "tbr70": 0.14,
+   "hba1c": 8.0,
+   "eag": 182.6
+  },
+  {
+   "id": "P0016",
+   "archetype": "MARD",
+   "med_class": "neither",
+   "tir": 80.5,
+   "cv": 22.7,
+   "mean": 154.6,
+   "tbr70": 0.1,
+   "hba1c": 6.6,
+   "eag": 143.8
+  },
+  {
+   "id": "P0017",
+   "archetype": "SIDD",
+   "med_class": "sulfonylurea",
+   "tir": 76.2,
+   "cv": 39.9,
+   "mean": 138.2,
+   "tbr70": 6.06,
+   "hba1c": 6.9,
+   "eag": 151.2
+  },
+  {
+   "id": "P0018",
+   "archetype": "MARD",
+   "med_class": "neither",
+   "tir": 76.7,
+   "cv": 39.6,
+   "mean": 146.6,
+   "tbr70": 0.42,
+   "hba1c": 7.1,
+   "eag": 157.5
+  },
+  {
+   "id": "P0019",
+   "archetype": "MARD",
+   "med_class": "neither",
+   "tir": 89.4,
+   "cv": 23.3,
+   "mean": 137.4,
+   "tbr70": 0.03,
+   "hba1c": 6.1,
+   "eag": 129.5
+  },
+  {
+   "id": "P0020",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 83.8,
+   "cv": 36.2,
+   "mean": 118.5,
+   "tbr70": 6.71,
+   "hba1c": 6.5,
+   "eag": 140.2
+  },
+  {
+   "id": "P0021",
+   "archetype": "SIDD",
+   "med_class": "sulfonylurea",
+   "tir": 93.2,
+   "cv": 24.8,
+   "mean": 125.0,
+   "tbr70": 1.4,
+   "hba1c": 5.8,
+   "eag": 118.8
+  },
+  {
+   "id": "P0022",
+   "archetype": "IROD",
+   "med_class": "insulin",
+   "tir": 82.8,
+   "cv": 35.7,
+   "mean": 128.7,
+   "tbr70": 3.68,
+   "hba1c": 6.1,
+   "eag": 129.3
+  },
+  {
+   "id": "P0023",
+   "archetype": "SIRD",
+   "med_class": "neither",
+   "tir": 28.4,
+   "cv": 27.8,
+   "mean": 225.6,
+   "tbr70": 0.0,
+   "hba1c": 8.0,
+   "eag": 182.6
+  },
+  {
+   "id": "P0024",
+   "archetype": "SIDD",
+   "med_class": "sulfonylurea",
+   "tir": 64.5,
+   "cv": 29.5,
+   "mean": 172.2,
+   "tbr70": 0.0,
+   "hba1c": 7.1,
+   "eag": 158.2
+  },
+  {
+   "id": "P0025",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 79.5,
+   "cv": 30.7,
+   "mean": 147.7,
+   "tbr70": 0.87,
+   "hba1c": 6.9,
+   "eag": 152.1
+  },
+  {
+   "id": "P0026",
+   "archetype": "SIDD",
+   "med_class": "sulfonylurea",
+   "tir": 35.7,
+   "cv": 24.9,
+   "mean": 203.8,
+   "tbr70": 0.0,
+   "hba1c": 8.6,
+   "eag": 199.5
+  },
+  {
+   "id": "P0027",
+   "archetype": "SIDD",
+   "med_class": "neither",
+   "tir": 57.5,
+   "cv": 28.6,
+   "mean": 171.2,
+   "tbr70": 0.05,
+   "hba1c": 7.8,
+   "eag": 177.1
+  },
+  {
+   "id": "P0028",
+   "archetype": "SIRD",
+   "med_class": "neither",
+   "tir": 43.4,
+   "cv": 25.4,
+   "mean": 199.9,
+   "tbr70": 0.0,
+   "hba1c": 8.6,
+   "eag": 199.5
+  },
+  {
+   "id": "P0029",
+   "archetype": "MARD",
+   "med_class": "sulfonylurea",
+   "tir": 79.1,
+   "cv": 30.8,
+   "mean": 148.3,
+   "tbr70": 1.13,
+   "hba1c": 7.1,
+   "eag": 156.2
+  },
+  {
+   "id": "P0030",
+   "archetype": "MARD",
+   "med_class": "insulin",
+   "tir": 92.1,
+   "cv": 20.3,
+   "mean": 137.4,
+   "tbr70": 0.27,
+   "hba1c": 7.2,
+   "eag": 160.2
+  },
+  {
+   "id": "P0031",
+   "archetype": "MARD",
+   "med_class": "neither",
+   "tir": 89.1,
+   "cv": 30.2,
+   "mean": 126.8,
+   "tbr70": 0.25,
+   "hba1c": 6.1,
+   "eag": 128.2
+  },
+  {
+   "id": "P0032",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 87.9,
+   "cv": 19.0,
+   "mean": 146.3,
+   "tbr70": 0.0,
+   "hba1c": 6.9,
+   "eag": 150.0
+  },
+  {
+   "id": "P0033",
+   "archetype": "MARD",
+   "med_class": "sulfonylurea",
+   "tir": 84.6,
+   "cv": 34.1,
+   "mean": 114.8,
+   "tbr70": 8.96,
+   "hba1c": 5.6,
+   "eag": 114.0
+  },
+  {
+   "id": "P0034",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 67.2,
+   "cv": 31.1,
+   "mean": 161.8,
+   "tbr70": 0.09,
+   "hba1c": 7.8,
+   "eag": 178.0
+  },
+  {
+   "id": "P0035",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 66.6,
+   "cv": 25.6,
+   "mean": 169.1,
+   "tbr70": 0.05,
+   "hba1c": 8.0,
+   "eag": 181.8
+  },
+  {
+   "id": "P0036",
+   "archetype": "SIRD",
+   "med_class": "neither",
+   "tir": 59.4,
+   "cv": 24.1,
+   "mean": 181.7,
+   "tbr70": 0.0,
+   "hba1c": 7.9,
+   "eag": 178.6
+  },
+  {
+   "id": "P0037",
+   "archetype": "SIDD",
+   "med_class": "insulin",
+   "tir": 59.9,
+   "cv": 43.9,
+   "mean": 156.5,
+   "tbr70": 6.38,
+   "hba1c": 6.8,
+   "eag": 149.0
+  },
+  {
+   "id": "P0038",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 85.0,
+   "cv": 33.1,
+   "mean": 111.6,
+   "tbr70": 9.63,
+   "hba1c": 6.6,
+   "eag": 141.4
+  },
+  {
+   "id": "P0039",
+   "archetype": "SIDD",
+   "med_class": "neither",
+   "tir": 60.5,
+   "cv": 25.5,
+   "mean": 174.9,
+   "tbr70": 0.0,
+   "hba1c": 7.0,
+   "eag": 155.6
+  },
+  {
+   "id": "P0040",
+   "archetype": "SIDD",
+   "med_class": "neither",
+   "tir": 9.7,
+   "cv": 22.1,
+   "mean": 240.1,
+   "tbr70": 0.0,
+   "hba1c": 9.2,
+   "eag": 218.5
+  },
+  {
+   "id": "P0041",
+   "archetype": "MARD",
+   "med_class": "neither",
+   "tir": 83.2,
+   "cv": 27.0,
+   "mean": 146.9,
+   "tbr70": 0.01,
+   "hba1c": 6.8,
+   "eag": 148.2
+  },
+  {
+   "id": "P0042",
+   "archetype": "SIDD",
+   "med_class": "sulfonylurea",
+   "tir": 22.1,
+   "cv": 29.7,
+   "mean": 237.8,
+   "tbr70": 0.0,
+   "hba1c": 9.7,
+   "eag": 231.1
+  },
+  {
+   "id": "P0043",
+   "archetype": "MARD",
+   "med_class": "neither",
+   "tir": 79.2,
+   "cv": 30.0,
+   "mean": 155.9,
+   "tbr70": 0.01,
+   "hba1c": 7.3,
+   "eag": 162.9
+  },
+  {
+   "id": "P0044",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 46.2,
+   "cv": 20.3,
+   "mean": 193.2,
+   "tbr70": 0.0,
+   "hba1c": 8.5,
+   "eag": 196.4
+  },
+  {
+   "id": "P0045",
+   "archetype": "SIRD",
+   "med_class": "sulfonylurea",
+   "tir": 82.5,
+   "cv": 37.8,
+   "mean": 120.5,
+   "tbr70": 7.9,
+   "hba1c": 6.4,
+   "eag": 137.7
+  },
+  {
+   "id": "P0046",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 58.7,
+   "cv": 28.7,
+   "mean": 179.8,
+   "tbr70": 0.0,
+   "hba1c": 8.0,
+   "eag": 182.5
+  },
+  {
+   "id": "P0047",
+   "archetype": "MARD",
+   "med_class": "neither",
+   "tir": 66.5,
+   "cv": 29.3,
+   "mean": 168.3,
+   "tbr70": 0.22,
+   "hba1c": 7.5,
+   "eag": 167.3
+  },
+  {
+   "id": "P0048",
+   "archetype": "MARD",
+   "med_class": "neither",
+   "tir": 77.9,
+   "cv": 29.1,
+   "mean": 158.2,
+   "tbr70": 0.05,
+   "hba1c": 7.4,
+   "eag": 166.5
+  },
+  {
+   "id": "P0049",
+   "archetype": "SIRD",
+   "med_class": "neither",
+   "tir": 76.9,
+   "cv": 23.5,
+   "mean": 164.5,
+   "tbr70": 0.0,
+   "hba1c": 8.1,
+   "eag": 186.4
+  },
+  {
+   "id": "P0050",
+   "archetype": "MARD",
+   "med_class": "insulin",
+   "tir": 75.7,
+   "cv": 39.8,
+   "mean": 135.9,
+   "tbr70": 5.37,
+   "hba1c": 6.2,
+   "eag": 132.5
+  },
+  {
+   "id": "P0051",
+   "archetype": "SIRD",
+   "med_class": "insulin",
+   "tir": 74.5,
+   "cv": 21.5,
+   "mean": 162.6,
+   "tbr70": 0.03,
+   "hba1c": 6.7,
+   "eag": 146.6
+  },
+  {
+   "id": "P0052",
+   "archetype": "SIRD",
+   "med_class": "neither",
+   "tir": 19.1,
+   "cv": 19.8,
+   "mean": 216.0,
+   "tbr70": 0.0,
+   "hba1c": 9.2,
+   "eag": 217.7
+  },
+  {
+   "id": "P0053",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 65.8,
+   "cv": 33.1,
+   "mean": 165.8,
+   "tbr70": 0.0,
+   "hba1c": 7.3,
+   "eag": 161.9
+  },
+  {
+   "id": "P0054",
+   "archetype": "MARD",
+   "med_class": "neither",
+   "tir": 82.6,
+   "cv": 22.4,
+   "mean": 152.3,
+   "tbr70": 0.09,
+   "hba1c": 8.4,
+   "eag": 193.7
+  },
+  {
+   "id": "P0055",
+   "archetype": "SIDD",
+   "med_class": "neither",
+   "tir": 58.2,
+   "cv": 19.4,
+   "mean": 180.2,
+   "tbr70": 0.0,
+   "hba1c": 7.7,
+   "eag": 173.8
+  },
+  {
+   "id": "P0056",
+   "archetype": "MARD",
+   "med_class": "neither",
+   "tir": 63.9,
+   "cv": 28.2,
+   "mean": 172.9,
+   "tbr70": 0.09,
+   "hba1c": 8.1,
+   "eag": 184.5
+  },
+  {
+   "id": "P0057",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 80.8,
+   "cv": 30.3,
+   "mean": 145.6,
+   "tbr70": 0.0,
+   "hba1c": 6.8,
+   "eag": 149.2
+  },
+  {
+   "id": "P0058",
+   "archetype": "SIDD",
+   "med_class": "neither",
+   "tir": 2.3,
+   "cv": 20.7,
+   "mean": 258.5,
+   "tbr70": 0.0,
+   "hba1c": 11.4,
+   "eag": 281.9
+  },
+  {
+   "id": "P0059",
+   "archetype": "SIDD",
+   "med_class": "sulfonylurea",
+   "tir": 41.3,
+   "cv": 35.9,
+   "mean": 193.4,
+   "tbr70": 1.92,
+   "hba1c": 8.8,
+   "eag": 205.5
+  },
+  {
+   "id": "P0060",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 62.9,
+   "cv": 25.9,
+   "mean": 171.3,
+   "tbr70": 0.13,
+   "hba1c": 8.2,
+   "eag": 188.6
+  },
+  {
+   "id": "P0061",
+   "archetype": "SIRD",
+   "med_class": "sulfonylurea",
+   "tir": 75.0,
+   "cv": 42.1,
+   "mean": 136.1,
+   "tbr70": 6.11,
+   "hba1c": 6.9,
+   "eag": 150.7
+  },
+  {
+   "id": "P0062",
+   "archetype": "MARD",
+   "med_class": "neither",
+   "tir": 47.7,
+   "cv": 27.8,
+   "mean": 196.2,
+   "tbr70": 0.0,
+   "hba1c": 7.6,
+   "eag": 170.8
+  },
+  {
+   "id": "P0063",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 53.9,
+   "cv": 23.7,
+   "mean": 184.6,
+   "tbr70": 0.01,
+   "hba1c": 8.2,
+   "eag": 189.5
+  },
+  {
+   "id": "P0064",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 53.6,
+   "cv": 33.8,
+   "mean": 194.2,
+   "tbr70": 0.0,
+   "hba1c": 9.3,
+   "eag": 219.2
+  },
+  {
+   "id": "P0065",
+   "archetype": "SIRD",
+   "med_class": "neither",
+   "tir": 15.5,
+   "cv": 21.9,
+   "mean": 228.1,
+   "tbr70": 0.0,
+   "hba1c": 10.1,
+   "eag": 244.2
+  },
+  {
+   "id": "P0066",
+   "archetype": "IROD",
+   "med_class": "insulin",
+   "tir": 82.6,
+   "cv": 36.2,
+   "mean": 121.3,
+   "tbr70": 6.56,
+   "hba1c": 5.6,
+   "eag": 114.0
+  },
+  {
+   "id": "P0067",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 68.8,
+   "cv": 30.1,
+   "mean": 161.5,
+   "tbr70": 0.12,
+   "hba1c": 7.5,
+   "eag": 167.5
+  },
+  {
+   "id": "P0068",
+   "archetype": "SIRD",
+   "med_class": "neither",
+   "tir": 43.4,
+   "cv": 22.3,
+   "mean": 193.3,
+   "tbr70": 0.0,
+   "hba1c": 7.7,
+   "eag": 174.8
+  },
+  {
+   "id": "P0069",
+   "archetype": "SIDD",
+   "med_class": "insulin",
+   "tir": 39.9,
+   "cv": 26.2,
+   "mean": 198.3,
+   "tbr70": 0.0,
+   "hba1c": 8.5,
+   "eag": 198.5
+  },
+  {
+   "id": "P0070",
+   "archetype": "SIRD",
+   "med_class": "neither",
+   "tir": 63.0,
+   "cv": 32.2,
+   "mean": 172.2,
+   "tbr70": 0.0,
+   "hba1c": 7.1,
+   "eag": 156.6
+  },
+  {
+   "id": "P0071",
+   "archetype": "SIDD",
+   "med_class": "neither",
+   "tir": 30.5,
+   "cv": 20.7,
+   "mean": 207.8,
+   "tbr70": 0.0,
+   "hba1c": 9.1,
+   "eag": 215.3
+  },
+  {
+   "id": "P0072",
+   "archetype": "SIDD",
+   "med_class": "neither",
+   "tir": 84.3,
+   "cv": 24.8,
+   "mean": 145.6,
+   "tbr70": 0.09,
+   "hba1c": 6.7,
+   "eag": 144.9
+  },
+  {
+   "id": "P0073",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 89.5,
+   "cv": 30.6,
+   "mean": 124.0,
+   "tbr70": 0.46,
+   "hba1c": 6.4,
+   "eag": 135.8
+  },
+  {
+   "id": "P0074",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 49.0,
+   "cv": 37.7,
+   "mean": 198.6,
+   "tbr70": 0.05,
+   "hba1c": 8.4,
+   "eag": 194.4
+  },
+  {
+   "id": "P0075",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 81.3,
+   "cv": 21.0,
+   "mean": 156.7,
+   "tbr70": 0.03,
+   "hba1c": 7.2,
+   "eag": 161.0
+  },
+  {
+   "id": "P0076",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 73.3,
+   "cv": 26.4,
+   "mean": 158.5,
+   "tbr70": 0.0,
+   "hba1c": 8.0,
+   "eag": 181.7
+  },
+  {
+   "id": "P0077",
+   "archetype": "SIDD",
+   "med_class": "insulin",
+   "tir": 61.7,
+   "cv": 26.3,
+   "mean": 175.6,
+   "tbr70": 0.13,
+   "hba1c": 7.3,
+   "eag": 164.2
+  },
+  {
+   "id": "P0078",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 80.9,
+   "cv": 36.4,
+   "mean": 124.4,
+   "tbr70": 7.75,
+   "hba1c": 5.6,
+   "eag": 114.0
+  },
+  {
+   "id": "P0079",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 82.2,
+   "cv": 27.7,
+   "mean": 144.6,
+   "tbr70": 0.12,
+   "hba1c": 7.2,
+   "eag": 159.6
+  },
+  {
+   "id": "P0080",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 85.6,
+   "cv": 32.8,
+   "mean": 117.2,
+   "tbr70": 7.24,
+   "hba1c": 6.2,
+   "eag": 131.4
+  },
+  {
+   "id": "P0081",
+   "archetype": "MARD",
+   "med_class": "sulfonylurea",
+   "tir": 87.9,
+   "cv": 29.0,
+   "mean": 124.5,
+   "tbr70": 5.05,
+   "hba1c": 5.6,
+   "eag": 114.0
+  },
+  {
+   "id": "P0082",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 73.1,
+   "cv": 20.9,
+   "mean": 162.7,
+   "tbr70": 0.0,
+   "hba1c": 7.4,
+   "eag": 164.8
+  },
+  {
+   "id": "P0083",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 67.2,
+   "cv": 41.2,
+   "mean": 147.2,
+   "tbr70": 6.99,
+   "hba1c": 6.6,
+   "eag": 143.4
+  },
+  {
+   "id": "P0084",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 36.1,
+   "cv": 28.9,
+   "mean": 215.6,
+   "tbr70": 0.0,
+   "hba1c": 8.2,
+   "eag": 189.5
+  },
+  {
+   "id": "P0085",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 33.2,
+   "cv": 20.0,
+   "mean": 200.3,
+   "tbr70": 0.0,
+   "hba1c": 7.5,
+   "eag": 169.5
+  },
+  {
+   "id": "P0086",
+   "archetype": "SIDD",
+   "med_class": "sulfonylurea",
+   "tir": 81.3,
+   "cv": 28.8,
+   "mean": 139.7,
+   "tbr70": 4.28,
+   "hba1c": 6.5,
+   "eag": 140.2
+  },
+  {
+   "id": "P0087",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 39.7,
+   "cv": 22.9,
+   "mean": 202.3,
+   "tbr70": 0.0,
+   "hba1c": 8.8,
+   "eag": 204.8
+  },
+  {
+   "id": "P0088",
+   "archetype": "MARD",
+   "med_class": "neither",
+   "tir": 78.3,
+   "cv": 29.9,
+   "mean": 160.6,
+   "tbr70": 0.0,
+   "hba1c": 6.4,
+   "eag": 138.1
+  },
+  {
+   "id": "P0089",
+   "archetype": "SIRD",
+   "med_class": "neither",
+   "tir": 57.4,
+   "cv": 20.6,
+   "mean": 184.7,
+   "tbr70": 0.0,
+   "hba1c": 7.6,
+   "eag": 170.8
+  },
+  {
+   "id": "P0090",
+   "archetype": "SIDD",
+   "med_class": "neither",
+   "tir": 1.4,
+   "cv": 20.7,
+   "mean": 277.3,
+   "tbr70": 0.0,
+   "hba1c": 10.0,
+   "eag": 240.8
+  },
+  {
+   "id": "P0091",
+   "archetype": "IROD",
+   "med_class": "insulin",
+   "tir": 79.3,
+   "cv": 34.1,
+   "mean": 134.4,
+   "tbr70": 2.31,
+   "hba1c": 6.8,
+   "eag": 149.0
+  },
+  {
+   "id": "P0092",
+   "archetype": "SIRD",
+   "med_class": "sulfonylurea",
+   "tir": 83.4,
+   "cv": 32.2,
+   "mean": 133.0,
+   "tbr70": 2.89,
+   "hba1c": 6.0,
+   "eag": 125.4
+  },
+  {
+   "id": "P0093",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 34.5,
+   "cv": 30.4,
+   "mean": 219.0,
+   "tbr70": 0.0,
+   "hba1c": 9.0,
+   "eag": 211.4
+  },
+  {
+   "id": "P0094",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 74.3,
+   "cv": 26.1,
+   "mean": 161.0,
+   "tbr70": 0.12,
+   "hba1c": 8.0,
+   "eag": 183.7
+  },
+  {
+   "id": "P0095",
+   "archetype": "SIDD",
+   "med_class": "insulin",
+   "tir": 72.1,
+   "cv": 35.9,
+   "mean": 151.1,
+   "tbr70": 1.33,
+   "hba1c": 7.5,
+   "eag": 169.9
+  },
+  {
+   "id": "P0096",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 33.6,
+   "cv": 19.6,
+   "mean": 201.7,
+   "tbr70": 0.0,
+   "hba1c": 9.6,
+   "eag": 230.2
+  },
+  {
+   "id": "P0097",
+   "archetype": "SIDD",
+   "med_class": "neither",
+   "tir": 21.3,
+   "cv": 21.8,
+   "mean": 215.7,
+   "tbr70": 0.0,
+   "hba1c": 9.2,
+   "eag": 217.0
+  },
+  {
+   "id": "P0098",
+   "archetype": "SIRD",
+   "med_class": "insulin",
+   "tir": 87.3,
+   "cv": 32.7,
+   "mean": 107.6,
+   "tbr70": 8.17,
+   "hba1c": 5.6,
+   "eag": 114.0
+  },
+  {
+   "id": "P0099",
+   "archetype": "MARD",
+   "med_class": "neither",
+   "tir": 34.5,
+   "cv": 19.3,
+   "mean": 201.4,
+   "tbr70": 0.0,
+   "hba1c": 9.0,
+   "eag": 210.5
+  },
+  {
+   "id": "P0100",
+   "archetype": "SIDD",
+   "med_class": "neither",
+   "tir": 28.9,
+   "cv": 22.4,
+   "mean": 211.9,
+   "tbr70": 0.0,
+   "hba1c": 9.4,
+   "eag": 224.3
+  },
+  {
+   "id": "P0101",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 48.7,
+   "cv": 18.5,
+   "mean": 188.4,
+   "tbr70": 0.0,
+   "hba1c": 8.1,
+   "eag": 186.5
+  },
+  {
+   "id": "P0102",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 88.7,
+   "cv": 29.0,
+   "mean": 118.6,
+   "tbr70": 5.23,
+   "hba1c": 6.6,
+   "eag": 143.2
+  },
+  {
+   "id": "P0103",
+   "archetype": "SIRD",
+   "med_class": "neither",
+   "tir": 79.8,
+   "cv": 19.1,
+   "mean": 158.5,
+   "tbr70": 0.09,
+   "hba1c": 7.5,
+   "eag": 168.5
+  },
+  {
+   "id": "P0104",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 71.7,
+   "cv": 43.9,
+   "mean": 140.1,
+   "tbr70": 6.21,
+   "hba1c": 5.9,
+   "eag": 121.9
+  },
+  {
+   "id": "P0105",
+   "archetype": "IROD",
+   "med_class": "insulin",
+   "tir": 75.2,
+   "cv": 36.7,
+   "mean": 146.6,
+   "tbr70": 2.02,
+   "hba1c": 6.5,
+   "eag": 139.8
+  },
+  {
+   "id": "P0106",
+   "archetype": "MARD",
+   "med_class": "neither",
+   "tir": 70.3,
+   "cv": 30.0,
+   "mean": 162.0,
+   "tbr70": 0.0,
+   "hba1c": 7.8,
+   "eag": 175.9
+  },
+  {
+   "id": "P0107",
+   "archetype": "SIDD",
+   "med_class": "sulfonylurea",
+   "tir": 45.9,
+   "cv": 30.4,
+   "mean": 185.9,
+   "tbr70": 0.33,
+   "hba1c": 8.0,
+   "eag": 183.6
+  },
+  {
+   "id": "P0108",
+   "archetype": "SIDD",
+   "med_class": "neither",
+   "tir": 2.3,
+   "cv": 21.1,
+   "mean": 263.4,
+   "tbr70": 0.0,
+   "hba1c": 11.1,
+   "eag": 270.6
+  },
+  {
+   "id": "P0109",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 85.7,
+   "cv": 21.1,
+   "mean": 147.0,
+   "tbr70": 0.0,
+   "hba1c": 7.3,
+   "eag": 162.8
+  },
+  {
+   "id": "P0110",
+   "archetype": "MARD",
+   "med_class": "neither",
+   "tir": 63.5,
+   "cv": 27.2,
+   "mean": 177.5,
+   "tbr70": 0.09,
+   "hba1c": 8.1,
+   "eag": 185.2
+  },
+  {
+   "id": "P0111",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 50.2,
+   "cv": 15.2,
+   "mean": 184.3,
+   "tbr70": 0.0,
+   "hba1c": 7.5,
+   "eag": 168.0
+  },
+  {
+   "id": "P0112",
+   "archetype": "SIDD",
+   "med_class": "insulin",
+   "tir": 73.2,
+   "cv": 39.9,
+   "mean": 127.3,
+   "tbr70": 11.45,
+   "hba1c": 6.7,
+   "eag": 144.6
+  },
+  {
+   "id": "P0113",
+   "archetype": "MARD",
+   "med_class": "neither",
+   "tir": 69.9,
+   "cv": 30.3,
+   "mean": 161.3,
+   "tbr70": 0.05,
+   "hba1c": 7.1,
+   "eag": 156.8
+  },
+  {
+   "id": "P0114",
+   "archetype": "SIRD",
+   "med_class": "neither",
+   "tir": 64.3,
+   "cv": 31.7,
+   "mean": 168.9,
+   "tbr70": 0.07,
+   "hba1c": 7.7,
+   "eag": 172.9
+  },
+  {
+   "id": "P0115",
+   "archetype": "SIRD",
+   "med_class": "neither",
+   "tir": 73.7,
+   "cv": 46.0,
+   "mean": 148.2,
+   "tbr70": 1.17,
+   "hba1c": 6.3,
+   "eag": 132.9
+  },
+  {
+   "id": "P0116",
+   "archetype": "IROD",
+   "med_class": "insulin",
+   "tir": 77.4,
+   "cv": 40.6,
+   "mean": 132.4,
+   "tbr70": 6.69,
+   "hba1c": 6.0,
+   "eag": 126.2
+  },
+  {
+   "id": "P0117",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 60.5,
+   "cv": 32.4,
+   "mean": 180.4,
+   "tbr70": 0.06,
+   "hba1c": 8.3,
+   "eag": 192.4
+  },
+  {
+   "id": "P0118",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 49.6,
+   "cv": 25.7,
+   "mean": 187.4,
+   "tbr70": 0.01,
+   "hba1c": 8.1,
+   "eag": 187.0
+  },
+  {
+   "id": "P0119",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 49.1,
+   "cv": 24.7,
+   "mean": 182.6,
+   "tbr70": 0.0,
+   "hba1c": 8.8,
+   "eag": 206.3
+  },
+  {
+   "id": "P0120",
+   "archetype": "SIDD",
+   "med_class": "insulin",
+   "tir": 70.9,
+   "cv": 35.4,
+   "mean": 149.2,
+   "tbr70": 2.58,
+   "hba1c": 7.2,
+   "eag": 159.4
+  },
+  {
+   "id": "P0121",
+   "archetype": "SIDD",
+   "med_class": "neither",
+   "tir": 59.3,
+   "cv": 35.4,
+   "mean": 182.5,
+   "tbr70": 0.0,
+   "hba1c": 8.2,
+   "eag": 188.1
+  },
+  {
+   "id": "P0122",
+   "archetype": "SIDD",
+   "med_class": "neither",
+   "tir": 60.7,
+   "cv": 43.8,
+   "mean": 159.4,
+   "tbr70": 5.38,
+   "hba1c": 7.6,
+   "eag": 170.5
+  },
+  {
+   "id": "P0123",
+   "archetype": "MARD",
+   "med_class": "neither",
+   "tir": 79.4,
+   "cv": 31.5,
+   "mean": 147.3,
+   "tbr70": 0.12,
+   "hba1c": 7.9,
+   "eag": 179.5
+  },
+  {
+   "id": "P0124",
+   "archetype": "SIDD",
+   "med_class": "insulin",
+   "tir": 76.2,
+   "cv": 29.9,
+   "mean": 150.1,
+   "tbr70": 2.1,
+   "hba1c": 6.8,
+   "eag": 147.9
+  },
+  {
+   "id": "P0125",
+   "archetype": "SIDD",
+   "med_class": "sulfonylurea",
+   "tir": 48.8,
+   "cv": 34.0,
+   "mean": 185.5,
+   "tbr70": 1.67,
+   "hba1c": 8.1,
+   "eag": 185.5
+  },
+  {
+   "id": "P0126",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 64.4,
+   "cv": 28.7,
+   "mean": 173.9,
+   "tbr70": 0.0,
+   "hba1c": 7.3,
+   "eag": 162.2
+  },
+  {
+   "id": "P0127",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 41.7,
+   "cv": 18.5,
+   "mean": 191.4,
+   "tbr70": 0.0,
+   "hba1c": 8.3,
+   "eag": 191.5
+  },
+  {
+   "id": "P0128",
+   "archetype": "SIDD",
+   "med_class": "insulin",
+   "tir": 62.8,
+   "cv": 30.6,
+   "mean": 174.7,
+   "tbr70": 0.0,
+   "hba1c": 7.0,
+   "eag": 153.2
+  },
+  {
+   "id": "P0129",
+   "archetype": "MARD",
+   "med_class": "sulfonylurea",
+   "tir": 79.3,
+   "cv": 26.9,
+   "mean": 150.9,
+   "tbr70": 0.74,
+   "hba1c": 7.5,
+   "eag": 167.9
+  },
+  {
+   "id": "P0130",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 77.2,
+   "cv": 31.9,
+   "mean": 147.6,
+   "tbr70": 0.18,
+   "hba1c": 7.0,
+   "eag": 153.0
+  },
+  {
+   "id": "P0131",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 74.5,
+   "cv": 36.6,
+   "mean": 136.2,
+   "tbr70": 7.24,
+   "hba1c": 5.9,
+   "eag": 122.0
+  },
+  {
+   "id": "P0132",
+   "archetype": "SIDD",
+   "med_class": "sulfonylurea",
+   "tir": 68.5,
+   "cv": 31.9,
+   "mean": 155.4,
+   "tbr70": 4.16,
+   "hba1c": 7.3,
+   "eag": 162.7
+  },
+  {
+   "id": "P0133",
+   "archetype": "SIDD",
+   "med_class": "sulfonylurea",
+   "tir": 77.5,
+   "cv": 27.4,
+   "mean": 155.6,
+   "tbr70": 0.0,
+   "hba1c": 7.6,
+   "eag": 170.6
+  },
+  {
+   "id": "P0134",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 82.0,
+   "cv": 38.2,
+   "mean": 119.2,
+   "tbr70": 7.15,
+   "hba1c": 6.5,
+   "eag": 138.6
+  },
+  {
+   "id": "P0135",
+   "archetype": "SIRD",
+   "med_class": "neither",
+   "tir": 9.3,
+   "cv": 15.2,
+   "mean": 219.3,
+   "tbr70": 0.0,
+   "hba1c": 9.1,
+   "eag": 214.4
+  },
+  {
+   "id": "P0136",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 17.9,
+   "cv": 24.0,
+   "mean": 230.9,
+   "tbr70": 0.0,
+   "hba1c": 10.4,
+   "eag": 251.1
+  },
+  {
+   "id": "P0137",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 86.2,
+   "cv": 35.2,
+   "mean": 113.0,
+   "tbr70": 6.73,
+   "hba1c": 5.7,
+   "eag": 116.8
+  },
+  {
+   "id": "P0138",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 48.6,
+   "cv": 25.7,
+   "mean": 195.5,
+   "tbr70": 0.0,
+   "hba1c": 8.7,
+   "eag": 203.5
+  },
+  {
+   "id": "P0139",
+   "archetype": "MARD",
+   "med_class": "neither",
+   "tir": 73.2,
+   "cv": 32.6,
+   "mean": 156.1,
+   "tbr70": 0.26,
+   "hba1c": 6.9,
+   "eag": 151.4
+  },
+  {
+   "id": "P0140",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 71.4,
+   "cv": 33.0,
+   "mean": 152.8,
+   "tbr70": 2.37,
+   "hba1c": 6.8,
+   "eag": 147.5
+  },
+  {
+   "id": "P0141",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 63.2,
+   "cv": 27.6,
+   "mean": 175.5,
+   "tbr70": 0.06,
+   "hba1c": 7.7,
+   "eag": 173.9
+  },
+  {
+   "id": "P0142",
+   "archetype": "SIDD",
+   "med_class": "sulfonylurea",
+   "tir": 55.4,
+   "cv": 43.4,
+   "mean": 172.4,
+   "tbr70": 4.05,
+   "hba1c": 7.7,
+   "eag": 173.3
+  },
+  {
+   "id": "P0143",
+   "archetype": "SIDD",
+   "med_class": "sulfonylurea",
+   "tir": 61.1,
+   "cv": 32.2,
+   "mean": 167.5,
+   "tbr70": 2.4,
+   "hba1c": 7.5,
+   "eag": 168.3
+  },
+  {
+   "id": "P0144",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 66.0,
+   "cv": 25.3,
+   "mean": 169.2,
+   "tbr70": 0.21,
+   "hba1c": 7.5,
+   "eag": 168.2
+  },
+  {
+   "id": "P0145",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 78.0,
+   "cv": 29.0,
+   "mean": 149.1,
+   "tbr70": 2.81,
+   "hba1c": 6.6,
+   "eag": 142.6
+  },
+  {
+   "id": "P0146",
+   "archetype": "SIDD",
+   "med_class": "insulin",
+   "tir": 59.2,
+   "cv": 38.6,
+   "mean": 180.2,
+   "tbr70": 0.08,
+   "hba1c": 7.2,
+   "eag": 159.5
+  },
+  {
+   "id": "P0147",
+   "archetype": "SIRD",
+   "med_class": "neither",
+   "tir": 83.5,
+   "cv": 31.8,
+   "mean": 139.0,
+   "tbr70": 0.1,
+   "hba1c": 6.5,
+   "eag": 141.2
+  },
+  {
+   "id": "P0148",
+   "archetype": "MARD",
+   "med_class": "neither",
+   "tir": 77.8,
+   "cv": 34.4,
+   "mean": 157.0,
+   "tbr70": 0.0,
+   "hba1c": 7.2,
+   "eag": 159.4
+  },
+  {
+   "id": "P0149",
+   "archetype": "MARD",
+   "med_class": "neither",
+   "tir": 68.6,
+   "cv": 31.8,
+   "mean": 168.2,
+   "tbr70": 0.17,
+   "hba1c": 8.0,
+   "eag": 183.5
+  },
+  {
+   "id": "P0150",
+   "archetype": "MARD",
+   "med_class": "sulfonylurea",
+   "tir": 80.0,
+   "cv": 31.4,
+   "mean": 140.2,
+   "tbr70": 3.22,
+   "hba1c": 6.6,
+   "eag": 143.4
+  },
+  {
+   "id": "P0151",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 74.5,
+   "cv": 31.6,
+   "mean": 147.6,
+   "tbr70": 2.71,
+   "hba1c": 6.8,
+   "eag": 149.7
+  },
+  {
+   "id": "P0152",
+   "archetype": "SIDD",
+   "med_class": "insulin",
+   "tir": 71.9,
+   "cv": 24.7,
+   "mean": 165.8,
+   "tbr70": 0.06,
+   "hba1c": 8.2,
+   "eag": 187.5
+  },
+  {
+   "id": "P0153",
+   "archetype": "SIDD",
+   "med_class": "sulfonylurea",
+   "tir": 78.1,
+   "cv": 27.3,
+   "mean": 152.5,
+   "tbr70": 0.78,
+   "hba1c": 6.6,
+   "eag": 142.9
+  },
+  {
+   "id": "P0154",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 78.9,
+   "cv": 34.0,
+   "mean": 137.3,
+   "tbr70": 1.98,
+   "hba1c": 6.5,
+   "eag": 138.6
+  },
+  {
+   "id": "P0155",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 31.7,
+   "cv": 16.5,
+   "mean": 197.8,
+   "tbr70": 0.0,
+   "hba1c": 8.8,
+   "eag": 206.6
+  },
+  {
+   "id": "P0156",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 66.9,
+   "cv": 31.5,
+   "mean": 155.3,
+   "tbr70": 3.66,
+   "hba1c": 6.7,
+   "eag": 145.7
+  },
+  {
+   "id": "P0157",
+   "archetype": "SIDD",
+   "med_class": "neither",
+   "tir": 42.2,
+   "cv": 26.2,
+   "mean": 202.1,
+   "tbr70": 0.0,
+   "hba1c": 8.9,
+   "eag": 208.6
+  },
+  {
+   "id": "P0158",
+   "archetype": "SIDD",
+   "med_class": "sulfonylurea",
+   "tir": 69.4,
+   "cv": 34.5,
+   "mean": 167.0,
+   "tbr70": 0.03,
+   "hba1c": 6.6,
+   "eag": 142.3
+  },
+  {
+   "id": "P0159",
+   "archetype": "SIDD",
+   "med_class": "insulin",
+   "tir": 9.5,
+   "cv": 23.7,
+   "mean": 249.1,
+   "tbr70": 0.0,
+   "hba1c": 10.2,
+   "eag": 246.5
+  },
+  {
+   "id": "P0160",
+   "archetype": "MARD",
+   "med_class": "neither",
+   "tir": 67.6,
+   "cv": 27.2,
+   "mean": 167.5,
+   "tbr70": 0.1,
+   "hba1c": 7.4,
+   "eag": 166.2
+  },
+  {
+   "id": "P0161",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 44.1,
+   "cv": 25.6,
+   "mean": 200.6,
+   "tbr70": 0.0,
+   "hba1c": 9.7,
+   "eag": 232.5
+  },
+  {
+   "id": "P0162",
+   "archetype": "SIRD",
+   "med_class": "neither",
+   "tir": 45.6,
+   "cv": 35.2,
+   "mean": 206.7,
+   "tbr70": 0.09,
+   "hba1c": 8.8,
+   "eag": 206.4
+  },
+  {
+   "id": "P0163",
+   "archetype": "SIDD",
+   "med_class": "sulfonylurea",
+   "tir": 64.7,
+   "cv": 29.7,
+   "mean": 169.0,
+   "tbr70": 0.07,
+   "hba1c": 7.2,
+   "eag": 158.9
+  },
+  {
+   "id": "P0164",
+   "archetype": "SIDD",
+   "med_class": "insulin",
+   "tir": 45.8,
+   "cv": 30.6,
+   "mean": 202.2,
+   "tbr70": 0.0,
+   "hba1c": 8.8,
+   "eag": 206.7
+  },
+  {
+   "id": "P0165",
+   "archetype": "SIDD",
+   "med_class": "insulin",
+   "tir": 58.9,
+   "cv": 36.5,
+   "mean": 178.4,
+   "tbr70": 1.26,
+   "hba1c": 7.1,
+   "eag": 157.2
+  },
+  {
+   "id": "P0166",
+   "archetype": "MARD",
+   "med_class": "neither",
+   "tir": 69.8,
+   "cv": 27.2,
+   "mean": 171.9,
+   "tbr70": 0.09,
+   "hba1c": 7.3,
+   "eag": 162.5
+  },
+  {
+   "id": "P0167",
+   "archetype": "SIDD",
+   "med_class": "sulfonylurea",
+   "tir": 75.1,
+   "cv": 26.3,
+   "mean": 155.6,
+   "tbr70": 0.35,
+   "hba1c": 7.6,
+   "eag": 172.4
+  },
+  {
+   "id": "P0168",
+   "archetype": "SIRD",
+   "med_class": "neither",
+   "tir": 70.4,
+   "cv": 27.2,
+   "mean": 164.9,
+   "tbr70": 0.04,
+   "hba1c": 7.7,
+   "eag": 175.3
+  },
+  {
+   "id": "P0169",
+   "archetype": "MARD",
+   "med_class": "neither",
+   "tir": 70.5,
+   "cv": 25.5,
+   "mean": 165.1,
+   "tbr70": 0.13,
+   "hba1c": 6.8,
+   "eag": 147.6
+  },
+  {
+   "id": "P0170",
+   "archetype": "SIDD",
+   "med_class": "sulfonylurea",
+   "tir": 62.6,
+   "cv": 40.4,
+   "mean": 161.4,
+   "tbr70": 5.59,
+   "hba1c": 7.9,
+   "eag": 179.9
+  },
+  {
+   "id": "P0171",
+   "archetype": "SIDD",
+   "med_class": "neither",
+   "tir": 29.1,
+   "cv": 22.0,
+   "mean": 209.5,
+   "tbr70": 0.0,
+   "hba1c": 9.0,
+   "eag": 212.5
+  },
+  {
+   "id": "P0172",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 62.1,
+   "cv": 26.1,
+   "mean": 181.2,
+   "tbr70": 0.0,
+   "hba1c": 8.3,
+   "eag": 191.8
+  },
+  {
+   "id": "P0173",
+   "archetype": "SIRD",
+   "med_class": "sulfonylurea",
+   "tir": 77.3,
+   "cv": 27.8,
+   "mean": 154.6,
+   "tbr70": 0.17,
+   "hba1c": 6.8,
+   "eag": 148.4
+  },
+  {
+   "id": "P0174",
+   "archetype": "SIRD",
+   "med_class": "sulfonylurea",
+   "tir": 75.1,
+   "cv": 32.1,
+   "mean": 155.0,
+   "tbr70": 0.64,
+   "hba1c": 7.8,
+   "eag": 176.0
+  },
+  {
+   "id": "P0175",
+   "archetype": "MARD",
+   "med_class": "neither",
+   "tir": 53.7,
+   "cv": 33.9,
+   "mean": 191.1,
+   "tbr70": 0.03,
+   "hba1c": 8.6,
+   "eag": 198.8
+  },
+  {
+   "id": "P0176",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 7.3,
+   "cv": 19.6,
+   "mean": 229.4,
+   "tbr70": 0.0,
+   "hba1c": 9.6,
+   "eag": 227.9
+  },
+  {
+   "id": "P0177",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 80.8,
+   "cv": 34.9,
+   "mean": 135.4,
+   "tbr70": 1.89,
+   "hba1c": 6.3,
+   "eag": 132.7
+  },
+  {
+   "id": "P0178",
+   "archetype": "SIDD",
+   "med_class": "insulin",
+   "tir": 53.8,
+   "cv": 27.5,
+   "mean": 184.1,
+   "tbr70": 0.0,
+   "hba1c": 8.1,
+   "eag": 186.8
+  },
+  {
+   "id": "P0179",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 76.7,
+   "cv": 37.1,
+   "mean": 146.1,
+   "tbr70": 0.29,
+   "hba1c": 6.9,
+   "eag": 152.2
+  },
+  {
+   "id": "P0180",
+   "archetype": "SIDD",
+   "med_class": "sulfonylurea",
+   "tir": 63.7,
+   "cv": 34.3,
+   "mean": 167.6,
+   "tbr70": 0.18,
+   "hba1c": 7.9,
+   "eag": 180.0
+  },
+  {
+   "id": "P0181",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 65.6,
+   "cv": 23.7,
+   "mean": 171.0,
+   "tbr70": 0.0,
+   "hba1c": 7.6,
+   "eag": 172.7
+  },
+  {
+   "id": "P0182",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 72.1,
+   "cv": 16.9,
+   "mean": 167.1,
+   "tbr70": 0.0,
+   "hba1c": 7.3,
+   "eag": 162.5
+  },
+  {
+   "id": "P0183",
+   "archetype": "SIRD",
+   "med_class": "neither",
+   "tir": 50.6,
+   "cv": 23.0,
+   "mean": 187.9,
+   "tbr70": 0.0,
+   "hba1c": 8.6,
+   "eag": 200.2
+  },
+  {
+   "id": "P0184",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 62.4,
+   "cv": 25.8,
+   "mean": 173.5,
+   "tbr70": 0.0,
+   "hba1c": 8.1,
+   "eag": 185.5
+  },
+  {
+   "id": "P0185",
+   "archetype": "SIDD",
+   "med_class": "sulfonylurea",
+   "tir": 87.7,
+   "cv": 29.7,
+   "mean": 122.1,
+   "tbr70": 4.25,
+   "hba1c": 5.8,
+   "eag": 119.1
+  },
+  {
+   "id": "P0186",
+   "archetype": "MARD",
+   "med_class": "neither",
+   "tir": 68.8,
+   "cv": 38.8,
+   "mean": 171.5,
+   "tbr70": 0.12,
+   "hba1c": 7.2,
+   "eag": 160.2
+  },
+  {
+   "id": "P0187",
+   "archetype": "SIRD",
+   "med_class": "neither",
+   "tir": 53.8,
+   "cv": 16.4,
+   "mean": 184.1,
+   "tbr70": 0.0,
+   "hba1c": 8.4,
+   "eag": 195.5
+  },
+  {
+   "id": "P0188",
+   "archetype": "SIDD",
+   "med_class": "sulfonylurea",
+   "tir": 53.4,
+   "cv": 40.1,
+   "mean": 189.5,
+   "tbr70": 0.25,
+   "hba1c": 8.2,
+   "eag": 189.2
+  },
+  {
+   "id": "P0189",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 90.4,
+   "cv": 26.5,
+   "mean": 102.1,
+   "tbr70": 8.39,
+   "hba1c": 5.9,
+   "eag": 121.3
+  },
+  {
+   "id": "P0190",
+   "archetype": "SIRD",
+   "med_class": "sulfonylurea",
+   "tir": 82.3,
+   "cv": 31.9,
+   "mean": 140.1,
+   "tbr70": 0.45,
+   "hba1c": 7.1,
+   "eag": 157.0
+  },
+  {
+   "id": "P0191",
+   "archetype": "SIRD",
+   "med_class": "neither",
+   "tir": 34.6,
+   "cv": 24.0,
+   "mean": 207.5,
+   "tbr70": 0.0,
+   "hba1c": 8.6,
+   "eag": 199.2
+  },
+  {
+   "id": "P0192",
+   "archetype": "MARD",
+   "med_class": "sulfonylurea",
+   "tir": 82.5,
+   "cv": 38.4,
+   "mean": 126.6,
+   "tbr70": 6.38,
+   "hba1c": 5.9,
+   "eag": 121.5
+  },
+  {
+   "id": "P0193",
+   "archetype": "SIDD",
+   "med_class": "insulin",
+   "tir": 52.0,
+   "cv": 26.5,
+   "mean": 185.0,
+   "tbr70": 0.0,
+   "hba1c": 8.2,
+   "eag": 187.6
+  },
+  {
+   "id": "P0194",
+   "archetype": "SIDD",
+   "med_class": "sulfonylurea",
+   "tir": 63.6,
+   "cv": 43.2,
+   "mean": 155.8,
+   "tbr70": 5.52,
+   "hba1c": 6.1,
+   "eag": 128.9
+  },
+  {
+   "id": "P0195",
+   "archetype": "MARD",
+   "med_class": "neither",
+   "tir": 87.7,
+   "cv": 30.7,
+   "mean": 131.3,
+   "tbr70": 0.0,
+   "hba1c": 6.6,
+   "eag": 143.7
+  },
+  {
+   "id": "P0196",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 80.6,
+   "cv": 33.9,
+   "mean": 134.9,
+   "tbr70": 2.83,
+   "hba1c": 6.3,
+   "eag": 133.9
+  },
+  {
+   "id": "P0197",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 72.3,
+   "cv": 30.2,
+   "mean": 160.9,
+   "tbr70": 0.0,
+   "hba1c": 7.6,
+   "eag": 170.4
+  },
+  {
+   "id": "P0198",
+   "archetype": "IROD",
+   "med_class": "insulin",
+   "tir": 40.2,
+   "cv": 23.9,
+   "mean": 201.2,
+   "tbr70": 0.04,
+   "hba1c": 9.7,
+   "eag": 230.3
+  },
+  {
+   "id": "P0199",
+   "archetype": "MARD",
+   "med_class": "sulfonylurea",
+   "tir": 83.7,
+   "cv": 34.8,
+   "mean": 121.9,
+   "tbr70": 6.8,
+   "hba1c": 6.3,
+   "eag": 134.0
+  },
+  {
+   "id": "P0200",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 86.1,
+   "cv": 32.7,
+   "mean": 129.9,
+   "tbr70": 1.58,
+   "hba1c": 6.5,
+   "eag": 138.7
+  },
+  {
+   "id": "P0201",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 77.5,
+   "cv": 40.5,
+   "mean": 126.9,
+   "tbr70": 7.73,
+   "hba1c": 5.6,
+   "eag": 115.3
+  },
+  {
+   "id": "P0202",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 64.4,
+   "cv": 21.8,
+   "mean": 172.5,
+   "tbr70": 0.0,
+   "hba1c": 7.6,
+   "eag": 172.6
+  },
+  {
+   "id": "P0203",
+   "archetype": "MARD",
+   "med_class": "insulin",
+   "tir": 70.0,
+   "cv": 39.5,
+   "mean": 151.6,
+   "tbr70": 4.23,
+   "hba1c": 6.9,
+   "eag": 152.2
+  },
+  {
+   "id": "P0204",
+   "archetype": "SIDD",
+   "med_class": "insulin",
+   "tir": 23.1,
+   "cv": 29.1,
+   "mean": 238.5,
+   "tbr70": 0.0,
+   "hba1c": 9.8,
+   "eag": 233.6
+  },
+  {
+   "id": "P0205",
+   "archetype": "MARD",
+   "med_class": "neither",
+   "tir": 72.3,
+   "cv": 29.3,
+   "mean": 163.7,
+   "tbr70": 0.0,
+   "hba1c": 7.9,
+   "eag": 179.1
+  },
+  {
+   "id": "P0206",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 81.5,
+   "cv": 38.0,
+   "mean": 120.5,
+   "tbr70": 6.99,
+   "hba1c": 6.2,
+   "eag": 130.5
+  },
+  {
+   "id": "P0207",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 82.5,
+   "cv": 29.0,
+   "mean": 143.2,
+   "tbr70": 0.26,
+   "hba1c": 6.5,
+   "eag": 139.3
+  },
+  {
+   "id": "P0208",
+   "archetype": "MARD",
+   "med_class": "neither",
+   "tir": 80.0,
+   "cv": 30.0,
+   "mean": 146.7,
+   "tbr70": 0.07,
+   "hba1c": 7.0,
+   "eag": 154.6
+  },
+  {
+   "id": "P0209",
+   "archetype": "MARD",
+   "med_class": "neither",
+   "tir": 65.1,
+   "cv": 23.1,
+   "mean": 177.3,
+   "tbr70": 0.0,
+   "hba1c": 7.7,
+   "eag": 173.8
+  },
+  {
+   "id": "P0210",
+   "archetype": "SIDD",
+   "med_class": "insulin",
+   "tir": 61.8,
+   "cv": 37.7,
+   "mean": 165.1,
+   "tbr70": 1.69,
+   "hba1c": 7.8,
+   "eag": 175.9
+  },
+  {
+   "id": "P0211",
+   "archetype": "SIRD",
+   "med_class": "neither",
+   "tir": 30.6,
+   "cv": 16.7,
+   "mean": 199.3,
+   "tbr70": 0.0,
+   "hba1c": 9.0,
+   "eag": 211.9
+  },
+  {
+   "id": "P0212",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 45.4,
+   "cv": 28.5,
+   "mean": 198.1,
+   "tbr70": 0.0,
+   "hba1c": 8.5,
+   "eag": 197.4
+  },
+  {
+   "id": "P0213",
+   "archetype": "SIDD",
+   "med_class": "insulin",
+   "tir": 76.7,
+   "cv": 27.9,
+   "mean": 152.3,
+   "tbr70": 0.05,
+   "hba1c": 7.0,
+   "eag": 155.0
+  },
+  {
+   "id": "P0214",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 74.9,
+   "cv": 28.6,
+   "mean": 153.2,
+   "tbr70": 1.93,
+   "hba1c": 6.1,
+   "eag": 129.8
+  },
+  {
+   "id": "P0215",
+   "archetype": "SIDD",
+   "med_class": "insulin",
+   "tir": 41.0,
+   "cv": 30.9,
+   "mean": 206.3,
+   "tbr70": 0.0,
+   "hba1c": 8.8,
+   "eag": 205.7
+  },
+  {
+   "id": "P0216",
+   "archetype": "MARD",
+   "med_class": "neither",
+   "tir": 88.0,
+   "cv": 31.6,
+   "mean": 125.1,
+   "tbr70": 2.88,
+   "hba1c": 6.1,
+   "eag": 129.2
+  },
+  {
+   "id": "P0217",
+   "archetype": "MARD",
+   "med_class": "neither",
+   "tir": 87.6,
+   "cv": 30.1,
+   "mean": 133.3,
+   "tbr70": 0.16,
+   "hba1c": 5.7,
+   "eag": 117.0
+  },
+  {
+   "id": "P0218",
+   "archetype": "SIDD",
+   "med_class": "neither",
+   "tir": 14.0,
+   "cv": 18.6,
+   "mean": 220.2,
+   "tbr70": 0.0,
+   "hba1c": 9.4,
+   "eag": 224.5
+  },
+  {
+   "id": "P0219",
+   "archetype": "IROD",
+   "med_class": "insulin",
+   "tir": 73.7,
+   "cv": 17.0,
+   "mean": 165.2,
+   "tbr70": 0.09,
+   "hba1c": 7.0,
+   "eag": 153.8
+  },
+  {
+   "id": "P0220",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 79.4,
+   "cv": 21.4,
+   "mean": 153.5,
+   "tbr70": 0.0,
+   "hba1c": 6.6,
+   "eag": 143.5
+  },
+  {
+   "id": "P0221",
+   "archetype": "SIRD",
+   "med_class": "neither",
+   "tir": 14.9,
+   "cv": 18.9,
+   "mean": 217.9,
+   "tbr70": 0.0,
+   "hba1c": 8.6,
+   "eag": 199.9
+  },
+  {
+   "id": "P0222",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 85.2,
+   "cv": 29.9,
+   "mean": 120.4,
+   "tbr70": 10.44,
+   "hba1c": 5.8,
+   "eag": 119.9
+  },
+  {
+   "id": "P0223",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 72.4,
+   "cv": 30.2,
+   "mean": 162.7,
+   "tbr70": 0.01,
+   "hba1c": 7.3,
+   "eag": 163.8
+  },
+  {
+   "id": "P0224",
+   "archetype": "SIRD",
+   "med_class": "neither",
+   "tir": 65.2,
+   "cv": 32.7,
+   "mean": 163.8,
+   "tbr70": 0.05,
+   "hba1c": 7.1,
+   "eag": 156.3
+  },
+  {
+   "id": "P0225",
+   "archetype": "SIDD",
+   "med_class": "neither",
+   "tir": 17.4,
+   "cv": 23.8,
+   "mean": 230.2,
+   "tbr70": 0.0,
+   "hba1c": 10.2,
+   "eag": 246.6
+  },
+  {
+   "id": "P0226",
+   "archetype": "SIDD",
+   "med_class": "sulfonylurea",
+   "tir": 46.5,
+   "cv": 29.2,
+   "mean": 191.1,
+   "tbr70": 0.0,
+   "hba1c": 7.7,
+   "eag": 174.7
+  },
+  {
+   "id": "P0227",
+   "archetype": "IROD",
+   "med_class": "insulin",
+   "tir": 69.2,
+   "cv": 28.1,
+   "mean": 163.4,
+   "tbr70": 0.14,
+   "hba1c": 7.3,
+   "eag": 161.4
+  },
+  {
+   "id": "P0228",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 42.0,
+   "cv": 22.8,
+   "mean": 197.3,
+   "tbr70": 0.0,
+   "hba1c": 8.5,
+   "eag": 197.9
+  },
+  {
+   "id": "P0229",
+   "archetype": "MARD",
+   "med_class": "neither",
+   "tir": 86.3,
+   "cv": 33.5,
+   "mean": 130.3,
+   "tbr70": 0.69,
+   "hba1c": 5.6,
+   "eag": 114.0
+  },
+  {
+   "id": "P0230",
+   "archetype": "SIRD",
+   "med_class": "sulfonylurea",
+   "tir": 85.3,
+   "cv": 25.8,
+   "mean": 141.0,
+   "tbr70": 0.09,
+   "hba1c": 7.0,
+   "eag": 155.3
+  },
+  {
+   "id": "P0231",
+   "archetype": "MARD",
+   "med_class": "sulfonylurea",
+   "tir": 91.1,
+   "cv": 26.6,
+   "mean": 128.1,
+   "tbr70": 1.45,
+   "hba1c": 6.7,
+   "eag": 145.1
+  },
+  {
+   "id": "P0232",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 66.2,
+   "cv": 33.2,
+   "mean": 172.6,
+   "tbr70": 0.14,
+   "hba1c": 8.1,
+   "eag": 186.6
+  },
+  {
+   "id": "P0233",
+   "archetype": "IROD",
+   "med_class": "sulfonylurea",
+   "tir": 84.6,
+   "cv": 33.6,
+   "mean": 115.9,
+   "tbr70": 8.6,
+   "hba1c": 6.2,
+   "eag": 131.5
+  },
+  {
+   "id": "P0234",
+   "archetype": "SIDD",
+   "med_class": "neither",
+   "tir": 82.5,
+   "cv": 28.6,
+   "mean": 151.4,
+   "tbr70": 0.09,
+   "hba1c": 7.2,
+   "eag": 161.2
+  },
+  {
+   "id": "P0235",
+   "archetype": "MARD",
+   "med_class": "neither",
+   "tir": 82.6,
+   "cv": 31.8,
+   "mean": 143.4,
+   "tbr70": 0.0,
+   "hba1c": 7.0,
+   "eag": 154.6
+  },
+  {
+   "id": "P0236",
+   "archetype": "IROD",
+   "med_class": "neither",
+   "tir": 34.0,
+   "cv": 22.5,
+   "mean": 206.3,
+   "tbr70": 0.0,
+   "hba1c": 9.1,
+   "eag": 215.0
+  },
+  {
+   "id": "P0237",
+   "archetype": "IROD",
+   "med_class": "insulin",
+   "tir": 66.7,
+   "cv": 35.8,
+   "mean": 155.5,
+   "tbr70": 2.26,
+   "hba1c": 6.9,
+   "eag": 152.4
+  },
+  {
+   "id": "P0238",
+   "archetype": "SIRD",
+   "med_class": "insulin",
+   "tir": 42.1,
+   "cv": 29.8,
+   "mean": 203.4,
+   "tbr70": 0.0,
+   "hba1c": 8.6,
+   "eag": 200.1
+  },
+  {
+   "id": "P0239",
+   "archetype": "MARD",
+   "med_class": "sulfonylurea",
+   "tir": 54.2,
+   "cv": 27.3,
+   "mean": 185.9,
+   "tbr70": 0.03,
+   "hba1c": 6.8,
+   "eag": 147.5
+  },
+  {
+   "id": "P0240",
+   "archetype": "IROD",
+   "med_class": "insulin",
+   "tir": 60.7,
+   "cv": 31.9,
+   "mean": 177.9,
+   "tbr70": 0.03,
+   "hba1c": 7.7,
+   "eag": 175.2
+  }
+ ]
+}

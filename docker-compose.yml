@@ -1,0 +1,29 @@
+# docker compose up --build
+#   api: http://localhost:8000/api  (FastAPI engine, small synthetic profile built into the image)
+#   web: http://localhost:3000      (Next.js console; needs web/Dockerfile from the web workstream)
+services:
+  api:
+    build:
+      context: .
+      dockerfile: engine/Dockerfile
+      args:
+        PROFILE: small
+    image: pratibimb-api:latest
+    ports:
+      - "8000:8000"
+    environment:
+      PORT: "8000"
+      PRATIBIMB_CORS_ORIGINS: "http://localhost:3000,http://web:3000"
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ./web
+    image: pratibimb-web:latest
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_BASE: "http://localhost:8000"
+    depends_on:
+      - api
+    restart: unless-stopped
