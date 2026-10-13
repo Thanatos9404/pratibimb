@@ -33,3 +33,6 @@ video/node_modules/
 video/.cache/
 video/out/
 video/_tts_test/
+
+# QA screenshots (reference shots are third-party; never publish)
+web/screenshots/

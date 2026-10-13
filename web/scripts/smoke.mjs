@@ -1,0 +1,41 @@
+// Functional smoke test: live replay, What-If preset, EHR/FHIR sheet, command palette.
+import { chromium } from "@playwright/test";
+const base = process.argv[2] ?? "http://localhost:3000";
+const b = await chromium.launch();
+const p = await b.newPage({ viewport: { width: 1440, height: 900 } });
+const errs = [];
+p.on("pageerror", (e) => errs.push(e.message));
+p.on("console", (m) => m.type() === "error" && !m.text().includes("GL Driver") && errs.push(m.text()));
+await p.goto(base + "/console/patient/P0029", { waitUntil: "networkidle" });
+await p.waitForTimeout(1200);
+const clock0 = await p.locator("header .num").first().textContent();
+await p.getByRole("button", { name: /Go live/ }).click();
+await p.waitForTimeout(6000);
+const clock1 = await p.locator("header .num").first().textContent();
+console.log("replay clock", clock0, "->", clock1);
+await p.getByRole("button", { name: /Pause/ }).first().click();
+await p.getByRole("button", { name: /What-If Lab/ }).click();
+await p.waitForTimeout(800);
+const presets = await p.locator("[role=dialog] button").allTextContents();
+const first = presets.find((t) => /Swap|walk|sleep|Skip/i.test(t));
+console.log("presets:", presets.filter((t) => /Swap|walk|sleep|Skip/i.test(t)).length);
+if (first) {
+  await p.getByRole("button", { name: first }).click();
+  await p.waitForTimeout(1500);
+  console.log("whatif result rows:", await p.locator("[role=dialog] table tbody tr").count());
+  await p.screenshot({ path: "screenshots/whatif-sheet-1440.png" });
+  await p.getByRole("button", { name: /Save as advice/ }).click();
+}
+await p.keyboard.press("Escape");
+await p.waitForTimeout(500);
+console.log("care plan notes:", await p.locator("#careplan li").count());
+await p.getByRole("button", { name: /EHR/ }).click();
+await p.getByRole("tab", { name: /FHIR/ }).click();
+await p.waitForTimeout(800);
+console.log("fhir lines:", await p.locator("[role=dialog] pre > div").count());
+await p.keyboard.press("Escape");
+await p.keyboard.press("Control+k");
+await p.waitForTimeout(400);
+console.log("palette items:", await p.locator("[cmdk-item]").count());
+console.log("errors:", errs.length, errs.slice(0, 3).join(" | "));
+await b.close();
