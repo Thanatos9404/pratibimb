@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1280">
+<title>Pratibimb Presentation</title>
+<!--
+  Pratibimb submission deck: 19 slides, 1280x720 (16:9), OBLIQ design language (SPEC section 6.1).
+  Every number comes from reports/metrics.json, reports/cohort_validation.json, the engine's demo export
+  or the cited literature. Render with:  node docs/deck/render.mjs   (see that file).
+  Links marked data-link are filled from docs/deck/links.json at render time.
+-->
+<style>
+@font-face{font-family:'Open Runde';font-weight:400;src:url(../../web/public/fonts/open-runde-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Open Runde';font-weight:500;src:url(../../web/public/fonts/open-runde-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Open Runde';font-weight:600;src:url(../../web/public/fonts/open-runde-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Open Runde';font-weight:700;src:url(../../web/public/fonts/open-runde-latin-700-normal.woff2) format('woff2')}
+:root{
+  --ink:#1A1615;--body:#453F3D;--muted:#757170;--soft:#A39D9A;--brown:#614A44;
+  --beige:#F0EAE5;--warm:#F4F1EE;--off:#F9F8F8;--line:#E8E1DC;
+  --sky:#9CC1E7;--sand:#EDDFD0;--green:#00A82D;
+  --vlow:#8E1B2C;--low:#C8324A;--inr:#2F7D5B;--high:#D99A1E;--vhigh:#C2561A;--twin:#3E6FD8;
+  --shadow:0 4px 50px rgba(97,74,68,.08),0 1px 3px rgba(97,74,68,.07);
+}
+@page{size:1280px 720px;margin:0}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:#d8d2cd;font-family:'Open Runde',Inter,'Segoe UI',system-ui,sans-serif;color:var(--body);
+  -webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.deva{font-family:'Noto Sans Devanagari','Nirmala UI','Mangal',sans-serif}
+.slide{width:1280px;height:720px;position:relative;overflow:hidden;background:#fff;padding:50px 64px 0;break-after:page;page-break-after:always}
+@media screen{.slide{margin:28px auto;box-shadow:0 14px 50px rgba(0,0,0,.18)}}
+@media print{body{background:none}}
+.eyebrow{font-size:12.5px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.eyebrow b{color:var(--brown);font-weight:700;margin-right:6px}
+h1,h2,h3{color:var(--ink);margin:0;letter-spacing:-.035em}
+h2{font-size:41px;line-height:1.07;font-weight:700;margin-top:12px}
+h2 span{display:block;color:var(--soft);font-weight:600}
+h3{font-size:19px;line-height:1.2;font-weight:700;letter-spacing:-.02em}
+p{margin:0}
+.lead{font-size:16.5px;line-height:1.5}
+.small{font-size:13px;line-height:1.45}
+.tiny{font-size:11.5px;line-height:1.4;color:var(--muted)}
+.muted{color:var(--muted)}
+.foot{position:absolute;left:64px;right:64px;bottom:20px;display:flex;justify-content:space-between;font-size:11px;color:var(--soft)}
+.card{background:#fff;border-radius:24px;box-shadow:var(--shadow);padding:22px 24px}
+.panel{background:var(--beige);border-radius:28px;padding:22px 24px}
+.dark{background:var(--ink);color:#D9D2CD}
+.dark h3,.dark b{color:#fff}
+.chip{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 12px;border-radius:100px;background:var(--warm);color:var(--brown);font-size:12.5px;font-weight:600;white-space:nowrap}
+.chip.ink{background:var(--ink);color:#fff}
+.chip.white{background:#fff}
+.chip.frost{background:rgba(255,255,255,.72);backdrop-filter:blur(10px);color:var(--ink)}
+.grid{display:grid;gap:18px}
+.row{display:flex;gap:18px}
+.shot{background:#fff;border-radius:18px;padding:6px;box-shadow:0 40px 80px -34px rgba(26,22,21,.38),0 12px 40px rgba(97,74,68,.12)}
+.shot img{display:block;width:100%;border-radius:13px}
+.crop{border-radius:13px;background-repeat:no-repeat;background-color:#fff}
+.fig{background:#fff;border-radius:22px;box-shadow:var(--shadow);padding:14px 16px}
+.fig img{display:block;width:100%}
+.fig .cap{font-size:12px;color:var(--muted);margin:2px 4px 6px}
+ul.clean{list-style:none;margin:0;padding:0}
+ul.clean li{position:relative;padding-left:18px;margin:0 0 8px;font-size:14.5px;line-height:1.45}
+ul.clean li::before{content:"";position:absolute;left:2px;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--brown)}
+.dark ul.clean li::before{background:var(--sky)}
+.num-big{font-size:48px;line-height:1;font-weight:700;letter-spacing:-.045em;color:var(--ink)}
+.k{font-weight:700;color:var(--ink)}
+.tbl{width:100%;border-collapse:separate;border-spacing:0;font-size:14.5px}
+.tbl th{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:right;padding:0 12px 10px;white-space:nowrap}
+.tbl th:first-child,.tbl td:first-child{text-align:left}
+.tbl td{padding:12px;text-align:right;border-top:1px solid var(--line);white-space:nowrap}
+.tbl td .ci{display:block;font-size:11.5px;color:var(--muted);margin-top:2px}
+.tbl tr.hl td{background:#F3F7FC}
+.tbl tr.hl td:first-child{border-radius:12px 0 0 12px}.tbl tr.hl td:last-child{border-radius:0 12px 12px 0}
+.mono{font-family:'JetBrains Mono','Cascadia Mono',Consolas,monospace}
+.step{display:flex;gap:16px;align-items:flex-start}
+.step .n{flex:none;width:34px;height:34px;border-radius:100px;background:var(--ink);color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center}
+.sky{background:linear-gradient(180deg,#9CC1E7 0%,#BCD3E8 38%,#E3E0DC 72%,#EDDFD0 100%)}
+/* photographed clouds, composited like the landing hero: grey + crushed so blue sky goes black, then screen-blended */
+.clouds{position:absolute;inset:0;overflow:hidden}
+.clouds i{position:absolute;display:block;mix-blend-mode:screen;filter:grayscale(1) brightness(.8) contrast(4);background-size:cover;background-repeat:no-repeat;
+  -webkit-mask-image:radial-gradient(closest-side,#000 52%,rgba(0,0,0,.6) 70%,transparent 100%);mask-image:radial-gradient(closest-side,#000 52%,rgba(0,0,0,.6) 70%,transparent 100%)}
+.clouds .c1{left:-166px;top:96px;width:512px;height:341px;background-image:url(../../web/public/photos/sky-cumulus-ishan-sharma.webp);background-position:center;opacity:.9}
+.clouds .c2{left:-179px;top:300px;width:384px;height:240px;background-image:url(../../web/public/photos/sky-clouds-bulat-akhtiamov.webp);background-position:20% 30%}
+.clouds .c3{right:-179px;top:40px;width:512px;height:341px;background-image:url(../../web/public/photos/sky-clouds-bulat-akhtiamov.webp);background-position:80% 25%;transform:scaleX(-1);opacity:.9}
+.clouds .c4{right:-166px;top:290px;width:358px;height:239px;background-image:url(../../web/public/photos/sky-cumulus-ishan-sharma.webp);background-position:70% 60%}
+.logo{width:34px;height:34px}
+.brand{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:700;letter-spacing:-.03em;color:var(--ink)}
+.tag{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brown)}
+.kpi{background:var(--off);border-radius:18px;padding:14px 16px}
+.kpi .v{font-size:28px;font-weight:700;letter-spacing:-.035em;color:var(--ink);line-height:1.05}
+.kpi .l{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.35}
+.delta-up{color:var(--low);font-weight:700}.delta-down{color:var(--inr);font-weight:700}
+.src{font-size:11.5px;color:var(--muted)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="logo" viewBox="0 0 48 48">
+    <circle cx="24" cy="24" r="19.5" fill="none" stroke="#1A1615" stroke-width="2.6"/>
+    <path d="M8.5 24H39.5" stroke="#1A1615" stroke-opacity=".28" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="M10 23.2C12.2 23.2 13.3 22.7 14.8 20.9C16.8 18.4 18 12.8 20.7 12.8C23.3 12.8 23.8 19.9 26.4 20.5C28.5 21 29.5 17.2 31.7 17.2C33.9 17.2 35.1 21.4 37.8 22.4" fill="none" stroke="#1A1615" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M10 24.8C12.2 24.8 13.3 25.3 14.8 27.1C16.8 29.6 18 35.2 20.7 35.2C23.3 35.2 23.8 28.1 26.4 27.5C28.5 27 29.5 30.8 31.7 30.8C33.9 30.8 35.1 26.6 37.8 25.6" fill="none" stroke="#5B95DE" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+</svg>
+
+<!-- 1 · Title -->
+<section class="slide sky" style="padding:0">
+  <div class="clouds"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div>
+  <div style="position:absolute;left:56px;right:56px;top:34px;display:flex;justify-content:space-between;align-items:center">
+    <div class="brand" style="background:rgba(255,255,255,.72);padding:8px 18px 8px 10px;border-radius:100px"><svg class="logo"><use href="#logo"/></svg>Pratibimb</div>
+    <div class="chip frost" style="height:40px;padding:0 18px;font-size:13.5px">Happiest Health · Digital Twin Challenge 2026</div>
+  </div>
+  <div style="position:absolute;left:0;right:0;top:112px;text-align:center">
+    <div class="chip frost" style="height:30px;font-size:13px"><span class="deva" style="font-weight:600">प्रतिबिम्ब</span>&nbsp;means “reflection” · a digital twin for Type 2 Diabetes</div>
+    <h1 style="font-size:66px;line-height:1.02;font-weight:700;letter-spacing:-.045em;margin-top:22px">A living reflection<br>of a person with diabetes.</h1>
+    <p style="font-size:18px;line-height:1.5;color:#3d3735;max-width:760px;margin:20px auto 0">A hybrid physiology + machine-learning twin, personalised from the health record, kept in sync with every CGM reading, and able to answer “what if?” before the patient tries it.</p>
+    <div style="margin-top:22px;display:inline-flex;gap:10px;align-items:center;background:var(--ink);color:#fff;border-radius:100px;padding:10px 22px;font-size:14.5px;font-weight:600">Team Stack Underflow <span style="opacity:.55">·</span> Yashvardhan Thanvi (lead) <span style="opacity:.55">·</span> Devesh Jain <span style="opacity:.55">·</span> BIT Mesra, Off Campus Jaipur</div>
+  </div>
+  <div style="position:absolute;left:170px;width:940px;top:490px;transform:perspective(1800px) rotateX(16deg);transform-origin:50% 0">
+    <div class="shot"><img src="../screenshots/02-cohort-triage.jpg" alt=""></div>
+  </div>
+</section>
+
+<!-- 2 · Team -->
+<section class="slide">
+  <div class="eyebrow"><b>01</b>Team</div>
+  <h2>Stack Underflow<span>Two final-year BCA students, one digital twin.</span></h2>
+  <div class="grid" style="grid-template-columns:1fr 1fr 1.15fr;margin-top:44px">
+    <div class="card" style="padding:30px 28px;min-height:262px">
+      <div style="width:64px;height:64px;border-radius:100px;background:var(--beige);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:22px;color:var(--brown)">YT</div>
+      <h3 style="font-size:25px;margin-top:20px">Yashvardhan Thanvi</h3>
+      <div style="margin-top:10px"><span class="chip ink">Team leader</span></div>
+      <p class="small" style="margin-top:16px">Final-year BCA<br>Birla Institute of Technology (BIT Mesra), Off Campus Jaipur</p>
+    </div>
+    <div class="card" style="padding:30px 28px;min-height:262px">
+      <div style="width:64px;height:64px;border-radius:100px;background:#E3ECF6;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:22px;color:#2E4F7A">DJ</div>
+      <h3 style="font-size:25px;margin-top:20px">Devesh Jain</h3>
+      <div style="margin-top:10px"><span class="chip">Team member</span></div>
+      <p class="small" style="margin-top:16px">Final-year BCA<br>Birla Institute of Technology (BIT Mesra), Off Campus Jaipur</p>
+    </div>
+    <div class="panel" style="padding:30px 28px;min-height:262px">
+      <div class="tag">College</div>
+      <h3 style="font-size:23px;margin-top:10px">Birla Institute of Technology (BIT Mesra)</h3>
+      <p class="lead" style="margin-top:6px">Off Campus Jaipur, Rajasthan, India</p>
+      <p class="small" style="margin-top:14px">Programme: Bachelor of Computer Applications (BCA), final year</p>
+    </div>
+  </div>
+  <div class="card" style="margin-top:28px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;padding:24px 8px">
+    <div style="padding:0 20px;border-right:1px solid var(--line)"><div class="tag">Challenge</div><p class="small" style="margin-top:8px;color:var(--ink);font-weight:600">Happiest Health Digital Twin Challenge 2026 (Unstop)</p></div>
+    <div style="padding:0 20px;border-right:1px solid var(--line)"><div class="tag">Condition</div><p class="small" style="margin-top:8px;color:var(--ink);font-weight:600">Type 2 Diabetes, designed for India</p></div>
+    <div style="padding:0 20px;border-right:1px solid var(--line)"><div class="tag">What we built</div><p class="small" style="margin-top:8px;color:var(--ink);font-weight:600">Twin engine + risk models, FastAPI, clinician console, evaluation</p></div>
+    <div style="padding:0 20px"><div class="tag">Licence</div><p class="small" style="margin-top:8px;color:var(--ink);font-weight:600">Apache-2.0 · synthetic data only</p></div>
+  </div>
+  <div class="foot"><span>Pratibimb · Team Stack Underflow · BIT Mesra, Off Campus Jaipur</span><span>2 / 19</span></div>
+</section>
+
+<!-- 3 · Problem -->
+<section class="slide" style="background:var(--off)">
+  <div class="eyebrow"><b>02</b>The problem</div>
+  <h2>101 million Indians live with diabetes.<span>Between visits, no one sees the spike coming.</span></h2>
+  <div class="grid" style="grid-template-columns:repeat(4,1fr);margin-top:28px">
+    <div class="panel"><div class="num-big">11.4%</div><p class="small" style="margin-top:10px"><b class="k">~101 M</b> adults in India live with diabetes</p></div>
+    <div class="panel"><div class="num-big">15.3%</div><p class="small" style="margin-top:10px"><b class="k">~136 M</b> more have prediabetes</p></div>
+    <div class="panel"><div class="num-big">35.5%</div><p class="small" style="margin-top:10px">have hypertension</p></div>
+    <div class="panel"><div class="num-big">39.5%</div><p class="small" style="margin-top:10px">have abdominal obesity</p></div>
+  </div>
+  <p class="src" style="margin-top:10px">ICMR-INDIAB-17 national survey: Anjana RM et al., <i>Lancet Diabetes &amp; Endocrinology</i> 2023.</p>
+  <div class="grid" style="grid-template-columns:repeat(4,1fr);margin-top:22px">
+    <div class="card"><div class="tag">Sparse data</div><p class="small" style="margin-top:8px">Glucose moves every few minutes; clinic labs arrive every few months. Wearables and CGM fill the gap, but nobody can watch the stream.</p></div>
+    <div class="card"><div class="tag">Different phenotypes</div><p class="small" style="margin-top:8px">Asian Indian T2D splits into SIDD, SIRD, MARD and IROD subgroups, plus the “thin-fat” phenotype<sup>2</sup>. One model does not fit all.</p></div>
+    <div class="card"><div class="tag">Different plates</div><p class="small" style="margin-top:8px">Carbohydrate-heavy meals, evening chai and snacks, late dinners, festival sweets: the spikes follow the Indian day.</p></div>
+    <div class="card"><div class="tag">Different risks</div><p class="small" style="margin-top:8px">Sulfonylureas are widely prescribed. On a fasting day (Navratri, Ekadashi, Ramadan) a missed meal plus an SU dose is a classic hypoglycaemia trap.</p></div>
+  </div>
+  <p class="src" style="margin-top:12px"><sup>2</sup> INSPIRED cohort: Anjana RM et al., <i>BMJ Open Diabetes Research &amp; Care</i> 2020.</p>
+  <div class="foot"><span>Pratibimb · Team Stack Underflow · BIT Mesra, Off Campus Jaipur</span><span>3 / 19</span></div>
+</section>
+
+<!-- 4 · Use case -->
+<section class="slide">
+  <div class="eyebrow"><b>03</b>Healthcare use case</div>
+  <h2>A clinician following patients on CGM<span>needs to know who needs attention now, and why.</span></h2>
+  <div class="grid" style="grid-template-columns:repeat(3,1fr);margin-top:28px">
+    <div class="card" style="padding:12px 12px 20px">
+      <div class="crop" style="height:168px;background-image:url(../screenshots/02-cohort-triage.jpg);background-size:660px auto;background-position:-137px -229px;box-shadow:inset 0 0 0 1px var(--line)"></div>
+      <div style="padding:16px 10px 0"><div class="step"><div class="n">1</div><div><h3>Triage</h3><p class="small" style="margin-top:6px">The cohort view ranks every synced twin by calibrated risk: level-2 hyperglycaemia within 2 h, hypoglycaemia within 1 h, nocturnal hypo tonight.</p></div></div></div>
+    </div>
+    <div class="card" style="padding:12px 12px 20px">
+      <div class="crop" style="height:168px;background-image:url(../screenshots/04-hypo-risk-drivers.jpg);background-size:706px auto;background-position:-147px -196px;box-shadow:inset 0 0 0 1px var(--line)"></div>
+      <div style="padding:16px 10px 0"><div class="step"><div class="n">2</div><div><h3>Understand</h3><p class="small" style="margin-top:6px">Open the virtual patient: CGM against the twin, a 4-hour forecast cone, and the reasons behind each risk (“time since sulfonylurea dose”).</p></div></div></div>
+    </div>
+    <div class="card" style="padding:12px 12px 20px">
+      <div class="crop" style="height:168px;background-image:url(../screenshots/07-whatif-skip-sulfonylurea.jpg);background-size:879px auto;background-position:-516px -79px;box-shadow:inset 0 0 0 1px var(--line)"></div>
+      <div style="padding:16px 10px 0"><div class="step"><div class="n">3</div><div><h3>Counsel</h3><p class="small" style="margin-top:6px">Test advice on this patient’s twin first: millet roti instead of rice, a walk after dinner, a skipped or shifted glimepiride dose, a short night.</p></div></div></div>
+    </div>
+  </div>
+  <div class="panel" style="margin-top:20px;display:flex;gap:28px;align-items:center;padding:18px 26px">
+    <div class="tag" style="flex:none">The brief’s example</div>
+    <p class="small" style="color:var(--ink)">“Predict a sudden glucose spike 2 hours in advance” is our <b>hyper_2h</b> task. We add hypoglycaemia within 1 h and nocturnal hypoglycaemia tonight, because lows are what make sulfonylurea and insulin therapy dangerous.</p>
+  </div>
+  <div class="foot"><span>Pratibimb · Team Stack Underflow · BIT Mesra, Off Campus Jaipur</span><span>4 / 19</span></div>
+</section>
+
+<!-- 5 · Solution -->
+<section class="slide" style="background:var(--off)">
+  <div class="eyebrow"><b>04</b>Solution overview</div>
+  <h2>Record, sense, mirror, foresee.<span>One twin per patient, updated every five minutes.</span></h2>
+  <div style="display:grid;grid-template-columns:440px 1fr;gap:34px;margin-top:30px">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div class="step"><div class="n">1</div><div><h3>Record</h3><p class="small" style="margin-top:4px">The EHR (FHIR R4 with an ABHA-style ID) sets the twin’s priors: HbA1c and fasting glucose for baseline levels, the TyG index for insulin resistance, diabetes duration for β-cell reserve.</p></div></div>
+      <div class="step"><div class="n">2</div><div><h3>Sense</h3><p class="small" style="margin-top:4px">CGM every 5 minutes, heart rate, HRV, steps and sleep stages stream in with logged Indian meals and doses.</p></div></div>
+      <div class="step"><div class="n">3</div><div><h3>Mirror</h3><p class="small" style="margin-top:4px">A 64-member Ensemble Kalman Filter keeps a glucose–insulin model in sync, re-estimating insulin sensitivity, β-cell response and liver glucose output.</p></div></div>
+      <div class="step"><div class="n">4</div><div><h3>Foresee</h3><p class="small" style="margin-top:4px">The synced twin forecasts 4 hours ahead; a LightGBM layer turns it into calibrated, explained alerts and the What-If Lab tests advice.</p></div></div>
+    </div>
+    <div>
+      <div class="shot"><img src="../screenshots/03-virtual-patient.jpg" alt="Virtual patient view"></div>
+      <p class="tiny" style="margin-top:12px;text-align:center">The virtual patient in the clinician console: CGM dots, twin band (p10–p90), forecast cone to +4 h, calibrated risk with TreeSHAP reasons.</p>
+    </div>
+  </div>
+  <div class="foot"><span>Pratibimb · Team Stack Underflow · BIT Mesra, Off Campus Jaipur</span><span>5 / 19</span></div>
+</section>
+
+<!-- 6 · Real twin -->
+<section class="slide">
+  <div class="eyebrow"><b>05</b>What makes it a twin</div>
+  <h2>Not a classifier with a dashboard.<span>A model of this patient that stays in sync.</span></h2>
+  <div class="grid" style="grid-template-columns:repeat(3,1fr);margin-top:28px">
+    <div class="card">
+      <div class="tag">Mechanistic core</div>
+      <h3 style="margin-top:8px">Physiology, not just patterns</h3>
+      <p class="small" style="margin-top:8px">An extended Bergman minimal model with gut absorption, exercise, sleep, stress, dawn effect and five Indian-common drug classes, personalised from the EHR.</p>
+    </div>
+    <div class="card dark">
+      <div class="tag" style="color:var(--sky)">Continuous sync</div>
+      <h3 style="margin-top:8px">Re-estimated every 5 minutes</h3>
+      <p class="small" style="margin-top:8px">An Ensemble Kalman Filter updates hidden physiology from each CGM reading: insulin sensitivity, β-cell response, liver glucose output, meal absorption speed, dawn effect.</p>
+    </div>
+    <div class="card">
+      <div class="tag">Counterfactuals</div>
+      <h3 style="margin-top:8px">Answers “what if?”</h3>
+      <p class="small" style="margin-top:8px">The same synced ensemble simulates alternatives (meals, walks, doses, sleep) and returns baseline-vs-scenario bands, peaks, time above 180 / below 70 and hypo probability.</p>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:1.25fr 1fr;gap:18px;margin-top:18px">
+    <div class="card" style="padding:16px 22px">
+      <table class="tbl" style="font-size:13.5px">
+        <tr><th></th><th>Risk classifier</th><th>Pratibimb</th></tr>
+        <tr><td>Personalised physiology (S<sub>I</sub>, β, EGP)</td><td class="muted">no</td><td class="k">yes, with uncertainty</td></tr>
+        <tr><td>Forecast with a calibrated cone</td><td class="muted">no</td><td class="k">p05–p95 to +4 h</td></tr>
+        <tr><td>What-if on this patient</td><td class="muted">no</td><td class="k">meals · walk · dose · sleep</td></tr>
+        <tr><td>Reasons a clinician can read</td><td class="muted">sometimes</td><td class="k">TreeSHAP + twin state</td></tr>
+      </table>
+    </div>
+    <div class="panel" style="display:flex;flex-direction:column;justify-content:center">
+      <div class="tag">No “inverse crime”</div>
+      <p class="small" style="margin-top:8px;color:var(--ink)">Test patients come from a <b>richer truth simulator</b> than the twin: drifting insulin sensitivity, illness, stress, unlogged snacks, CGM lag, drift and dropouts. The twin never sees true glucose or the subtype label.</p>
+    </div>
+  </div>
+  <div class="foot"><span>Pratibimb · Team Stack Underflow · BIT Mesra, Off Campus Jaipur</span><span>6 / 19</span></div>
+</section>
+
+<!-- 7 · Architecture -->
+<section class="slide" style="padding:0;display:flex;align-items:center;justify-content:center">
+  <img src="../architecture.svg" alt="Pratibimb system architecture" style="width:1216px;height:684px;display:block;margin-top:-14px">
+  <div class="foot"><span></span><span>7 / 19</span></div>
+</section>
+
+<!-- 8 · Data & sandbox compliance -->
+<section class="slide" style="background:var(--off)">
+  <div class="eyebrow"><b>06</b>Data &amp; sandbox compliance</div>
+  <h2>Synthetic by design,<span>shaped like Indian EHR and wearable data.</span></h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr 320px;gap:18px;margin-top:26px">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="card" style="padding:18px 22px">
+        <div class="tag">Static · EHR</div>
+        <p class="small" style="margin-top:8px">Demographics, 2 years of labs (HbA1c, FPG, lipids, creatinine/eGFR, ALT, UACR, C-peptide for ~35 %), comorbidities, medications, synthetic genetic markers (TCF7L2 rs7903146, PRS percentile).</p>
+        <p class="small" style="margin-top:8px;color:var(--ink)"><b>FHIR R4 Bundle</b> per patient: Patient with ABHA-format ID (<span class="mono" style="font-size:12px">91-0000-…</span>, obviously synthetic), Condition (SNOMED CT), Observation (LOINC), MedicationStatement, Device.</p>
+      </div>
+      <div class="card" style="padding:18px 22px">
+        <div class="tag">Dynamic · wearables</div>
+        <p class="small" style="margin-top:8px">CGM every 5 min with lag, calibration drift, AR(2) noise, compression lows and dropouts; heart rate, HRV (RMSSD), steps, sleep stages; logged meals and doses with realistic logging errors.</p>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="grid" style="grid-template-columns:1fr 1fr;gap:12px">
+        <div class="kpi" style="background:#fff;box-shadow:var(--shadow)"><div class="v">240 × 28</div><div class="l">patients × days, 5-min resolution</div></div>
+        <div class="kpi" style="background:#fff;box-shadow:var(--shadow)"><div class="v">1,913,090</div><div class="l">CGM points</div></div>
+        <div class="kpi" style="background:#fff;box-shadow:var(--shadow)"><div class="v">168 / 36 / 36</div><div class="l">train / val / test patients</div></div>
+        <div class="kpi" style="background:#fff;box-shadow:var(--shadow)"><div class="v" style="font-size:20px;padding-top:6px">65 · 33 · 46 · 96</div><div class="l">SIDD · SIRD · MARD · IROD</div></div>
+      </div>
+      <div class="panel" style="padding:18px 22px">
+        <div class="tag">Realism checks (cohort_validation.json)</div>
+        <ul class="clean" style="margin-top:10px">
+          <li style="font-size:13.5px">Cohort-median TIR <b class="k">68.7 %</b> (target ~55–75 %)</li>
+          <li style="font-size:13.5px">Median CV <b class="k">29.0 %</b>; 78.3 % of patients within 20–36 %</li>
+          <li style="font-size:13.5px"><b class="k">97 %</b> of hypo episodes in sulfonylurea / insulin users</li>
+          <li style="font-size:13.5px;margin-bottom:0">Mean CGM vs ADAG eAG from HbA1c: r = <b class="k">0.914</b></li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="shot" style="padding:6px"><div class="crop" style="height:336px;background-image:url(../screenshots/09-ehr-fhir-sheet.jpg);background-size:693px auto;background-position:-385px 0"></div></div>
+      <p class="tiny" style="margin-top:10px;text-align:center">EHR · FHIR sheet in the console: summary, labs, medications, genetics and the raw FHIR R4 Bundle.</p>
+    </div>
+  </div>
+  <div class="row" style="margin-top:16px;gap:10px;flex-wrap:wrap">
+    <span class="chip ink">No real patient data</span><span class="chip white">DPDP Act 2023 / HIPAA-safe sandbox</span><span class="chip white">Synthetic Indian names and ABHA-format IDs</span><span class="chip white">Deterministic seed · rebuild with pratibimb build</span>
+  </div>
+  <div class="foot"><span>Pratibimb · Team Stack Underflow · BIT Mesra, Off Campus Jaipur</span><span>8 / 19</span></div>
+</section>
+
+<!-- 9 · Model -->
+<section class="slide">
+  <div class="eyebrow"><b>07</b>The model</div>
+  <h2>A compact physiological twin,<span>personalised from the health record.</span></h2>
+  <div style="display:grid;grid-template-columns:1.12fr 1fr;gap:20px;margin-top:28px">
+    <div class="card dark" style="padding:24px 28px">
+      <div class="tag" style="color:var(--sky)">Twin state-space model · 1-min step, 5-min observations</div>
+      <div class="mono" style="font-size:13px;line-height:2;color:#F3EFEC;margin-top:14px;white-space:nowrap">
+        dG/dt = −(S<sub>G</sub> + X)·G + EGP·f<sub>EGP</sub>(t) + Ra(t)/V<sub>G</sub> − k<sub>ex</sub>·e(t)·G − R(G)<br>
+        dX/dt = −p<sub>2</sub>·X + p<sub>2</sub>·S<sub>I</sub>·m<sub>sleep</sub>·m<sub>stress</sub>·m<sub>ex</sub>(t)·I<br>
+        dI/dt = −n·I + β·max(G − h, 0)·drug(t) + I<sub>exo</sub>(t)/V<sub>I</sub><br>
+        gut:&nbsp; D<sub>1</sub> → D<sub>2</sub> → Ra,&nbsp; τ from GI, fat, protein, fibre<br>
+        dG<sub>i</sub>/dt = (G − G<sub>i</sub>)/τ<sub>i</sub>&nbsp;&nbsp;(CGM sees G<sub>i</sub>, τ<sub>i</sub> ≈ 9 min)
+      </div>
+      <ul class="clean" style="margin-top:16px">
+        <li style="font-size:13.5px">Drugs: metformin lowers EGP · sulfonylurea adds insulin secretion, part of it glucose-independent · DPP-4 boosts post-meal secretion · SGLT2i lowers the renal threshold 180 → 105 mg/dL · glargine as a slow depot</li>
+        <li style="font-size:13.5px;margin-bottom:0">Wearables: a short night lowers S<sub>I</sub> by up to 20 % next day · stress (HR up, HRV down vs 7-day baseline) raises EGP · steps drive exercise uptake</li>
+      </ul>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="card" style="padding:18px 22px">
+        <div class="tag">EHR → priors for θ = {S<sub>I</sub>, S<sub>G</sub>, β, EGP, meal rate, dawn}</div>
+        <table class="tbl" style="margin-top:10px;font-size:13.5px">
+          <tr><td style="padding-left:0"><b class="k">S<sub>I</sub></b> insulin sensitivity</td><td style="white-space:normal">TyG index, waist/height, BMI</td></tr>
+          <tr><td style="padding-left:0"><b class="k">β</b> β-cell response</td><td style="white-space:normal">duration, HbA1c, C-peptide, TCF7L2</td></tr>
+          <tr><td style="padding-left:0"><b class="k">EGP</b> liver output</td><td style="white-space:normal">fasting glucose + ADAG eAG</td></tr>
+          <tr><td style="padding-left:0"><b class="k">S<sub>G</sub>, meal rate, dawn</b></td><td style="white-space:normal">population priors</td></tr>
+        </table>
+      </div>
+      <div class="panel" style="padding:18px 22px">
+        <div class="tag">Formulas used</div>
+        <p class="small mono" style="margin-top:8px;font-size:12.5px;color:var(--ink)">TyG = ln(TG [mg/dL] × FPG [mg/dL] / 2)<br>eAG (mg/dL) = 28.7 × HbA1c − 46.7</p>
+        <p class="tiny" style="margin-top:8px">The twin never reads the subtype label; the console shows an <i>inferred</i> subtype from twin posteriors + EHR. Full parameter table: docs/MODEL_CARD.md.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Pratibimb · Team Stack Underflow · BIT Mesra, Off Campus Jaipur</span><span>9 / 19</span></div>
+</section>
+
+<!-- 10 · EnKF sync -->
+<section class="slide" style="background:var(--off)">
+  <div class="eyebrow"><b>08</b>Data assimilation</div>
+  <h2>Kept in sync every five minutes<span>by an Ensemble Kalman Filter.</span></h2>
+  <div style="display:grid;grid-template-columns:660px 1fr;gap:22px;margin-top:22px">
+    <div>
+      <div class="fig" style="padding:10px 14px"><div class="cap">Twin sync on a held-out patient (P0142, 24 h): CGM, EnKF twin estimate with p10–p90 band, hidden truth</div><img src="../../reports/figures/twin_sync_example.svg" alt=""></div>
+      <div class="grid" style="grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px">
+        <div class="kpi" style="background:#fff;box-shadow:var(--shadow)"><div class="v">9.38 %</div><div class="l">twin vs truth MARD</div></div>
+        <div class="kpi" style="background:#fff;box-shadow:var(--shadow)"><div class="v">8.51 %</div><div class="l">raw CGM vs truth MARD</div></div>
+        <div class="kpi" style="background:#fff;box-shadow:var(--shadow)"><div class="v">0.81–0.82</div><div class="l">80 % forecast-interval coverage</div></div>
+      </div>
+      <p class="tiny" style="margin-top:12px"><b style="color:var(--ink)">Honest note:</b> the filtered twin is slightly <i>less</i> accurate than raw CGM against truth (9.38 % vs 8.51 % MARD) because the EnKF cannot remove correlated sensor drift. Its value is in forecasting and in the features it feeds the risk models.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="card" style="padding:18px 22px">
+        <div class="tag">How the sync works</div>
+        <ul class="clean" style="margin-top:10px">
+          <li style="font-size:13px;margin-bottom:6px">64 members; augmented state = 7 dynamic states + 6 parameters (log / logit space, slow random walk)</li>
+          <li style="font-size:13px;margin-bottom:6px">Update on each CGM reading (obs. sd 5 + 6 %); missing CGM → no update</li>
+          <li style="font-size:13px;margin-bottom:6px">4σ innovation gate rejects compression artefacts; inflation 1.001</li>
+          <li style="font-size:13px;margin-bottom:0">Forecast 240 min with a habitual-meal prior; intervals widened by validation-fitted factors</li>
+        </ul>
+      </div>
+      <div class="fig" style="padding:10px 12px"><div class="cap">4-hour forecast cone with habitual-meal prior (P0142)</div><img src="../../reports/figures/forecast_cone_example.svg" alt="" style="height:178px;object-fit:contain"></div>
+    </div>
+  </div>
+  <div class="foot"><span>Pratibimb · Team Stack Underflow · BIT Mesra, Off Campus Jaipur</span><span>10 / 19</span></div>
+</section>
+
+<!-- 11 · Risk layer -->
+<section class="slide">
+  <div class="eyebrow"><b>09</b>Risk layer &amp; explainability</div>
+  <h2>Three early warnings,<span>each with its reasons.</span></h2>
+  <div style="display:grid;grid-template-columns:330px 1fr 206px;gap:20px;margin-top:24px">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="card" style="padding:16px 20px"><span class="chip" style="background:#FBEFD9;color:#8A5A00">hyper_2h</span><p class="small" style="margin-top:8px;color:var(--ink)">Level-2 hyperglycaemia (&gt;250 mg/dL for ≥15 min) begins within the next 120 min</p></div>
+      <div class="card" style="padding:16px 20px"><span class="chip" style="background:#F9E1E5;color:#9B1C33">hypo_1h</span><p class="small" style="margin-top:8px;color:var(--ink)">Hypoglycaemia (&lt;70 mg/dL for ≥15 min) begins within the next 60 min</p></div>
+      <div class="card" style="padding:16px 20px"><span class="chip" style="background:#E3ECF6;color:#2E4F7A">nocturnal_hypo</span><p class="small" style="margin-top:8px;color:var(--ink)">Any hypo between 00:00 and 06:00 tonight, predicted at bedtime</p></div>
+      <p class="tiny">Labels come from hidden truth plasma glucose, never from CGM artefacts; a CGM-labelled variant is reported too.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="card" style="padding:18px 22px">
+        <div class="tag">Pipeline (every 15 min)</div>
+        <ul class="clean" style="margin-top:10px">
+          <li style="font-size:13.5px">~100 strictly causal features (data ≤ t): CGM dynamics, carbs on board, meds, steps, HR/HRV, sleep, EHR, plus <b class="k">33 twin features</b></li>
+          <li style="font-size:13.5px">LightGBM per task · isotonic calibration on validation patients</li>
+          <li style="font-size:13.5px">TreeSHAP (<span class="mono" style="font-size:12px">pred_contrib</span>) → plain-language drivers</li>
+          <li style="font-size:13.5px;margin-bottom:0">Alerts: threshold for ≤ 1 false alert per patient-day (nocturnal ≤ 1 per patient-week), cool-down + hysteresis</li>
+        </ul>
+      </div>
+      <div class="panel" style="padding:16px 22px">
+        <div class="tag">Top TreeSHAP drivers (mean |contribution|)</div>
+        <table class="tbl" style="margin-top:6px;font-size:12.5px">
+          <tr><td style="padding:7px 0;white-space:normal"><b class="k">hyper_2h</b></td><td style="padding:7px 0;white-space:normal;text-align:left">Twin: chance of &gt;250 within 2 h · Time of day · Twin forecast +2 h (high)</td></tr>
+          <tr><td style="padding:7px 0"><b class="k">hypo_1h</b></td><td style="padding:7px 0;white-space:normal;text-align:left">Current glucose (CGM) · Twin: forecast low in next 2 h · Time since sulfonylurea dose</td></tr>
+          <tr><td style="padding:7px 12px 7px 0"><b class="k">nocturnal</b></td><td style="padding:7px 0;white-space:normal;text-align:left">Twin: expected overnight mean · Basal insulin action · Time since sulfonylurea dose</td></tr>
+        </table>
+      </div>
+    </div>
+    <div>
+      <div class="shot" style="padding:5px"><img src="../screenshots/13-risk-panel.jpg" alt="Risk panel with drivers" style="border-radius:13px"></div>
+      <p class="tiny" style="margin-top:8px;text-align:center">Radha Naidu (synthetic, P0098)</p>
+    </div>
+  </div>
+  <div class="foot"><span>Pratibimb · Team Stack Underflow · BIT Mesra, Off Campus Jaipur</span><span>11 / 19</span></div>
+</section>
+
+<!-- 12 · Results: early warning -->
+<section class="slide" style="background:var(--off)">
+  <div class="eyebrow"><b>10</b>Results · early warning</div>
+  <h2>Scored on 36 patients<span>the models never saw.</span></h2>
+  <div class="card" style="margin-top:22px;padding:16px 22px 8px">
+    <table class="tbl">
+      <tr><th>Task (held-out test)</th><th>Prevalence</th><th>AUROC (95 % CI)</th><th>AUPRC (95 % CI)</th><th>Sensitivity</th><th>Precision</th><th>Alerts / pt-day</th><th>Median lead</th></tr>
+      <tr><td><b class="k">hyper_2h</b></td><td>0.1337</td><td><b class="k">0.9368</b><span class="ci">0.925–0.948</span></td><td><b class="k">0.7087</b><span class="ci">0.641–0.765</span></td><td>0.6334</td><td>0.4686</td><td>2.0526</td><td><b class="k">80 min</b></td></tr>
+      <tr><td><b class="k">hypo_1h</b></td><td>0.0052</td><td><b class="k">0.9855</b><span class="ci">0.977–0.993</span></td><td><b class="k">0.3244</b><span class="ci">0.176–0.399</span></td><td>0.425</td><td>0.0794</td><td>0.6625</td><td><b class="k">35 min</b></td></tr>
+      <tr><td><b class="k">nocturnal_hypo</b></td><td>0.0085</td><td><b class="k">0.9379</b><span class="ci">0.903–0.983</span></td><td><b class="k">0.1504</b><span class="ci">0.054–0.232</span></td><td>0.875</td><td>0.0593</td><td>0.1261</td><td><b class="k">185 min</b></td></tr>
+    </table>
+  </div>
+  <div style="display:grid;grid-template-columns:640px 1fr;gap:20px;margin-top:16px">
+    <div class="fig" style="padding:10px 14px"><div class="cap">Ablation on the same test patients: CGM linear · ML without twin · twin only · hybrid</div><img src="../../reports/figures/ablation.svg" alt="" style="height:236px;object-fit:contain"></div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="card dark" style="padding:16px 20px"><div class="tag" style="color:var(--sky)">The twin earns its place</div><p class="small" style="margin-top:6px">Hybrid beats ML-without-twin on every task: hyper_2h AUROC 0.924 → <b>0.9368</b>, AUPRC 0.6717 → <b>0.7087</b>; hypo_1h AUPRC 0.298 → <b>0.3244</b>.</p></div>
+      <div class="card" style="padding:14px 20px"><p class="small">Operating points chosen on validation patients (≤ 1 false alert per patient-day). Sensitivity is per event; nocturnal rests on 8 positive test nights, so its CI is wide.</p></div>
+    </div>
+  </div>
+  <div class="foot"><span>All numbers from reports/metrics.json · synthetic held-out patients from a richer simulator</span><span>12 / 19</span></div>
+</section>
+
+<!-- 13 · Results: forecast -->
+<section class="slide">
+  <div class="eyebrow"><b>11</b>Results · forecasting</div>
+  <h2>Four-hour forecasts<span>that beat simple baselines.</span></h2>
+  <div class="card" style="margin-top:22px;padding:16px 22px 8px">
+    <table class="tbl">
+      <tr><th>Horizon</th><th>Twin RMSE (mg/dL)</th><th>MARD (%)</th><th>80 % interval coverage</th><th>Parkes zone A (%)</th><th>Linear-extrapolation RMSE</th><th>Persistence RMSE</th></tr>
+      <tr><td><b class="k">30 min</b></td><td><b class="k">29.76</b></td><td>11.89</td><td>0.8111</td><td>92.95</td><td class="muted">41.89</td><td class="muted">36.25</td></tr>
+      <tr><td><b class="k">60 min</b></td><td><b class="k">37.81</b></td><td>14.58</td><td>0.8151</td><td>88.14</td><td class="muted">76.51</td><td class="muted">49.52</td></tr>
+      <tr><td><b class="k">120 min</b></td><td><b class="k">40.47</b></td><td>16.7</td><td>0.8178</td><td>84.31</td><td class="muted">140.56</td><td class="muted">60.27</td></tr>
+    </table>
+  </div>
+  <div style="display:grid;grid-template-columns:760px 1fr;gap:20px;margin-top:16px">
+    <div class="fig" style="padding:8px 14px"><div class="cap">Parkes (consensus) error grid for type 2: twin forecast vs truth plasma glucose, held-out patients</div><img src="../../reports/figures/parkes_grid.png" alt=""></div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="kpi" style="background:var(--beige)"><div class="v">0.00–0.01 %</div><div class="l">of forecasts in Parkes zones D + E at any horizon; zone E 0.0 %</div></div>
+      <div class="kpi" style="background:var(--beige)"><div class="v">93,024</div><div class="l">forecast points scored per horizon</div></div>
+      <p class="tiny">Raw ensemble intervals were too narrow (coverage 0.36–0.43); widening by validation-fitted factors 3.103 / 2.991 / 2.783 gives the coverage shown.</p>
+    </div>
+  </div>
+  <div class="foot"><span>All numbers from reports/metrics.json · synthetic held-out patients from a richer simulator</span><span>13 / 19</span></div>
+</section>
+
+<!-- 14 · Console -->
+<section class="slide" style="background:linear-gradient(180deg,#fff 0%,#F4EDE7 100%)">
+  <div class="eyebrow"><b>12</b>Clinician console</div>
+  <h2>A console that feels like a product,<span>built for a 30-second triage.</span></h2>
+  <div style="position:absolute;left:64px;top:198px;width:740px">
+    <div class="shot"><img src="../screenshots/02-cohort-triage.jpg" alt="Cohort triage"></div>
+    <span class="chip ink" style="position:absolute;left:18px;top:-14px">Cohort triage · risk-sorted synced twins</span>
+  </div>
+  <div style="position:absolute;left:556px;top:252px;width:660px">
+    <div class="shot"><img src="../screenshots/04-hypo-risk-drivers.jpg" alt="Virtual patient"></div>
+    <span class="chip ink" style="position:absolute;right:18px;top:-14px">Virtual patient · twin, forecast cone, risk + reasons</span>
+  </div>
+  <div style="position:absolute;right:64px;top:62px;width:380px;display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end">
+    <span class="chip">Live replay over WebSocket</span><span class="chip">EHR · FHIR sheet</span><span class="chip">AGP + TIR report</span><span class="chip">Inside the twin</span><span class="chip">Model card</span><span class="chip">Offline demo mode</span>
+  </div>
+  <div class="foot"><span>Pratibimb · Team Stack Underflow · BIT Mesra, Off Campus Jaipur</span><span>14 / 19</span></div>
+</section>
+
+<!-- 15 · What-If Lab -->
+<section class="slide" style="background:var(--off)">
+  <div class="eyebrow"><b>13</b>What-If Lab</div>
+  <h2>Try the advice on the twin<span>before the patient tries it.</span></h2>
+  <div style="display:grid;grid-template-columns:560px 1fr;gap:24px;margin-top:24px">
+    <div>
+      <div class="shot"><div class="crop" style="height:420px;background-image:url(../screenshots/07-whatif-skip-sulfonylurea.jpg);background-size:759px auto;background-position:-211px 0"></div></div>
+      <p class="tiny" style="margin-top:10px">Deepa Malhotra (synthetic, P0029): skip the next glimepiride dose, baseline vs scenario bands.</p>
+    </div>
+    <div class="card" style="padding:18px 22px">
+      <div class="tag">Engine presets (demo export, next 5 h)</div>
+      <div style="margin-top:12px;display:flex;flex-direction:column;gap:12px">
+        <div style="border-bottom:1px solid var(--line);padding-bottom:12px"><p class="small k">Skip next glimepiride · P0029</p><p class="small" style="margin-top:3px">Peak 174 → 197 mg/dL <span class="delta-up">+23</span> · time &gt;180: 0 → 40 min · TIR 100 % → 89 %</p></div>
+        <div style="border-bottom:1px solid var(--line);padding-bottom:12px"><p class="small k">15-min brisk walk after dinner · P0029</p><p class="small" style="margin-top:3px">Peak 204 → 199 mg/dL <span class="delta-down">−5</span> · time &gt;180: 65 → 55 min · TIR 78 % → 82 %</p></div>
+        <div style="border-bottom:1px solid var(--line);padding-bottom:12px"><p class="small k">Bajra (millet) roti at dinner · P0098</p><p class="small" style="margin-top:3px">Peak 166 → 150 mg/dL <span class="delta-down">−16</span></p></div>
+        <div><p class="small k">Skip next glimepiride · P0098 (hypo-prone)</p><p class="small" style="margin-top:3px">Chance of a low 89 % → 83 % · time &lt;70: 90 → 80 min · peak 131 → 158 mg/dL</p></div>
+      </div>
+      <p class="tiny" style="margin-top:14px">Food picker over 73 Indian foods with Hindi names · walk · skip/shift a dose · last night’s sleep. Narratives are computed from the deltas (no LLM). Illustrative, not prescriptions.</p>
+    </div>
+  </div>
+  <div class="foot"><span>Pratibimb · Team Stack Underflow · BIT Mesra, Off Campus Jaipur</span><span>15 / 19</span></div>
+</section>
+
+<!-- 16 · Built for India -->
+<section class="slide">
+  <div class="eyebrow"><b>14</b>India-specific design</div>
+  <h2>Built for India,<span>not translated to it.</span></h2>
+  <div class="grid" style="grid-template-columns:repeat(3,1fr);margin-top:26px;gap:16px">
+    <div class="card" style="padding:20px 22px">
+      <div class="tag">ABDM-ready records</div>
+      <p class="small" style="margin-top:8px">Every synthetic patient is an HL7 <b class="k">FHIR R4</b> Bundle, the format of the Ayushman Bharat Digital Mission, with an ABHA-format identifier, LOINC labs and SNOMED CT conditions.</p>
+      <div class="mono" style="margin-top:12px;background:var(--off);border-radius:12px;padding:10px 12px;font-size:11.5px;line-height:1.55;color:var(--brown)">"code": {"coding": [{"system": "http://loinc.org",<br>&nbsp;"code": "4548-4"}]} &nbsp;// HbA1c</div>
+    </div>
+    <div class="card" style="padding:20px 22px">
+      <div class="tag">73 Indian foods</div>
+      <p class="small" style="margin-top:8px">Katori / roti / piece portions with Hindi names, carbs, fibre, GI and GL from IFCT 2017 and the International GI Tables, with an honest source column.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:12px">
+        <span class="chip deva">सफ़ेद चावल · GI 73</span><span class="chip deva">बाजरे की रोटी · GI 55</span><span class="chip deva">पोहा · GI 70</span><span class="chip deva">इडली · GI 69</span><span class="chip deva">राजमा · GI 24</span><span class="chip deva">चाय (चीनी वाली)</span>
+      </div>
+    </div>
+    <div class="card" style="padding:20px 22px">
+      <div class="tag">INSPIRED subtypes</div>
+      <p class="small" style="margin-top:8px">Cohort archetypes from Asian Indian T2D subgroups: IROD ~39 %, SIDD ~26 %, MARD ~22 %, SIRD ~13 %, including the “thin-fat” phenotype and Asian BMI cut-offs (23 / 25 kg/m²).</p>
+      <div style="display:flex;height:12px;border-radius:100px;overflow:hidden;margin-top:14px"><div style="width:40%;background:#C7A893"></div><div style="width:27.1%;background:#9CC1E7"></div><div style="width:19.2%;background:#B9C9A7"></div><div style="width:13.7%;background:#E6B89C"></div></div>
+      <p class="tiny" style="margin-top:6px">Cohort: IROD 96 · SIDD 65 · MARD 46 · SIRD 33</p>
+    </div>
+    <div class="card dark" style="padding:20px 22px">
+      <div class="tag" style="color:var(--sky)">Sulfonylurea safety</div>
+      <p class="small" style="margin-top:8px">Fasting days with an SU dose are simulated. 97 % of hypo episodes occur in SU / insulin users, and “time since sulfonylurea dose” is a top driver of hypo alerts. The What-If Lab shows what skipping or shifting a dose does.</p>
+    </div>
+    <div class="card" style="padding:20px 22px">
+      <div class="tag">Late dinners &amp; chai</div>
+      <p class="small" style="margin-top:8px">Late dinners (≈ 20:00–22:45), evening chai + snack, festival sweets, region-flavoured meal templates. Median post-meal rise: lunch 122.1, dinner 111.8, breakfast 95.5 mg/dL.</p>
+    </div>
+    <div class="card" style="padding:20px 22px">
+      <div class="tag">Routine labs only</div>
+      <p class="small" style="margin-top:8px">Fasting insulin is rarely measured in India, so insulin resistance comes from the <b class="k">TyG index</b> (triglycerides × fasting glucose), and baseline glucose from HbA1c via ADAG.</p>
+    </div>
+  </div>
+  <div class="foot"><span>Pratibimb · Team Stack Underflow · BIT Mesra, Off Campus Jaipur</span><span>16 / 19</span></div>
+</section>
+
+<!-- 17 · Limitations & ethics -->
+<section class="slide" style="background:var(--off)">
+  <div class="eyebrow"><b>15</b>Limitations &amp; ethics</div>
+  <h2>What we do not claim,<span>and how we keep it safe.</span></h2>
+  <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:20px;margin-top:26px">
+    <div class="card" style="padding:22px 26px">
+      <div class="tag">Limitations</div>
+      <ul class="clean" style="margin-top:12px">
+        <li style="font-size:14px">Synthetic data only. Good scores show the method works <i>if the world resembles our simulator</i>; real CGM/EHR validation is required before any claim.</li>
+        <li style="font-size:14px">The truth simulator is richer than the twin but from the same minimal-model family; real physiology will be further away.</li>
+        <li style="font-size:14px">Posterior S<sub>I</sub> and β are “effective” values: use them as trends, not lab measurements.</li>
+        <li style="font-size:14px">Hypo alerts have low precision (0.0794 for hypo_1h) because lows are rare; nocturnal metrics rest on 8 positive nights.</li>
+        <li style="font-size:14px;margin-bottom:0">Food GI values are approximate; meal logging is assumed timely.</li>
+      </ul>
+    </div>
+    <div class="card dark" style="padding:22px 26px">
+      <div class="tag" style="color:var(--sky)">Safety &amp; ethics</div>
+      <ul class="clean" style="margin-top:12px">
+        <li style="font-size:14px">Not a medical device. Alerts and recommendations are illustrative; the clinician decides.</li>
+        <li style="font-size:14px">No real patient data: synthetic names and ABHA-format IDs only (DPDP Act 2023 / HIPAA sandbox).</li>
+        <li style="font-size:14px">TreeSHAP drivers explain the model, not the patient’s biology: “explanations, not causes”.</li>
+        <li style="font-size:14px">The inferred subtype agrees with the hidden archetype 50.8 % of the time: a rough phenotype, never a diagnosis.</li>
+        <li style="font-size:14px;margin-bottom:0">No LLM in the loop: forecasts, risks and what-if narratives are deterministic and reproducible.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="panel" style="margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:28px;padding:20px 26px">
+    <div><div class="tag">Intended use</div><p class="small" style="margin-top:6px;color:var(--ink)">A conceptual clinician console for triage and counselling, demonstrated on synthetic patients for this challenge.</p></div>
+    <div><div class="tag">Out of scope</div><p class="small" style="margin-top:6px;color:var(--ink)">Any clinical decision or dosing, real patient data, paediatric use, type 1 diabetes, pregnancy.</p></div>
+  </div>
+  <div class="foot"><span>Pratibimb · Team Stack Underflow · BIT Mesra, Off Campus Jaipur</span><span>17 / 19</span></div>
+</section>
+
+<!-- 18 · Roadmap & impact -->
+<section class="slide">
+  <div class="eyebrow"><b>16</b>Roadmap &amp; impact</div>
+  <h2>From proof of concept<span>to a clinic pilot.</span></h2>
+  <div class="grid" style="grid-template-columns:repeat(4,1fr);margin-top:28px;gap:16px">
+    <div class="card" style="padding:22px 24px;min-height:208px"><span class="chip ink">Phase 1</span><h3 style="margin-top:12px">Validate</h3><p class="small" style="margin-top:8px;font-size:14px">Re-run evaluation on open T2D CGM datasets and de-identified clinic data under ethics approval; recalibrate thresholds per site.</p></div>
+    <div class="card" style="padding:22px 24px;min-height:208px"><span class="chip">Phase 2</span><h3 style="margin-top:12px">Integrate</h3><p class="small" style="margin-top:8px;font-size:14px">ABDM sandbox with consent-based FHIR R4 exchange; CGM and wearable vendor feeds; clinician sign-in.</p></div>
+    <div class="card" style="padding:22px 24px;min-height:208px"><span class="chip">Phase 3</span><h3 style="margin-top:12px">Pilot</h3><p class="small" style="margin-top:8px;font-size:14px">Clinician-in-the-loop study at a diabetes clinic: alert burden, time to action, usefulness of what-if counselling.</p></div>
+    <div class="card" style="padding:22px 24px;min-height:208px"><span class="chip">Phase 4</span><h3 style="margin-top:12px">Extend</h3><p class="small" style="margin-top:8px;font-size:14px">Patient app in Hindi and regional languages; hypertension and CKD co-twins; lighter on-device sync.</p></div>
+  </div>
+  <div class="card dark" style="margin-top:20px;padding:24px 28px;display:grid;grid-template-columns:260px 1fr;gap:28px;align-items:center">
+    <div><div class="tag" style="color:var(--sky)">Potential impact, if validated</div><h3 style="font-size:24px;margin-top:8px">Between-visit care that sees what is coming</h3></div>
+    <ul class="clean" style="columns:2;column-gap:28px">
+      <li style="font-size:14px">Earlier action on spikes and lows between clinic visits</li>
+      <li style="font-size:14px">Safer sulfonylurea use around fasting days</li>
+      <li style="font-size:14px">Counselling grounded in the patient’s own physiology and plate</li>
+      <li style="font-size:14px">ABDM-ready records and open-source code from day one</li>
+    </ul>
+  </div>
+  <div style="margin-top:18px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+    <span class="tag" style="margin-right:6px">Available today</span>
+    <span class="chip">Engine + tests (pytest)</span><span class="chip">FastAPI · REST + WebSocket</span><span class="chip">Clinician console</span><span class="chip">Static demo export</span><span class="chip">Docker Compose</span><span class="chip">Model &amp; data cards</span>
+  </div>
+  <div class="foot"><span>Pratibimb · Team Stack Underflow · BIT Mesra, Off Campus Jaipur</span><span>18 / 19</span></div>
+</section>
+
+<!-- 19 · Thank you -->
+<section class="slide sky" style="padding:0">
+  <div class="clouds"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div>
+  <div style="position:absolute;left:0;right:0;top:92px;text-align:center">
+    <div class="brand" style="justify-content:center;font-size:22px"><svg class="logo"><use href="#logo"/></svg>Pratibimb</div>
+    <h1 style="font-size:76px;line-height:1;font-weight:700;letter-spacing:-.045em;margin-top:26px">Thank you.</h1>
+    <p class="deva" style="font-size:34px;color:#5f5855;margin-top:10px;font-weight:600">धन्यवाद</p>
+  </div>
+  <div style="position:absolute;left:50%;transform:translateX(-50%);top:342px;width:880px;background:rgba(255,255,255,.78);backdrop-filter:blur(10px);border-radius:28px;padding:22px 30px;box-shadow:var(--shadow)">
+    <table class="tbl" style="font-size:15px">
+      <tr><td style="border-top:0;padding-left:0" class="muted">Video walkthrough (≥ 20 min)</td><td style="border-top:0;text-align:left"><b class="k" data-link="VIDEO_URL">VIDEO_URL</b></td></tr>
+      <tr><td style="padding-left:0" class="muted">Live demo</td><td style="text-align:left"><b class="k" data-link="LIVE_DEMO_URL">LIVE_DEMO_URL</b></td></tr>
+      <tr><td style="padding-left:0" class="muted">Source code</td><td style="text-align:left"><b class="k" data-link="REPO_URL">REPO_URL</b></td></tr>
+      <tr><td style="padding-left:0" class="muted">Docs in the repo</td><td style="text-align:left">README · docs/MODEL_CARD.md · docs/DATA_CARD.md · docs/API.md</td></tr>
+    </table>
+  </div>
+  <div style="position:absolute;left:0;right:0;top:600px;text-align:center">
+    <div style="display:inline-flex;gap:10px;align-items:center;background:var(--ink);color:#fff;border-radius:100px;padding:10px 22px;font-size:14.5px;font-weight:600">Team Stack Underflow <span style="opacity:.55">·</span> Yashvardhan Thanvi (lead) <span style="opacity:.55">·</span> Devesh Jain <span style="opacity:.55">·</span> BIT Mesra, Off Campus Jaipur</div>
+    <p style="font-size:12px;color:#5f5855;margin-top:14px">Apache-2.0 · all data synthetic · not a medical device · sky photos: Unsplash (credited in web/public/photos/CREDITS.md)</p>
+  </div>
+</section>
+
+</body>
+</html>

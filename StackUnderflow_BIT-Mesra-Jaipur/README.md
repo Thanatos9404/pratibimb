@@ -1,0 +1,23 @@
+# Stack Underflow · BIT Mesra (Off Campus Jaipur)
+
+Submission folder for the **Happiest Health Digital Twin Challenge 2026** (Unstop).
+
+**Project:** Pratibimb (प्रतिबिम्ब), a hybrid physiology + machine-learning digital twin for Type 2 Diabetes, built for India.
+**Team:** Stack Underflow. Yashvardhan Thanvi (team leader) and Devesh Jain, both final-year BCA students at Birla Institute of Technology (BIT Mesra), Off Campus Jaipur.
+
+| Deliverable | File |
+|---|---|
+| Architecture diagram (PDF, 2 pages: diagram + component reference) | [`Pratibimb_Architecture.pdf`](Pratibimb_Architecture.pdf) |
+| Presentation with project details and outcome (PDF, 19 slides, 16:9) | [`Pratibimb_Presentation.pdf`](Pratibimb_Presentation.pdf) |
+| Same presentation as PowerPoint (one full-slide image per slide) | [`Pratibimb_Presentation.pptx`](Pratibimb_Presentation.pptx) |
+| Video walkthrough (20+ minutes) | [`VIDEO.md`](VIDEO.md) → **VIDEO_URL** |
+| Live demo | **https://pratibimb-omega.vercel.app** |
+| Project README (team, problem, use case, tech stack, AI/ML details, results, how to run, licence) | [`../README.md`](../README.md) |
+| Open-source licence (Apache-2.0) | [`../LICENSE`](../LICENSE) |
+| Model card · data card · API | [`../docs/MODEL_CARD.md`](../docs/MODEL_CARD.md) · [`../docs/DATA_CARD.md`](../docs/DATA_CARD.md) · [`../docs/API.md`](../docs/API.md) |
+| Evaluation outputs | [`../reports/metrics.json`](../reports/metrics.json) · [`../reports/cohort_validation.json`](../reports/cohort_validation.json) · [`../reports/figures/`](../reports/figures) |
+| Diagram source (SVG) | [`../docs/architecture.svg`](../docs/architecture.svg) |
+
+The PDFs are generated from HTML sources in [`../docs/deck/`](../docs/deck) with Playwright (`node docs/deck/render.mjs`). Every number in them comes from `reports/metrics.json`, `reports/cohort_validation.json`, the engine's demo export or the cited literature.
+
+All data are synthetic. Pratibimb is not a medical device.

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Pratibimb Architecture</title>
+<!-- Two 16:9 pages (1600x900): the diagram (docs/architecture.svg) and a component reference.
+     Rendered to StackUnderflow_BIT-Mesra-Jaipur/Pratibimb_Architecture.pdf by docs/deck/render.mjs. -->
+<style>
+@font-face{font-family:'Open Runde';font-weight:400;src:url(../../web/public/fonts/open-runde-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Open Runde';font-weight:600;src:url(../../web/public/fonts/open-runde-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Open Runde';font-weight:700;src:url(../../web/public/fonts/open-runde-latin-700-normal.woff2) format('woff2')}
+@page{size:1600px 900px;margin:0}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:'Open Runde',Inter,'Segoe UI',system-ui,sans-serif;color:#453F3D;-webkit-font-smoothing:antialiased;background:#d8d2cd}
+.page{width:1600px;height:900px;position:relative;overflow:hidden;background:#fff;break-after:page;page-break-after:always}
+@media screen{.page{margin:24px auto;box-shadow:0 14px 50px rgba(0,0,0,.18)}}
+@media print{body{background:none}}
+.page img{display:block;width:1600px;height:900px}
+.ref{padding:44px 56px}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#757170}
+h1{margin:10px 0 0;font-size:34px;font-weight:700;letter-spacing:-.035em;color:#1A1615}
+h1 span{color:#A39D9A;font-weight:600}
+table{width:100%;border-collapse:separate;border-spacing:0;margin-top:20px;font-size:13.5px;background:#fff;border-radius:24px;box-shadow:0 4px 50px rgba(97,74,68,.08),0 1px 3px rgba(97,74,68,.07);overflow:hidden}
+th{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#757170;text-align:left;padding:16px 16px 12px;background:#F9F8F8}
+td{padding:8px 16px;border-top:1px solid #EEE8E3;vertical-align:top;line-height:1.38}
+td:first-child{font-weight:700;color:#614A44;white-space:nowrap;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding-top:10px}
+td b{color:#1A1615}
+code{font-family:'JetBrains Mono','Cascadia Mono',Consolas,monospace;font-size:12.5px;color:#614A44}
+.foot{position:absolute;left:56px;right:56px;bottom:26px;display:flex;justify-content:space-between;font-size:12px;color:#A39D9A}
+</style>
+</head>
+<body>
+<section class="page"><img src="../architecture.svg" alt="Pratibimb system architecture"></section>
+<section class="page ref" style="background:#F9F8F8">
+  <div class="eyebrow">Architecture · component reference</div>
+  <h1>What each block is made of <span>· and where it lives in the repo</span></h1>
+  <table>
+    <tr><th style="width:150px">Layer</th><th style="width:250px">Component</th><th>What it does</th><th style="width:330px">Tech · code</th></tr>
+    <tr><td>Data</td><td><b>Truth simulator</b></td><td>Generates 240 synthetic Indian T2D patients × 28 days from INSPIRED-style archetypes, with richer physiology than the twin, Indian lifestyle, sensor and logging artefacts.</td><td>numpy, numba · <code>engine/pratibimb/cohort/</code></td></tr>
+    <tr><td>Data</td><td><b>Synthetic EHR → FHIR R4</b></td><td>Labs, conditions, medications, genetics as one FHIR R4 <i>collection</i> Bundle per patient, ABHA-format identifier, LOINC and SNOMED CT codes.</td><td><code>cohort/ehr.py</code>, <code>cohort/fhir.py</code></td></tr>
+    <tr><td>Twin</td><td><b>EHR priors</b></td><td>TyG index, ADAG eAG, waist/height, BMI, duration, C-peptide and TCF7L2 → prior means and spreads for S<sub>I</sub>, S<sub>G</sub>, β, EGP, meal rate, dawn.</td><td><code>twin/priors.py</code></td></tr>
+    <tr><td>Twin</td><td><b>Twin model</b></td><td>Extended Bergman minimal model (glucose, insulin action, insulin, two gut compartments, interstitial glucose) with exercise, sleep, stress and drug effects.</td><td>numba kernels · <code>physiology/</code></td></tr>
+    <tr><td>Twin</td><td><b>EnKF sync</b></td><td>64-member stochastic Ensemble Kalman Filter over states + log/logit parameters; CGM update every 5 min, innovation gating, inflation.</td><td><code>twin/enkf.py</code>, <code>twin/assimilate.py</code></td></tr>
+    <tr><td>Twin</td><td><b>Forecast · What-If</b></td><td>240-min ensemble forecast with a habitual-meal prior and calibrated intervals; counterfactual meals, walks, doses and sleep from the same ensemble.</td><td><code>twin/forecast.py</code>, <code>api/service.py</code></td></tr>
+    <tr><td>ML</td><td><b>Features · LightGBM</b></td><td>~100 causal features incl. 33 twin features at 15-min decision points; LightGBM per task (hyper_2h, hypo_1h, nocturnal_hypo).</td><td>LightGBM · <code>ml/features.py</code>, <code>ml/train.py</code></td></tr>
+    <tr><td>ML</td><td><b>Calibration · TreeSHAP · alerts</b></td><td>Isotonic calibration on validation patients; TreeSHAP drivers mapped to clinician text; thresholds, cool-down and hysteresis.</td><td>scikit-learn · <code>ml/explain.py</code>, <code>ml/alerts.py</code></td></tr>
+    <tr><td>Evaluation</td><td><b>Held-out scoring</b></td><td>Patient-level 70/15/15 split; AUROC/AUPRC with bootstrap CIs, ablation, forecast RMSE/MARD vs baselines, Parkes error grid, lead time.</td><td><code>ml/evaluate.py</code>, <code>ml/parkes.py</code> → <code>reports/</code></td></tr>
+    <tr><td>Serving</td><td><b>FastAPI · static export</b></td><td>REST + WebSocket replay (SPEC §5 contract), or a static JSON export so the console runs with no backend.</td><td>FastAPI, uvicorn · <code>api/</code>, <code>export.py</code></td></tr>
+    <tr><td>UI</td><td><b>Clinician console</b></td><td>Landing page, cohort triage, virtual patient, What-If Lab, EHR/FHIR sheet, model card; offline demo mode.</td><td>Next.js 15, React 19, Tailwind v4, Radix, Motion · <code>web/</code></td></tr>
+    <tr><td>Deploy</td><td><b>Targets</b></td><td>Vercel (static demo), Docker Compose (api + web), or local <code>uv</code> + <code>npm</code>.</td><td><code>docker-compose.yml</code>, <code>*/Dockerfile</code></td></tr>
+  </table>
+  <div class="foot"><span>All data are synthetic. Not a medical device.</span><span>Pratibimb · Team Stack Underflow · BIT Mesra, Off Campus Jaipur · Apache-2.0</span></div>
+</section>
+</body>
+</html>
