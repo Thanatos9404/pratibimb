@@ -1,0 +1,795 @@
+{
+ "forecast": {
+  "main_after_24h": {
+   "n_points": 89977,
+   "twin": {
+    "rmse": [
+     27.3,
+     30.84,
+     34.51
+    ],
+    "mard": [
+     13.6,
+     15.39,
+     17.22
+    ],
+    "coverage_80": [
+     0.7818,
+     0.7636,
+     0.7586
+    ],
+    "coverage_80_raw": [
+     0.3944,
+     0.3912,
+     0.3987
+    ],
+    "parkes": [
+     {
+      "A": 88.78,
+      "B": 10.82,
+      "C": 0.4,
+      "D": 0.0,
+      "E": 0.0
+     },
+     {
+      "A": 84.6,
+      "B": 14.85,
+      "C": 0.55,
+      "D": 0.0,
+      "E": 0.0
+     },
+     {
+      "A": 80.25,
+      "B": 18.91,
+      "C": 0.84,
+      "D": 0.0,
+      "E": 0.0
+     }
+    ]
+   },
+   "persistence": {
+    "rmse": [
+     18.52,
+     28.83,
+     40.6
+    ],
+    "mard": [
+     8.93,
+     13.99,
+     20.82
+    ]
+   },
+   "linear": {
+    "rmse": [
+     23.23,
+     45.96,
+     90.61
+    ],
+    "mard": [
+     11.39,
+     22.89,
+     46.78
+    ]
+   },
+   "glycotwin_lgbm": {
+    "rmse": [
+     14.06,
+     21.7,
+     27.87
+    ],
+    "mard": [
+     7.2,
+     11.28,
+     14.98
+    ],
+    "coverage_80": [
+     0.8024,
+     0.8017,
+     0.811
+    ],
+    "parkes": [
+     {
+      "A": 97.96,
+      "B": 2.03,
+      "C": 0.01,
+      "D": 0.0,
+      "E": 0.0
+     },
+     {
+      "A": 94.38,
+      "B": 5.55,
+      "C": 0.07,
+      "D": 0.0,
+      "E": 0.0
+     },
+     {
+      "A": 90.4,
+      "B": 9.31,
+      "C": 0.29,
+      "D": 0.0,
+      "E": 0.0
+     }
+    ]
+   }
+  },
+  "cold_start_first_24h": {
+   "n_points": 4162,
+   "twin": {
+    "rmse": [
+     29.73,
+     34.42,
+     38.12
+    ],
+    "mard": [
+     17.37,
+     20.3,
+     22.64
+    ],
+    "coverage_80": [
+     0.8073,
+     0.7617,
+     0.6941
+    ],
+    "coverage_80_raw": [
+     0.3621,
+     0.3313,
+     0.2991
+    ],
+    "parkes": [
+     {
+      "A": 86.09,
+      "B": 12.81,
+      "C": 1.08,
+      "D": 0.02,
+      "E": 0.0
+     },
+     {
+      "A": 80.27,
+      "B": 18.09,
+      "C": 1.56,
+      "D": 0.07,
+      "E": 0.0
+     },
+     {
+      "A": 73.67,
+      "B": 24.36,
+      "C": 1.8,
+      "D": 0.17,
+      "E": 0.0
+     }
+    ]
+   },
+   "persistence": {
+    "rmse": [
+     19.76,
+     29.13,
+     38.62
+    ],
+    "mard": [
+     11.3,
+     16.67,
+     23.31
+    ]
+   },
+   "linear": {
+    "rmse": [
+     27.24,
+     51.97,
+     99.12
+    ],
+    "mard": [
+     15.36,
+     29.73,
+     58.54
+    ]
+   },
+   "glycotwin_lgbm": {
+    "rmse": [
+     17.02,
+     24.97,
+     31.35
+    ],
+    "mard": [
+     10.12,
+     15.22,
+     19.91
+    ],
+    "coverage_80": [
+     0.7806,
+     0.778,
+     0.7847
+    ],
+    "parkes": [
+     {
+      "A": 95.36,
+      "B": 4.54,
+      "C": 0.1,
+      "D": 0.0,
+      "E": 0.0
+     },
+     {
+      "A": 89.62,
+      "B": 9.97,
+      "C": 0.38,
+      "D": 0.02,
+      "E": 0.0
+     },
+     {
+      "A": 82.87,
+      "B": 15.83,
+      "C": 1.2,
+      "D": 0.1,
+      "E": 0.0
+     }
+    ]
+   }
+  },
+  "by_cohort": {
+   "CGMacros": {
+    "n_points": 39009,
+    "twin": {
+     "rmse": [
+      27.6,
+      31.51,
+      35.78
+     ],
+     "mard": [
+      12.88,
+      14.67,
+      16.58
+     ],
+     "coverage_80": [
+      0.779,
+      0.7605,
+      0.748
+     ],
+     "coverage_80_raw": [
+      0.3799,
+      0.377,
+      0.3826
+     ],
+     "parkes": [
+      {
+       "A": 91.51,
+       "B": 8.17,
+       "C": 0.32,
+       "D": 0.01,
+       "E": 0.0
+      },
+      {
+       "A": 87.63,
+       "B": 11.85,
+       "C": 0.52,
+       "D": 0.01,
+       "E": 0.0
+      },
+      {
+       "A": 83.09,
+       "B": 16.01,
+       "C": 0.9,
+       "D": 0.01,
+       "E": 0.0
+      }
+     ]
+    },
+    "persistence": {
+     "rmse": [
+      20.38,
+      30.01,
+      40.75
+     ],
+     "mard": [
+      9.09,
+      13.23,
+      18.52
+     ]
+    },
+    "linear": {
+     "rmse": [
+      28.83,
+      53.64,
+      101.88
+     ],
+     "mard": [
+      13.5,
+      25.28,
+      49.01
+     ]
+    },
+    "glycotwin_lgbm": {
+     "rmse": [
+      16.45,
+      23.34,
+      28.76
+     ],
+     "mard": [
+      7.76,
+      11.01,
+      13.68
+     ],
+     "coverage_80": [
+      0.7985,
+      0.8012,
+      0.8119
+     ],
+     "parkes": [
+      {
+       "A": 97.9,
+       "B": 2.08,
+       "C": 0.02,
+       "D": 0.0,
+       "E": 0.0
+      },
+      {
+       "A": 95.03,
+       "B": 4.9,
+       "C": 0.07,
+       "D": 0.0,
+       "E": 0.0
+      },
+      {
+       "A": 92.28,
+       "B": 7.55,
+       "C": 0.16,
+       "D": 0.0,
+       "E": 0.0
+      }
+     ]
+    }
+   },
+   "ShanghaiT2DM": {
+    "n_points": 50968,
+    "twin": {
+     "rmse": [
+      27.07,
+      30.31,
+      33.51
+     ],
+     "mard": [
+      14.14,
+      15.95,
+      17.7
+     ],
+     "coverage_80": [
+      0.7839,
+      0.7659,
+      0.7668
+     ],
+     "coverage_80_raw": [
+      0.4055,
+      0.4022,
+      0.4111
+     ],
+     "parkes": [
+      {
+       "A": 86.69,
+       "B": 12.85,
+       "C": 0.46,
+       "D": 0.0,
+       "E": 0.0
+      },
+      {
+       "A": 82.28,
+       "B": 17.14,
+       "C": 0.58,
+       "D": 0.0,
+       "E": 0.0
+      },
+      {
+       "A": 78.08,
+       "B": 21.13,
+       "C": 0.79,
+       "D": 0.0,
+       "E": 0.0
+      }
+     ]
+    },
+    "persistence": {
+     "rmse": [
+      16.95,
+      27.9,
+      40.48
+     ],
+     "mard": [
+      8.81,
+      14.58,
+      22.57
+     ]
+    },
+    "linear": {
+     "rmse": [
+      17.79,
+      39.06,
+      80.92
+     ],
+     "mard": [
+      9.78,
+      21.07,
+      45.08
+     ]
+    },
+    "glycotwin_lgbm": {
+     "rmse": [
+      11.92,
+      20.36,
+      27.16
+     ],
+     "mard": [
+      6.78,
+      11.48,
+      15.99
+     ],
+     "coverage_80": [
+      0.8053,
+      0.8021,
+      0.8104
+     ],
+     "parkes": [
+      {
+       "A": 98.0,
+       "B": 2.0,
+       "C": 0.0,
+       "D": 0.0,
+       "E": 0.0
+      },
+      {
+       "A": 93.88,
+       "B": 6.05,
+       "C": 0.07,
+       "D": 0.0,
+       "E": 0.0
+      },
+      {
+       "A": 88.96,
+       "B": 10.65,
+       "C": 0.39,
+       "D": 0.0,
+       "E": 0.0
+      }
+     ]
+    }
+   }
+  },
+  "interval_scale_from_synthetic_validation": [
+   3.103,
+   2.991,
+   2.783
+  ],
+  "nowcast_twin_mean_vs_current_cgm": {
+   "rmse": 21.47,
+   "bias": -2.49,
+   "n": 91301
+  }
+ },
+ "risk": {
+  "ge180_2h": {
+   "scores": {
+    "baseline": {
+     "auroc": 0.8681,
+     "auprc": 0.5341
+    },
+    "plus_twin": {
+     "auroc": 0.8703,
+     "auprc": 0.5366
+    },
+    "transfer": {
+     "auroc": 0.6628,
+     "auprc": 0.2363
+    },
+    "transfer_no_twin": {
+     "auroc": 0.6334,
+     "auprc": 0.1851
+    },
+    "p_ge180_120": {
+     "auroc": 0.714,
+     "auprc": 0.3165
+    }
+   },
+   "by_cohort": {
+    "CGMacros": {
+     "n": 33451,
+     "base_rate": 0.1451,
+     "baseline": 0.8497,
+     "plus_twin": 0.8548,
+     "transfer": 0.7035
+    },
+    "ShanghaiT2DM": {
+     "n": 45519,
+     "base_rate": 0.1196,
+     "baseline": 0.8812,
+     "plus_twin": 0.8813,
+     "transfer": 0.6416
+    }
+   },
+   "ci95": {
+    "baseline": {
+     "auroc": [
+      0.8484,
+      0.887
+     ],
+     "auprc": [
+      0.4826,
+      0.5814
+     ]
+    },
+    "plus_twin": {
+     "auroc": [
+      0.8516,
+      0.8882
+     ],
+     "auprc": [
+      0.4865,
+      0.585
+     ]
+    },
+    "transfer": {
+     "auroc": [
+      0.6336,
+      0.6923
+     ],
+     "auprc": [
+      0.193,
+      0.2765
+     ]
+    }
+   },
+   "delta_ci95_vs_baseline": {
+    "plus_twin": {
+     "auroc": [
+      -0.0018,
+      0.0071
+     ],
+     "auprc": [
+      -0.0135,
+      0.0193
+     ]
+    },
+    "transfer": {
+     "auroc": [
+      -0.2371,
+      -0.1793
+     ],
+     "auprc": [
+      -0.3389,
+      -0.2586
+     ]
+    }
+   },
+   "n_people": 87,
+   "twin_only_score": "p_ge180_120"
+  },
+  "gt250_2h": {
+   "scores": {
+    "baseline": {
+     "auroc": 0.9232,
+     "auprc": 0.3552
+    },
+    "plus_twin": {
+     "auroc": 0.9235,
+     "auprc": 0.3554
+    },
+    "transfer": {
+     "auroc": 0.7902,
+     "auprc": 0.1543
+    },
+    "transfer_no_twin": {
+     "auroc": 0.7222,
+     "auprc": 0.0947
+    },
+    "p_hyper120": {
+     "auroc": 0.6568,
+     "auprc": 0.1326
+    }
+   },
+   "by_cohort": {
+    "CGMacros": {
+     "n": 38119,
+     "base_rate": 0.0358,
+     "baseline": 0.9195,
+     "plus_twin": 0.9223,
+     "transfer": 0.8352
+    },
+    "ShanghaiT2DM": {
+     "n": 50466,
+     "base_rate": 0.0162,
+     "baseline": 0.9228,
+     "plus_twin": 0.918,
+     "transfer": 0.7476
+    }
+   },
+   "ci95": {
+    "baseline": {
+     "auroc": [
+      0.894,
+      0.9442
+     ],
+     "auprc": [
+      0.2284,
+      0.4338
+     ]
+    },
+    "plus_twin": {
+     "auroc": [
+      0.8997,
+      0.9431
+     ],
+     "auprc": [
+      0.2239,
+      0.4365
+     ]
+    },
+    "transfer": {
+     "auroc": [
+      0.7281,
+      0.8315
+     ],
+     "auprc": [
+      0.0543,
+      0.2308
+     ]
+    }
+   },
+   "delta_ci95_vs_baseline": {
+    "plus_twin": {
+     "auroc": [
+      -0.0078,
+      0.0102
+     ],
+     "auprc": [
+      -0.0223,
+      0.0294
+     ]
+    },
+    "transfer": {
+     "auroc": [
+      -0.187,
+      -0.0988
+     ],
+     "auprc": [
+      -0.2517,
+      -0.146
+     ]
+    }
+   },
+   "n_people": 87,
+   "twin_only_score": "p_hyper120"
+  }
+ },
+ "synthetic_vs_real": {
+  "synthetic": {
+   "rate_ge180": 0.3232434330446816,
+   "rate_gt250": 0.13380210276227486,
+   "sd_delta30": 28.498871738901283,
+   "n_patients": 240
+  },
+  "real": {
+   "rate_ge180": 0.1304,
+   "rate_gt250": 0.0246,
+   "sd_delta30": 18.6
+  },
+  "definition": "ratio = synthetic / real; labels GlycoTwin-style on 15-min CGM after 24 h; volatility = SD of the 30-min CGM change"
+ },
+ "assimilation": {
+  "records": 90,
+  "total_seconds": 571.0,
+  "sync_mard_median_pct": 9.1,
+  "sync_mard_iqr_pct": [
+   7.86,
+   11.27
+  ],
+  "definition": "posterior plasma-glucose median vs the CGM reading at the same sample, per record"
+ },
+ "baseline_features": [
+  "g0",
+  "d15",
+  "d30",
+  "d60",
+  "d90",
+  "d120",
+  "accel",
+  "mean_2h",
+  "std_2h",
+  "min_2h",
+  "max_2h",
+  "mean_6h",
+  "std_6h",
+  "mean_24h",
+  "cv_24h",
+  "tar_24h",
+  "tbr_24h",
+  "g_rel24",
+  "tod_sin",
+  "tod_cos",
+  "mins_since_hyper",
+  "mins_since_hypo",
+  "carbs_1h",
+  "carbs_2h",
+  "carbs_4h",
+  "cob",
+  "ra_now",
+  "ra_next30",
+  "ra_next60",
+  "mins_since_meal",
+  "last_meal_carbs",
+  "protein_4h",
+  "fat_4h",
+  "fiber_4h",
+  "kcal_4h",
+  "iob_fast",
+  "iob_int",
+  "ins_act_now",
+  "ins_act_next60",
+  "basal_rate_uph",
+  "ins_fast_4h",
+  "secretagogue_6h",
+  "agi_4h",
+  "oral_any_24h",
+  "hr_30",
+  "hr_60",
+  "hr_rest_24h",
+  "hr_rel",
+  "mets_30",
+  "mets_60",
+  "active_min_60",
+  "mets_24h",
+  "age",
+  "sex_m",
+  "bmi",
+  "hba1c_pct",
+  "fpg_mgdl",
+  "fasting_insulin_uU",
+  "homa_ir",
+  "tg_mgdl",
+  "hdl_mgdl",
+  "status_code",
+  "on_insulin_f",
+  "diabetes_duration_y",
+  "egfr",
+  "sensor_dexcom",
+  "rx_alpha_glucosidase_inhibitor_f",
+  "rx_biguanide_f",
+  "rx_dpp4_inhibitor_f",
+  "rx_glinide_f",
+  "rx_glp1_ra_f",
+  "rx_sglt2_inhibitor_f",
+  "rx_sulfonylurea_f",
+  "rx_thiazolidinedione_f"
+ ],
+ "twin_features": [
+  "tw_g",
+  "tw_g_sd",
+  "tw_gi",
+  "tw_x",
+  "tw_ins",
+  "tw_gut",
+  "fc30_p10",
+  "fc30_p50",
+  "fc30_p90",
+  "fc60_p10",
+  "fc60_p50",
+  "fc60_p90",
+  "fc120_p10",
+  "fc120_p50",
+  "fc120_p90",
+  "fc_max120_p50",
+  "fc_min60_p10",
+  "fc_min120_p50",
+  "p_hyper120",
+  "p_hypo60",
+  "p_hypo120",
+  "tw_si",
+  "tw_sg",
+  "tw_beta",
+  "tw_egp",
+  "tw_taus",
+  "tw_dawn",
+  "tw_si_d24",
+  "tw_beta_d24",
+  "tw_egp_d24",
+  "tw_si_vs_prior",
+  "tw_innov30",
+  "tw_innov_abs60",
+  "p_ge180_120"
+ ],
+ "excluded_records": 64
+}

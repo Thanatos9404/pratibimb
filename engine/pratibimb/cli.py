@@ -1,4 +1,4 @@
-"""Command-line interface: ``pratibimb generate|assimilate|train|evaluate|export-demo|serve|build``."""
+"""Command-line interface: ``pratibimb generate|assimilate|train|evaluate|export-demo|serve|build|validate-real``."""
 
 from __future__ import annotations
 
@@ -81,6 +81,23 @@ def cmd_serve(args) -> None:
     uvicorn.run("pratibimb.api.app:app", host=args.host, port=port, log_level="info")
 
 
+def cmd_validate_real(args) -> None:
+    from .realdata.validate import validate_real
+
+    glyco = args.glyco_path or os.environ.get("PRATIBIMB_GLYCO")
+    if not glyco:
+        raise SystemExit("validate-real needs --glyco-path <GlycoTwin repo> (or PRATIBIMB_GLYCO)")
+    web = None if args.no_web else Path(args.web_out)
+    validate_real(Path(glyco), workers=args.workers, ensemble=args.ensemble, reuse=args.reuse, web_out=web, log=_log)
+
+
+def cmd_fusion(args) -> None:
+    from .ml.fusion import fusion_ablation
+
+    p = get_profile(args.profile)
+    fusion_ablation(p, paths_for(p), workers=args.workers, seed=p.seed % 10_000, log=_log)
+
+
 def cmd_build(args) -> None:
     t0 = time.time()
     timings = {}
@@ -136,6 +153,19 @@ def main(argv: list[str] | None = None) -> None:
     sp.add_argument("--out", default=None)
     sp.add_argument("--patients", type=int, default=None)
     sp.set_defaults(func=cmd_build)
+    sp = sub.add_parser("fusion-ablation", help="synthetic EHR / wearable fusion ablations -> metrics.json")
+    common(sp)
+    sp.set_defaults(func=cmd_fusion)
+
+    sp = sub.add_parser("validate-real", help="external validation on real open CGM data (GlycoTwin store)")
+    sp.add_argument("--glyco-path", default=None, help="path to the GlycoTwin repository (read-only)")
+    sp.add_argument("--workers", type=int, default=6, help="worker processes (capped at 6)")
+    sp.add_argument("--ensemble", type=int, default=64)
+    sp.add_argument("--reuse", action="store_true", help="reuse cached twin runs in data/real/twin")
+    sp.add_argument("--web-out", default=str(Path(__file__).resolve().parents[2] / "web" / "public" / "demo"))
+    sp.add_argument("--no-web", action="store_true", help="do not copy the JSON into the web demo folder")
+    sp.set_defaults(func=cmd_validate_real)
+
     args = ap.parse_args(argv)
     args.func(args)
 

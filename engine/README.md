@@ -14,9 +14,10 @@ pratibimb/
   ml/           causal features, truth labels, LightGBM + isotonic calibration, TreeSHAP drivers,
                 alert hysteresis, ablation, Parkes error grid, evaluation
   reports/      cohort validation + slide-ready figures
+  realdata/     external validation on real open CGM data (GlycoTwin store -> Pratibimb records)
   api/          FastAPI app (SPEC section 5 contract), WebSocket replay
   export.py     static demo export for the web app
-  cli.py        `pratibimb generate|assimilate|train|evaluate|export-demo|serve|build`
+  cli.py        `pratibimb generate|assimilate|train|evaluate|export-demo|serve|build|fusion-ablation|validate-real`
 ```
 
 ## Setup
@@ -45,7 +46,16 @@ pratibimb generate     # synthetic cohort -> data/<profile>/cohort
 pratibimb assimilate   # EnKF sync + per-decision-point twin forecasts -> data/<profile>/twin
 pratibimb train        # decision-point datasets + LightGBM/calibration/thresholds -> data/<profile>/ml
 pratibimb evaluate     # metrics.json, alert ledger, cohort_validation.json, figures
+
+# extras
+pratibimb fusion-ablation   # synthetic EHR / wearable ablations -> metrics.json "fusion_ablation" (~15 min)
+pratibimb validate-real --glyco-path ../../DigitalTwin_HappiestHealth   # REAL open data check (~6 min)
 ```
+
+`validate-real` reads the GlycoTwin repository read-only (CGMacros + ShanghaiT2DM harmonised store; run
+`python -m glycotwin.store` there first). It writes `reports/real_validation.json` (+ `_detail.json`) and copies
+the summary to `web/public/demo/real_validation.json`. Derived records stay in the git-ignored `data/real/`
+(CGMacros is CC BY-NC-SA 4.0). See `docs/REAL_DATA.md`.
 
 (`python -m pratibimb ...` works too.) Seeds are fixed, so every stage is deterministic.
 

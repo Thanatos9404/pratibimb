@@ -3,7 +3,7 @@ import "server-only";
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 
-import type { CohortResponse, Food, Forecast, Metrics, PatientDetail, Timeline, WhatIfResponse } from "@/lib/api/types";
+import type { CohortResponse, Food, Forecast, Metrics, PatientDetail, RealValidation, Timeline, WhatIfResponse } from "@/lib/api/types";
 import { HOUR, ms } from "@/lib/time";
 
 /**
@@ -35,6 +35,8 @@ export interface LandingData {
   now: number;
   cohort: CohortResponse["patients"];
   metrics: Metrics | null;
+  /** REAL-data external validation (always read from public/demo; null if absent) */
+  real: RealValidation | null;
   foodsCount: number;
   hero: {
     patient: Pick<PatientDetail, "id" | "display_name" | "age" | "sex" | "inferred_subtype" | "meds" | "risk" | "tir_7d" | "last_glucose" | "trend" | "hba1c" | "bmi" | "region"> & {
@@ -180,5 +182,6 @@ export function loadLandingData(): LandingData | null {
     .slice(0, 12)
     .map((f) => ({ name: f.name, name_hi: f.name_hi, gi: f.gi, carbs_g: f.carbs_g, serving_desc: f.serving_desc }));
 
-  return { kind: b.kind, now, cohort: cohort.patients, metrics, foodsCount: foodsAll.length, hero, whatif, scenarios: scenarios.slice(0, 6), foods };
+  const real = read<RealValidation>(path.join(PUB, "demo"), "real_validation.json");
+  return { kind: b.kind, now, cohort: cohort.patients, metrics, real, foodsCount: foodsAll.length, hero, whatif, scenarios: scenarios.slice(0, 6), foods };
 }

@@ -69,6 +69,10 @@ export function useMetrics() {
   return useAsync("metrics", api.metrics);
 }
 
+export function useRealValidation() {
+  return useAsync("real-validation", api.realValidation);
+}
+
 export function useValidation() {
   return useAsync("validation", api.validation);
 }

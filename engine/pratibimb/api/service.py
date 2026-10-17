@@ -648,8 +648,12 @@ class TwinService:
             else:
                 day0 = (now // 1440) * 1440
                 at = max(day0 + min(times) - 30, 0)
+            # when no dose is due in the next 4 h the preset replays today's dose from 30 min before it
+            # (``at`` earlier than now); say so in the label so the UI does not imply "next 5 h from now"
+            label = (f"Skip the next {m['name']} dose" if at == now else
+                     f"Skip today's {m['name']} dose (replayed from {at % 1440 // 60:02d}:{at % 60:02d})")
             out[f"skip-{m['drug'].replace('_', '-')}"] = {
-                "label": f"Skip the next {m['name']} dose", "request": {"at": iso(at), "horizon_min": 360,
+                "label": label, "request": {"at": iso(at), "horizon_min": 360,
                                                                         "scenario": {"skip_dose": m["drug"]}}}
         return out
 

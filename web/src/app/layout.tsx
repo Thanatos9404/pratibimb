@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   description:
     "A hybrid physiological + machine-learning digital twin of a person with Type 2 Diabetes. It forecasts glucose four hours ahead, warns of hyper- and hypoglycaemia before they happen, and lets a clinician test Indian meals and routines on the virtual patient. Synthetic data; not a medical device.",
   applicationName: "Pratibimb",
-  authors: [{ name: "Yashvardhan Thanvi" }, { name: "Devesh Jain" }],
+  authors: [{ name: "Yashvardhan Thanvi" }],
   openGraph: {
     type: "website",
     siteName: "Pratibimb",

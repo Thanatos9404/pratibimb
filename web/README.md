@@ -65,4 +65,4 @@ Requires `npx playwright install chromium` once.
 
 ## Credits
 
-Font: Open Runde (SIL OFL 1.1, `public/fonts/OpenRunde-OFL.txt`). Photos: Unsplash licence, see `public/photos/CREDITS.md`. Code: Apache-2.0. Team Stack Underflow — Yashvardhan Thanvi, Devesh Jain — BIT Mesra (Off Campus Jaipur).
+Font: Open Runde (SIL OFL 1.1, `public/fonts/OpenRunde-OFL.txt`). Photos: Unsplash licence, see `public/photos/CREDITS.md`. Code: Apache-2.0. Team Stack Underflow — Yashvardhan Thanvi (solo entry) — BIT Mesra (Off Campus Jaipur).

@@ -3,7 +3,7 @@
 Submission folder for the **Happiest Health Digital Twin Challenge 2026** (Unstop).
 
 **Project:** Pratibimb (प्रतिबिम्ब), a hybrid physiology + machine-learning digital twin for Type 2 Diabetes, built for India.
-**Team:** Stack Underflow. Yashvardhan Thanvi (team leader) and Devesh Jain, both final-year BCA students at Birla Institute of Technology (BIT Mesra), Off Campus Jaipur.
+**Team:** Stack Underflow (solo entry). Yashvardhan Thanvi (team leader), final-year BCA student at Birla Institute of Technology (BIT Mesra), Off Campus Jaipur.
 
 | Deliverable | File |
 |---|---|

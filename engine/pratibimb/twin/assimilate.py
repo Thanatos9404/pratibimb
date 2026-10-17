@@ -61,6 +61,12 @@ def _innovations(obs_cgm: np.ndarray, prior_mean: np.ndarray, k: int, n: int) ->
 def twin_features(run: TwinRun, prior: HabitPrior, z: np.ndarray, k: int, q_prior: np.ndarray,
                   pmean: np.ndarray) -> np.ndarray:
     traj = ensemble_forecast(run, z, k, FEATURE_HORIZON_MIN, prior, forecast_seed(run, k))
+    return twin_features_from_traj(run, traj, z, k, q_prior, pmean)
+
+
+def twin_features_from_traj(run: TwinRun, traj: np.ndarray, z: np.ndarray, k: int, q_prior: np.ndarray,
+                            pmean: np.ndarray) -> np.ndarray:
+    """Twin features from an already computed +120-min ensemble forecast ``traj`` (members x 25)."""
     qs = np.quantile(traj[:, [6, 12, 24]], [0.1, 0.5, 0.9], axis=0)
     p50 = np.median(traj, axis=0)
     g = z[:, S_G]

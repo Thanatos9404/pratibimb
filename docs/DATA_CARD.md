@@ -1,6 +1,8 @@
 # Data card — Pratibimb synthetic T2D cohort
 
-> **Everything here is synthetic.** No real patient data were used. Names are random combinations of
+> **Everything here is synthetic.** No real patient data were used to build or train Pratibimb (a separate,
+> after-the-fact external validation on open, de-identified real CGM data is documented in
+> [REAL_DATA.md](REAL_DATA.md); see section 5b). Names are random combinations of
 > common Indian given names and surnames; ABHA numbers use the obviously-synthetic prefix
 > `91-0000-` and a local identifier system. Genetic markers are synthetic and illustrative.
 
@@ -125,6 +127,17 @@ imbalance) — the subtype shown in the UI is a rough phenotype, not a diagnosis
   LADA / MODY, no pregnancy.
 * The CGM error model targets a MARD of roughly 8–10 % versus plasma truth; real sensors differ by
   brand and wear day.
+
+## 5b. Synthetic vs real (external check, `reports/real_validation.json`)
+
+The same label rules were applied to synthetic CGM and to 90 real records (CGMacros + non-insulin
+ShanghaiT2DM), both on a 15-min grid after the first 24 h. The synthetic cohort has **2.479×** the real rate
+of ≥180 mg/dL-within-2 h windows and **5.439×** the rate of >250 mg/dL-within-2 h windows. The SD of its
+30-min CGM change is **1.532×** the real one. The synthetic cohort is therefore much more hyperglycaemic and
+volatile than these real records (which include healthy and prediabetic CGMacros participants and mostly
+well-controlled, non-insulin T2D). This is a known gap to close when the simulator is next recalibrated.
+Real data are not redistributed: derived files live in the git-ignored `data/real/` (CGMacros is CC BY-NC-SA
+4.0; ShanghaiT2DM is CC BY 4.0).
 
 ## 6. References (cited for design choices; claims hedged)
 

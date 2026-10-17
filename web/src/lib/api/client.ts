@@ -12,6 +12,7 @@ import type {
   ForecastSeries,
   Metrics,
   PatientDetail,
+  RealValidation,
   Timeline,
   WhatIfPreset,
   WhatIfRequest,
@@ -153,6 +154,11 @@ export const api = {
   async metrics(): Promise<Metrics> {
     const src = await resolveSource();
     return cached(`metrics:${src.kind}`, () => (src.kind === "api" ? getJSON(`${src.apiBase}/api/metrics`) : getJSON(s(src, "metrics.json"))));
+  },
+
+  /** REAL-data external validation: a static report shipped in /demo whatever the data source. */
+  async realValidation(): Promise<RealValidation> {
+    return cached("real-validation", () => getJSON<RealValidation>("/demo/real_validation.json"));
   },
 
   async validation(): Promise<CohortValidation> {

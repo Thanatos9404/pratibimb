@@ -1,0 +1,137 @@
+{
+ "generated_at": "2026-10-16T01:30:21+05:30",
+ "datasets": [
+  {
+   "name": "CGMacros",
+   "source": "PhysioNet",
+   "licence": "CC BY-NC-SA 4.0",
+   "n_people": 45,
+   "n_days": 490.0,
+   "used_records": 45,
+   "notes": "All 45 participants (15 healthy, 16 prediabetes, 14 T2D by HbA1c); 5-min Dexcom G6, Fitbit HR/METs, photo-logged meal macros; no medication records."
+  },
+  {
+   "name": "ShanghaiT2DM",
+   "source": "figshare",
+   "licence": "CC BY 4.0",
+   "n_people": 42,
+   "n_days": 561.0,
+   "used_records": 45,
+   "notes": "Non-insulin records only (45 of 109; 64 with any insulin excluded); 15-min FreeStyle Libre H, text meal records (carbs estimated by GlycoTwin's food rules), oral agents mapped to Pratibimb's catalogue; no wearables."
+  }
+ ],
+ "forecast": {
+  "horizons_min": [
+   30,
+   60,
+   120
+  ],
+  "n_points": 89977,
+  "twin": {
+   "rmse": [
+    27.3,
+    30.84,
+    34.51
+   ],
+   "mard": [
+    13.6,
+    15.39,
+    17.22
+   ],
+   "coverage_80": [
+    0.7818,
+    0.7636,
+    0.7586
+   ],
+   "parkes_A": [
+    88.78,
+    84.6,
+    80.25
+   ]
+  },
+  "persistence": {
+   "rmse": [
+    18.52,
+    28.83,
+    40.6
+   ]
+  },
+  "linear": {
+   "rmse": [
+    23.23,
+    45.96,
+    90.61
+   ]
+  },
+  "glycotwin_lgbm": {
+   "rmse": [
+    14.06,
+    21.7,
+    27.87
+   ],
+   "source": "reproduced"
+  }
+ },
+ "risk": [
+  {
+   "event": "ge180_2h",
+   "base_rate": 0.1304,
+   "n_windows": 78970,
+   "baseline": {
+    "auroc": 0.8681,
+    "auprc": 0.5341
+   },
+   "plus_twin": {
+    "auroc": 0.8703,
+    "auprc": 0.5366
+   },
+   "transfer_no_retrain": {
+    "auroc": 0.6628,
+    "auprc": 0.2363
+   }
+  },
+  {
+   "event": "gt250_2h",
+   "base_rate": 0.0246,
+   "n_windows": 88585,
+   "baseline": {
+    "auroc": 0.9232,
+    "auprc": 0.3552
+   },
+   "plus_twin": {
+    "auroc": 0.9235,
+    "auprc": 0.3554
+   },
+   "transfer_no_retrain": {
+    "auroc": 0.7902,
+    "auprc": 0.1543
+   }
+  }
+ ],
+ "synthetic_vs_real": {
+  "event_rate_ratio_ge180": 2.479,
+  "event_rate_ratio_gt250": 5.439,
+  "volatility_ratio_30min": 1.532
+ },
+ "limitations": [
+  "Real-data twin uses population priors from the EHR (no per-patient tuning); the EnKF and all twin settings were fixed on synthetic validation patients and not re-tuned on these records.",
+  "Twin forecast is plasma glucose and is scored against CGM (interstitial) readings.",
+  "ShanghaiT2DM meals are carbohydrate estimates from free text (some imputed); CGMacros macros are photo-based estimates. Meal glycaemic index is unknown (fixed at 55).",
+  "No waist (WHtR from BMI), no sleep or HRV in either dataset; ShanghaiT2DM has no wearables; CGMacros has no medication records; diabetes duration is defaulted for CGMacros.",
+  "Insulin-treated ShanghaiT2DM records (64 of 109) are excluded: Pratibimb models basal glargine only.",
+  "Only 87 people (90 records, ~10-14 days each); Chinese and US cohorts, not Indian patients.",
+  "Transfer model was trained on synthetic plasma-glucose labels (>250 mg/dL runs) with 5-min CGM features; real ShanghaiT2DM CGM is 15-min, so CGM-gap features are out of distribution.",
+  "Research prototype; not clinically validated; not a medical device."
+ ],
+ "notes": [
+  "REAL DATA: CGMacros (PhysioNet, CC BY-NC-SA 4.0) and ShanghaiT2DM (figshare, CC BY 4.0) via GlycoTwin's harmonised store; derived records stay in git-ignored data/real; only aggregates are published here.",
+  "Forecast points: GlycoTwin's 15-min timestamps after each record's first 24 h where twin, GlycoTwin LightGBM, persistence, linear and all three targets exist (identical points for every method).",
+  "glycotwin_lgbm = GlycoTwin's own out-of-fold LightGBM predictions (oof_predictions.parquet) read at the same timestamps; it was trained on all 154 records (incl. insulin users) with patient-level 5-fold CV.",
+  "Twin 80% interval: ensemble p10-p90 widened by the scale fitted on synthetic validation patients ([3.103, 2.991, 2.783]), applied unchanged.",
+  "Linear = last CGM + 30-min slope x horizon (Pratibimb's baseline); persistence = current CGM.",
+  "Risk: GlycoTwin features and person-level folds (models/folds.json), LightGBM with GlycoTwin's fixed settings (250 rounds, no early stopping); identical windows (after 24 h) for every model.",
+  "ge180_2h = current <180 and any CGM >=180 in next 120 min; gt250_2h = current <250 and any CGM >250 in next 120 min (>=6 of 8 future 15-min readings present).",
+  "transfer_no_retrain = synthetic-trained Pratibimb hybrid hyper_2h (>250) model applied as is; for ge180_2h the same score is used, so it ranks a different event than it was trained on.",
+  "synthetic_vs_real ratios are synthetic / real (same label rules on 15-min CGM)."
+ ]
+}

@@ -278,19 +278,32 @@ path(f"M{dx+dw/2} 641 V{656-3}")
 
 # ---------------------------------------------------------------- 04 evaluation strip
 EY = 762
-rect(40, EY, 1520, 74, r=24, fill=OFF, stroke="#A39D9A", dash="6 5")
+rect(40, EY, 1000, 74, r=24, fill=OFF, stroke="#A39D9A", dash="6 5")
 t(62, EY + 28, "04  Evaluation · held-out synthetic patients", size=11, weight=600, fill=BROWN, upper=True, ls="1.4")
-t(62, EY + 52, "36 test patients never used for training or tuning · labels from hidden plasma glucose (CGM-labelled variant too)", size=12.5, fill=BODY)
-xx = 760
-for s in ["AUROC / AUPRC + bootstrap 95 % CI", "4-model ablation", "forecast RMSE vs baselines", "Parkes error grid", "lead time"]:
-    xx += chip(xx, EY + 33, s, fill="#FFFFFF", size=10.5) + 6
-t(1540, EY + 58, "→ reports/metrics.json → /api/metrics → Model card", size=11, mono=True, fill=BROWN, anchor="end")
+t(62, EY + 52, "36 test patients never used for training or tuning · labels from hidden plasma glucose", size=12.5, fill=BODY)
+t(1020, EY + 28, "→ reports/metrics.json", size=11, mono=True, fill=BROWN, anchor="end")
+t(1020, EY + 52, "AUROC / AUPRC + 95 % CI · ablations · Parkes grid · lead time", size=11, fill=MUTED, anchor="end")
+
+# ---------------------------------------------------------------- 05 real-data external check
+try:
+    import json as _json
+    _rv = _json.loads((ROOT / "reports" / "real_validation.json").read_text(encoding="utf-8"))
+    _rec = sum(d["used_records"] for d in _rv["datasets"])
+    _ppl = sum(d["n_people"] for d in _rv["datasets"])
+    _real_line = f"CGMacros + ShanghaiT2DM · {_rec} records · {_ppl} people · no tuning"
+except (OSError, KeyError, ValueError):
+    _real_line = "CGMacros + ShanghaiT2DM · open, de-identified CGM · no tuning"
+RX = 1056
+rect(RX, EY, 1560 - RX, 74, r=24, fill=INK)
+t(RX + 22, EY + 28, "05  External check · REAL open data", size=11, weight=600, fill=SKY, upper=True, ls="1.4")
+t(RX + 22, EY + 52, _real_line, size=12.5, fill="#FFFFFF")
+t(1540, EY + 28, "→ reports/real_validation.json", size=11, mono=True, fill=SKY, anchor="end")
 path(f"M{cx+129} 729 V{EY-3}", color="#9A8F8A", dash="5 5")
 path(f"M{bx[1]+92} {by+bh+1} V{EY-3}", color="#9A8F8A", dash="5 5")
 t(bx[1] + 100, 752, "predictions", size=10.5, fill=MUTED)
 
 # ---------------------------------------------------------------- footer
-t(40, 872, "All data are synthetic (DPDP Act / HIPAA sandbox). Not a medical device. Recommendations are illustrative.", size=11.5, fill=MUTED)
+t(40, 872, "Training data are synthetic (DPDP Act / HIPAA sandbox); open de-identified real CGM data only for external validation. Not a medical device.", size=11.5, fill=MUTED)
 t(1560, 872, "Pratibimb · Team Stack Underflow · BIT Mesra, Off Campus Jaipur · Apache-2.0", size=11.5, fill=MUTED, anchor="end")
 
 
@@ -342,7 +355,7 @@ svg = (
     f"Pratibimb engine: EHR priors, a minimal-model twin kept in sync by an ensemble Kalman filter, ensemble "
     f"forecasts and a what-if simulator; a LightGBM risk layer with isotonic calibration, TreeSHAP drivers and "
     f"alert logic; served by FastAPI (REST + WebSocket) or a static export to a Next.js clinician console; "
-    f"evaluated on held-out patients against hidden truth.</desc>"
+    f"evaluated on held-out patients against hidden truth, and externally checked on open real CGM data (CGMacros, ShanghaiT2DM).</desc>"
     + defs
     + "".join(parts)
     + "</svg>"

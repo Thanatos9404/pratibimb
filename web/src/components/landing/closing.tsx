@@ -138,12 +138,58 @@ export function Evidence({ data }: { data: LandingData }) {
           </Reveal>
         ))}
       </div>
+      {data.real && <RealEvidence r={data.real} />}
       <div className="mt-10 flex justify-center">
         <Link href="/console/model" className="pill-dark">
           Read the model card <ArrowRightIcon className="arrow size-4" />
         </Link>
       </div>
     </section>
+  );
+}
+
+const fmtList = (xs: (number | null)[], d = 1) => xs.map((v) => (isNum(v) ? v.toFixed(d) : DASH)).join(" / ");
+
+/** Real-data check card: every number from public/demo/real_validation.json. */
+function RealEvidence({ r }: { r: NonNullable<LandingData["real"]> }) {
+  const f = r.forecast;
+  const people = r.datasets.reduce((a, d) => a + (isNum(d.n_people) ? d.n_people : 0), 0);
+  const records = r.datasets.reduce((a, d) => a + (isNum(d.used_records) ? d.used_records : 0), 0);
+  const risk = r.risk.find((e) => e.event === "ge180_2h") ?? r.risk[0];
+  const s = r.synthetic_vs_real;
+  return (
+    <Reveal className="mx-auto mt-10 max-w-[1072px]">
+      <div className="rounded-[28px] bg-[#1e1a19] p-7 text-white shadow-[var(--shadow-soft)] sm:p-9">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="text-[12px] font-semibold tracking-[0.12em] text-white/60 uppercase">Real-data validation</div>
+          <span className="rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold tracking-wide">REAL · CGMacros + ShanghaiT2DM (non-commercial licence)</span>
+        </div>
+        <div className="mt-3 max-w-[760px] text-[22px] leading-snug font-bold tracking-[-0.03em] sm:text-[26px]">
+          Then we ran the unchanged twin on {records} real CGM records from {people} people, with no tuning.
+        </div>
+        <div className="mt-7 grid gap-5 sm:grid-cols-3">
+          {[
+            ["Twin forecast RMSE, mg/dL", fmtList(f.twin.rmse), `+${f.horizons_min.join(" / +")} min · persistence ${fmtList(f.persistence.rmse)}`],
+            ["Data-driven LightGBM (GlycoTwin)", fmtList(f.glycotwin_lgbm.rmse), `same ${isNum(f.n_points) ? f.n_points.toLocaleString("en-IN") : DASH} timestamps · linear ${fmtList(f.linear.rmse, 0)}`],
+            [
+              "≥180 within 2 h, AUROC",
+              risk ? `${fmtList([risk.baseline.auroc], 3)} → ${fmtList([risk.plus_twin.auroc], 3)}` : DASH,
+              risk ? `baseline → + twin features; synthetic model, no retraining: ${fmtList([risk.transfer_no_retrain.auroc], 3)}` : "",
+            ],
+          ].map(([a, b, c]) => (
+            <div key={a} className="border-t border-white/15 pt-4">
+              <div className="text-[13px] text-white/60">{a}</div>
+              <div className="num mt-1.5 text-[22px] font-bold tracking-[-0.03em]">{b}</div>
+              <div className="mt-1 text-[12.5px] text-white/55">{c}</div>
+            </div>
+          ))}
+        </div>
+        <p className="mt-6 text-[13.5px] leading-relaxed text-white/70">
+          Honest reading: on real data the twin beats linear extrapolation and, at 2 h, persistence, but a data-driven forecaster is more accurate and the twin features add little. Our synthetic cohort is{" "}
+          {isNum(s.event_rate_ratio_gt250) ? `${s.event_rate_ratio_gt250.toFixed(1)}×` : DASH} more prone to &gt;250 mg/dL events than these real records, so synthetic scores are not real-world performance.
+        </p>
+      </div>
+    </Reveal>
   );
 }
 
@@ -185,15 +231,14 @@ export function Architecture() {
 }
 
 const TEAM = [
-  { name: "Yashvardhan Thanvi", role: "Team lead" },
-  { name: "Devesh Jain", role: "Team member" },
+  { name: "Yashvardhan Thanvi", role: "Team lead · final-year BCA" },
 ];
 
 export function Team() {
   return (
     <section id="team" className="scroll-mt-24 px-5 py-24 sm:py-32" style={{ background: "linear-gradient(180deg, #f9f8f8 0%, #dbe8f5 100%)" }}>
       <SectionHead eyebrow="Team Stack Underflow" line1="Built for the Happiest Health" line2="Digital Twin Challenge 2026." />
-      <div className="mx-auto mt-14 grid max-w-[952px] gap-5 sm:grid-cols-2">
+      <div className="mx-auto mt-14 grid max-w-[476px] gap-5">
         {TEAM.map((t, i) => (
           <Reveal key={t.name} delay={i * 0.08}>
             <div className="h-full rounded-[28px] bg-white/80 p-8 shadow-[var(--shadow-soft)] backdrop-blur">

@@ -295,6 +295,9 @@ def evaluate(profile: Profile, paths: Paths, log=print) -> dict:
                   "Nocturnal operating point: <= 1 false alert per patient-week (one decision per night).",
                   "ci95: patient-level bootstrap (200 resamples)."],
     }
+    fusion = paths.ml / "fusion_ablation.json"  # written by `pratibimb fusion-ablation`; kept across re-evaluation
+    if fusion.exists():
+        metrics["fusion_ablation"] = json.loads(fusion.read_text(encoding="utf-8"))
     paths.reports.mkdir(parents=True, exist_ok=True)
     with (paths.reports / "metrics.json").open("w", encoding="utf-8") as fh:
         json.dump(clean(metrics), fh, indent=1, allow_nan=False)

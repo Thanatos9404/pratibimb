@@ -780,5 +780,245 @@
   "Labels use truth plasma glucose; 'cgm_labelled' re-scores the same predictions against CGM-derived labels.",
   "Nocturnal operating point: <= 1 false alert per patient-week (one decision per night).",
   "ci95: patient-level bootstrap (200 resamples)."
- ]
+ ],
+ "fusion_ablation": {
+  "description": "SYNTHETIC test patients. Risk: hybrid LightGBM retrained without EHR/static features, without wearable features (HR, HRV, steps, sleep, stress/exercise traces) and without both; twin features kept; same splits/seed/early stopping/calibration as the main model. Twin: EnKF re-run with a population prior instead of the EHR prior, or with no wearable inputs; twin-only scores and forecast RMSE vs truth plasma glucose.",
+  "ehr_features": [
+   "age",
+   "sex_m",
+   "bmi",
+   "whtr",
+   "hba1c",
+   "tyg",
+   "egfr",
+   "fpg",
+   "diabetes_years",
+   "cpeptide",
+   "rx_metformin",
+   "rx_su",
+   "rx_dpp4",
+   "rx_sglt2",
+   "rx_insulin",
+   "su_dose_rel",
+   "insulin_units",
+   "tcf7l2_t"
+  ],
+  "wearable_features": [
+   "steps_30",
+   "steps_60",
+   "steps_today",
+   "hr",
+   "hr_vs_base",
+   "hrv",
+   "hrv_vs_base",
+   "sleep_h_last",
+   "sleep_eff_last",
+   "deep_pct_last",
+   "sleep_debt_3d",
+   "min_since_wake",
+   "asleep_now",
+   "ex_trace",
+   "sleep_si_mult",
+   "stress"
+  ],
+  "risk_model": {
+   "hyper_2h": {
+    "n_test": 85317,
+    "prevalence": 0.1337,
+    "hybrid": {
+     "auroc": 0.9368,
+     "auprc": 0.7087
+    },
+    "no_ehr": {
+     "auroc": 0.9372,
+     "auprc": 0.7101,
+     "delta_auroc": 0.0004,
+     "delta_auprc": 0.0014,
+     "n_features": 83
+    },
+    "no_wearable": {
+     "auroc": 0.9361,
+     "auprc": 0.7082,
+     "delta_auroc": -0.0007,
+     "delta_auprc": -0.0005,
+     "n_features": 85
+    },
+    "no_ehr_no_wearable": {
+     "auroc": 0.9356,
+     "auprc": 0.7014,
+     "delta_auroc": -0.0012,
+     "delta_auprc": -0.0073,
+     "n_features": 67
+    },
+    "n_features_hybrid": 101
+   },
+   "hypo_1h": {
+    "n_test": 92074,
+    "prevalence": 0.0052,
+    "hybrid": {
+     "auroc": 0.9855,
+     "auprc": 0.3244
+    },
+    "no_ehr": {
+     "auroc": 0.9879,
+     "auprc": 0.3308,
+     "delta_auroc": 0.0024,
+     "delta_auprc": 0.0064,
+     "n_features": 83
+    },
+    "no_wearable": {
+     "auroc": 0.9849,
+     "auprc": 0.309,
+     "delta_auroc": -0.0006,
+     "delta_auprc": -0.0154,
+     "n_features": 85
+    },
+    "no_ehr_no_wearable": {
+     "auroc": 0.9879,
+     "auprc": 0.3341,
+     "delta_auroc": 0.0024,
+     "delta_auprc": 0.0097,
+     "n_features": 67
+    },
+    "n_features_hybrid": 101
+   },
+   "nocturnal_hypo": {
+    "n_test": 936,
+    "prevalence": 0.0085,
+    "hybrid": {
+     "auroc": 0.9379,
+     "auprc": 0.1504
+    },
+    "no_ehr": {
+     "auroc": 0.9157,
+     "auprc": 0.2146,
+     "delta_auroc": -0.0222,
+     "delta_auprc": 0.0642,
+     "n_features": 87
+    },
+    "no_wearable": {
+     "auroc": 0.9449,
+     "auprc": 0.1011,
+     "delta_auroc": 0.007,
+     "delta_auprc": -0.0493,
+     "n_features": 89
+    },
+    "no_ehr_no_wearable": {
+     "auroc": 0.8975,
+     "auprc": 0.0705,
+     "delta_auroc": -0.0404,
+     "delta_auprc": -0.0799,
+     "n_features": 71
+    },
+    "n_features_hybrid": 105
+   }
+  },
+  "twin": {
+   "patients": 36,
+   "horizons_min": [
+    30,
+    60,
+    120
+   ],
+   "full_twin": {
+    "forecast_rmse": [
+     29.76,
+     37.81,
+     40.47
+    ],
+    "n_points": 93024,
+    "twin_only_hyper_2h": {
+     "auroc": 0.837,
+     "auprc": 0.4998
+    },
+    "twin_only_hypo_1h": {
+     "auroc": 0.739,
+     "auprc": 0.0883
+    }
+   },
+   "cold_start_first_24h": {
+    "full_twin": {
+     "forecast_rmse": [
+      32.1,
+      46.9,
+      62.89
+     ],
+     "n_points": 3312,
+     "twin_only_hyper_2h": {
+      "auroc": 0.5963,
+      "auprc": 0.2913
+     },
+     "twin_only_hypo_1h": {
+      "auroc": 0.8523,
+      "auprc": 0.072
+     }
+    },
+    "population_prior": {
+     "forecast_rmse": [
+      31.87,
+      46.69,
+      62.9
+     ],
+     "n_points": 3312,
+     "twin_only_hyper_2h": {
+      "auroc": 0.5986,
+      "auprc": 0.2977
+     },
+     "twin_only_hypo_1h": {
+      "auroc": 0.6876,
+      "auprc": 0.0457
+     }
+    },
+    "no_wearable_inputs": {
+     "forecast_rmse": [
+      32.18,
+      46.63,
+      61.44
+     ],
+     "n_points": 3312,
+     "twin_only_hyper_2h": {
+      "auroc": 0.5971,
+      "auprc": 0.2945
+     },
+     "twin_only_hypo_1h": {
+      "auroc": 0.8515,
+      "auprc": 0.0579
+     }
+    }
+   },
+   "population_prior": {
+    "forecast_rmse": [
+     29.74,
+     37.78,
+     40.42
+    ],
+    "n_points": 93024,
+    "twin_only_hyper_2h": {
+     "auroc": 0.8359,
+     "auprc": 0.5008
+    },
+    "twin_only_hypo_1h": {
+     "auroc": 0.7433,
+     "auprc": 0.0899
+    }
+   },
+   "no_wearable_inputs": {
+    "forecast_rmse": [
+     29.9,
+     37.87,
+     40.33
+    ],
+    "n_points": 93024,
+    "twin_only_hyper_2h": {
+     "auroc": 0.8379,
+     "auprc": 0.4969
+    },
+    "twin_only_hypo_1h": {
+     "auroc": 0.742,
+     "auprc": 0.0971
+    }
+   }
+  },
+  "elapsed_s": 173.0
+ }
 }

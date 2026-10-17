@@ -419,3 +419,28 @@ export interface Metrics {
 
 /** reports/cohort_validation.json — shape not fixed by the contract; rendered defensively. */
 export type CohortValidation = Record<string, unknown>;
+
+/** reports/real_validation.json — REAL-data external validation (engine `pratibimb validate-real`). */
+export interface RealValidation {
+  generated_at: string;
+  datasets: { name: string; source: string; licence: string; n_people: number; n_days: number; used_records: number; notes: string }[];
+  forecast: {
+    horizons_min: number[];
+    n_points: number;
+    twin: { rmse: (number | null)[]; mard: (number | null)[]; coverage_80: (number | null)[]; parkes_A: (number | null)[] };
+    persistence: { rmse: (number | null)[] };
+    linear: { rmse: (number | null)[] };
+    glycotwin_lgbm: { rmse: (number | null)[]; source: "reproduced" | "reported" | string };
+  };
+  risk: {
+    event: string;
+    base_rate: number | null;
+    n_windows: number | null;
+    baseline: { auroc: number | null; auprc: number | null };
+    plus_twin: { auroc: number | null; auprc: number | null };
+    transfer_no_retrain: { auroc: number | null; auprc: number | null };
+  }[];
+  synthetic_vs_real: { event_rate_ratio_ge180: number | null; event_rate_ratio_gt250: number | null; volatility_ratio_30min: number | null };
+  limitations: string[];
+  notes: string[];
+}

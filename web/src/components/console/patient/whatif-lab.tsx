@@ -15,7 +15,7 @@ import { api } from "@/lib/api/client";
 import { useAsync, useFoods, useSource } from "@/lib/api/hooks";
 import type { Food, PatientDetail, WhatIfMetrics, WhatIfPreset, WhatIfRequest, WhatIfResponse } from "@/lib/api/types";
 import { useCarePlan } from "@/lib/careplan";
-import { MIN, fmtDayTime, fmtTime, toISO } from "@/lib/time";
+import { MIN, fmtDayTime, fmtTime, ms, toISO } from "@/lib/time";
 import { cn } from "@/lib/utils";
 
 import { ErrorBlock, Segmented } from "../panel";
@@ -119,6 +119,15 @@ export function WhatIfLab({ patient, clock, now, trigger }: { patient: PatientDe
   const [sleepH, setSleepH] = useState(5);
 
   const [result, setResult] = useState<{ res: WhatIfResponse; title: string } | null>(null);
+  // The simulated window comes from the response itself: presets may start earlier than "now"
+  // (e.g. a skipped-dose replay from 30 min before this morning's dose) and run 6 h, not 5.
+  const win = useMemo(() => {
+    if (!result) return null;
+    const pts = result.res.baseline;
+    const start = ms(result.res.at);
+    const end = pts.length ? ms(pts[pts.length - 1].t) : start;
+    return { start, hours: Math.round(((end - start) / 3_600_000) * 10) / 10 };
+  }, [result]);
   const [busy, setBusy] = useState<string | null>(null);
   const [err, setErr] = useState<Error | null>(null);
   const [saved, setSaved] = useState(false);
@@ -184,7 +193,12 @@ export function WhatIfLab({ patient, clock, now, trigger }: { patient: PatientDe
             </span>
             <div>
               <SheetTitle className="text-[18px] font-semibold tracking-[-0.025em]">What-If Lab · {patient.display_name}</SheetTitle>
-              <SheetDescription className="text-[12.5px]">Simulate the next 5 h from the synced twin at {fmtDayTime(live ? clock : now)}{live ? "" : " (precomputed)"}. Illustrative, not a prescription.</SheetDescription>
+              <SheetDescription className="text-[12.5px]">
+                {win && Math.abs(win.start - (live ? clock : now)) > 5 * MIN
+                  ? `This scenario runs ${win.hours} h from ${fmtDayTime(win.start)} on the synced twin`
+                  : `Simulate the next ${win ? win.hours : 5} h from the synced twin at ${fmtDayTime(live ? clock : now)}`}
+                {live ? "" : " (precomputed)"}. Illustrative, not a prescription.
+              </SheetDescription>
             </div>
           </div>
         </SheetHeader>
@@ -346,7 +360,7 @@ export function WhatIfLab({ patient, clock, now, trigger }: { patient: PatientDe
                     <table className="w-full text-[13px]">
                       <thead className="bg-page-warm">
                         <tr className="label-xs text-left">
-                          <th className="px-5 py-2.5 font-medium">Next 5 h</th>
+                          <th className="px-5 py-2.5 font-medium">{win ? `${win.hours} h from ${fmtTime(win.start)}` : "Next 5 h"}</th>
                           <th className="px-2 py-2.5 text-right font-medium">Baseline</th>
                           <th className="px-2 py-2.5 text-right font-medium">Scenario</th>
                           <th className="px-5 py-2.5 text-right font-medium">Change</th>
