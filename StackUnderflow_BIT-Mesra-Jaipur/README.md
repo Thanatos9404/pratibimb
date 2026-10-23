@@ -10,7 +10,7 @@ Submission folder for the **Happiest Health Digital Twin Challenge 2026** (Unsto
 | Architecture diagram (PDF, 2 pages: diagram + component reference) | [`Pratibimb_Architecture.pdf`](Pratibimb_Architecture.pdf) |
 | Presentation with project details and outcome (PDF, 19 slides, 16:9) | [`Pratibimb_Presentation.pdf`](Pratibimb_Presentation.pdf) |
 | Same presentation as PowerPoint (one full-slide image per slide) | [`Pratibimb_Presentation.pptx`](Pratibimb_Presentation.pptx) |
-| Video walkthrough (20+ minutes) | [`VIDEO.md`](VIDEO.md) → **VIDEO_URL** |
+| Video walkthrough (20+ minutes) | [`VIDEO.md`](VIDEO.md) → **[https://github.com/Thanatos9404/pratibimb/releases/tag/submission-video](https://github.com/Thanatos9404/pratibimb/releases/tag/submission-video)** (22:57 MP4, 1080p, captions included) |
 | Live demo | **https://pratibimb-omega.vercel.app** |
 | Project README (team, problem, use case, tech stack, AI/ML details, results, how to run, licence) | [`../README.md`](../README.md) |
 | Open-source licence (Apache-2.0) | [`../LICENSE`](../LICENSE) |

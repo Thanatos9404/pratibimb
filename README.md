@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="VIDEO_URL">Video (20+ min)</a> ·
+  <a href="https://github.com/Thanatos9404/pratibimb/releases/tag/submission-video">Video (20+ min)</a> ·
   <a href="https://pratibimb-omega.vercel.app">Live demo</a> ·
   <a href="StackUnderflow_BIT-Mesra-Jaipur/Pratibimb_Architecture.pdf">Architecture (PDF)</a> ·
   <a href="StackUnderflow_BIT-Mesra-Jaipur/Pratibimb_Presentation.pdf">Presentation (PDF)</a> ·
@@ -495,7 +495,7 @@ The video and live-demo links in the deck come from [`docs/deck/links.json`](doc
 | Fuses static EHR + dynamic wearable streams | [Data](#data-synthetic-and-sandbox-compliant), [Architecture](#architecture) |
 | Predicts an adverse event in advance | `hyper_2h` (median lead 80.0 min), `hypo_1h`, `nocturnal_hypo`: [Results](#results) |
 | Conceptual clinician dashboard | [Demo walkthrough](#demo-walkthrough), `web/` |
-| Video, 20+ minutes | **VIDEO_URL** (also in [`StackUnderflow_BIT-Mesra-Jaipur/VIDEO.md`](StackUnderflow_BIT-Mesra-Jaipur/VIDEO.md)) |
+| Video, 20+ minutes | **[https://github.com/Thanatos9404/pratibimb/releases/tag/submission-video](https://github.com/Thanatos9404/pratibimb/releases/tag/submission-video)** (22:57 MP4, 1080p, captions included) (also in [`StackUnderflow_BIT-Mesra-Jaipur/VIDEO.md`](StackUnderflow_BIT-Mesra-Jaipur/VIDEO.md)) |
 | Open-source licence | [Apache-2.0](LICENSE) |
 | Architecture diagram (PDF/PPT) | [`Pratibimb_Architecture.pdf`](StackUnderflow_BIT-Mesra-Jaipur/Pratibimb_Architecture.pdf) |
 | Presentation with project details and outcome (PDF/PPT) | [`Pratibimb_Presentation.pdf`](StackUnderflow_BIT-Mesra-Jaipur/Pratibimb_Presentation.pdf) · [`.pptx`](StackUnderflow_BIT-Mesra-Jaipur/Pratibimb_Presentation.pptx) |
@@ -503,7 +503,7 @@ The video and live-demo links in the deck come from [`docs/deck/links.json`](doc
 
 **Links**
 
-- Video walkthrough (20+ min): **VIDEO_URL**
+- Video walkthrough (20+ min): **[https://github.com/Thanatos9404/pratibimb/releases/tag/submission-video](https://github.com/Thanatos9404/pratibimb/releases/tag/submission-video)** (22:57 MP4, 1080p, captions included)
 - Live demo: **https://pratibimb-omega.vercel.app**
 - Submission folder: [`StackUnderflow_BIT-Mesra-Jaipur/`](StackUnderflow_BIT-Mesra-Jaipur/)
 - Model card · Data card · API: [`docs/MODEL_CARD.md`](docs/MODEL_CARD.md) · [`docs/DATA_CARD.md`](docs/DATA_CARD.md) · [`docs/API.md`](docs/API.md)
